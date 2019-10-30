@@ -1,9 +1,10 @@
 #ifndef SNIPPET_H
 #define SNIPPET_H
 
+#include <QListWidgetItem>
 #include <QString>
 
-class Snippet
+class Snippet : QListWidgetItem
 {
 	public:
 		Snippet();
@@ -13,6 +14,7 @@ class Snippet
 		
 		void setContent(QString);
 		QString getContent();
+		void setText(QString);
 	private:
 		QString title;
 		QString content;

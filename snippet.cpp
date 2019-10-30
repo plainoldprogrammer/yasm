@@ -25,3 +25,8 @@ QString Snippet::getContent()
 {
 	return this->content;
 }
+
+void Snippet::setText(QString text)
+{
+	QListWidgetItem::setText(text);
+}

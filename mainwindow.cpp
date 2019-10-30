@@ -31,9 +31,7 @@ void MainWindow::on_pushButtonNewSnippet_clicked()
 {
 	qDebug() << "Creating a new snippet";
 	
-	// new QListWidgetItem("Snippet", ui->listWidgetSnippets);
-	QListWidgetItem *newItem = new QListWidgetItem;
-	newItem->setText(QString::number(counter));
-	ui->listWidgetSnippets->insertItem(ui->listWidgetSnippets->count(), newItem);
-	counter++;
+	Snippet *newItem = new Snippet;
+	newItem->setText("New Snippet");
+	ui->listWidgetSnippets->insertItem(ui->listWidgetSnippets->count(), (QListWidgetItem *) newItem);
 }
