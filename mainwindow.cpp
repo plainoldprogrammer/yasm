@@ -38,9 +38,12 @@ void MainWindow::on_pushButtonNewSnippet_clicked()
 {
 	qDebug() << "Creating a new snippet";
 	
-	Snippet *newItem = new Snippet;
+	Snippet *newItem = new Snippet();
 	newItem->setText("New Snippet");
+	
 	ui->listWidgetSnippets->insertItem(ui->listWidgetSnippets->count(), (QListWidgetItem *) newItem);
+	ui->lineEditSnippetTitle->setText(newItem->getTitle());
+	ui->textEditSnippetContent->setText(newItem->getContent());
 	
 	enableGUI();
 }
