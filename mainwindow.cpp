@@ -46,6 +46,7 @@ void MainWindow::on_pushButtonNewSnippet_clicked()
 	ui->listWidgetSnippets->insertItem(ui->listWidgetSnippets->count(), (QListWidgetItem *) newItem);
 	ui->lineEditSnippetTitle->setText(newItem->getTitle());
 	ui->textEditSnippetContent->setText(newItem->getContent());
+	ui->listWidgetSnippets->setItemSelected((QListWidgetItem *) newItem, true);
 	
 	enableGUI();
 }
