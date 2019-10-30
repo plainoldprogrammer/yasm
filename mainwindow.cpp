@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "snippet.h"
 #include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent)
@@ -20,7 +21,7 @@ void MainWindow::firstTimeInitializeGUI()
 	ui->pushButtonNewSnippet->setText("New Snippet");
 	this->setWindowTitle("YASM (Alpha)");
 	
-	ui->listViewSnippets->setEnabled(false);
+	ui->listWidgetSnippets->setEnabled(false);
 	ui->lineEditSnippetTitle->setEnabled(false);
 	ui->textEditSnippetContent->setEnabled(false);
 }

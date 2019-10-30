@@ -34,16 +34,6 @@
      </rect>
     </property>
    </widget>
-   <widget class="QListView" name="listViewSnippets">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>40</y>
-      <width>256</width>
-      <height>451</height>
-     </rect>
-    </property>
-   </widget>
    <widget class="QPushButton" name="pushButtonNewSnippet">
     <property name="geometry">
      <rect>
@@ -55,6 +45,16 @@
     </property>
     <property name="text">
      <string>PushButton</string>
+    </property>
+   </widget>
+   <widget class="QListWidget" name="listWidgetSnippets">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>40</y>
+      <width>251</width>
+      <height>451</height>
+     </rect>
     </property>
    </widget>
   </widget>
