@@ -22,5 +22,6 @@ private:
 	
 private slots:
 	void on_pushButtonNewSnippet_clicked();
+	void on_listWidgetSnippets_clicked();
 };
 #endif // MAINWINDOW_H

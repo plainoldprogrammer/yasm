@@ -47,3 +47,8 @@ void MainWindow::on_pushButtonNewSnippet_clicked()
 	
 	enableGUI();
 }
+
+void MainWindow::on_listWidgetSnippets_clicked()
+{
+	qDebug() << "Selecting an item list";
+}

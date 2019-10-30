@@ -17,6 +17,7 @@ class Snippet : QListWidgetItem
 		
 		void setContent(QString);
 		QString getContent();
+		
 		void setText(QString);
 	private:
 		int id;
