@@ -69,3 +69,8 @@ void MainWindow::on_lineEditSnippetTitle_textChanged()
 	
 	qDebug() << "Editing the title of the selected snippet" << selectedSnippetId;
 }
+
+void MainWindow::on_textEditSnippetContent_textChanged()
+{
+	qDebug() << "Editing the content of the selected snippet";
+}
