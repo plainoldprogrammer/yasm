@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent)
 : QMainWindow(parent)
@@ -22,4 +23,9 @@ void MainWindow::firstTimeInitializeGUI()
 	ui->listViewSnippets->setEnabled(false);
 	ui->lineEditSnippetTitle->setEnabled(false);
 	ui->textEditSnippetContent->setEnabled(false);
+}
+
+void MainWindow::on_pushButtonNewSnippet_clicked()
+{
+	qDebug() << "Creating a new snippet";
 }
