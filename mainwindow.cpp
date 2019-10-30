@@ -55,6 +55,8 @@ void MainWindow::on_listWidgetSnippets_clicked()
 {
 	QListWidgetItem *selectedItem = ui->listWidgetSnippets->selectedItems().at(0);
 	Snippet *selectedSnippet = (Snippet *) selectedItem;
+	
+	ui->lineEditSnippetTitle->setText(selectedSnippet->getTitle());
 	qDebug() << "Selecting an item list" << selectedSnippet->getId();
 }
 
