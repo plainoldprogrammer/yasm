@@ -40,6 +40,8 @@ void MainWindow::on_pushButtonNewSnippet_clicked()
 	
 	Snippet *newItem = new Snippet();
 	newItem->setText("New Snippet");
+	newItem->setId(snippetsCount);
+	snippetsCount++;
 	
 	ui->listWidgetSnippets->insertItem(ui->listWidgetSnippets->count(), (QListWidgetItem *) newItem);
 	ui->lineEditSnippetTitle->setText(newItem->getTitle());
@@ -50,5 +52,7 @@ void MainWindow::on_pushButtonNewSnippet_clicked()
 
 void MainWindow::on_listWidgetSnippets_clicked()
 {
-	qDebug() << "Selecting an item list";
+	QListWidgetItem *selectedItem = ui->listWidgetSnippets->selectedItems().at(0);
+	Snippet *selectedSnippet = (Snippet *) selectedItem;
+	qDebug() << "Selecting an item list" << selectedSnippet->getId();
 }
