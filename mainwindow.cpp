@@ -60,5 +60,12 @@ void MainWindow::on_listWidgetSnippets_clicked()
 
 void MainWindow::on_lineEditSnippetTitle_textChanged()
 {
-	qDebug() << "Editing the title of the selected snippet";
+	int selectedSnippetId = -1;
+	
+	if (ui->listWidgetSnippets->count() > 1)
+	{
+		selectedSnippetId = ((Snippet *) (ui->listWidgetSnippets->selectedItems().at(0)))->getId();
+	}
+	
+	qDebug() << "Editing the title of the selected snippet" << selectedSnippetId;
 }
