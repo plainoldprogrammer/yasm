@@ -56,3 +56,8 @@ void MainWindow::on_listWidgetSnippets_clicked()
 	Snippet *selectedSnippet = (Snippet *) selectedItem;
 	qDebug() << "Selecting an item list" << selectedSnippet->getId();
 }
+
+void MainWindow::on_lineEditSnippetTitle_textChanged()
+{
+	qDebug() << "Editing the title of the selected snippet";
+}

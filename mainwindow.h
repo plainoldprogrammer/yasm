@@ -25,5 +25,6 @@ private:
 private slots:
 	void on_pushButtonNewSnippet_clicked();
 	void on_listWidgetSnippets_clicked();
+	void on_lineEditSnippetTitle_textChanged();
 };
 #endif // MAINWINDOW_H
