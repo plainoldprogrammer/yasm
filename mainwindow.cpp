@@ -27,6 +27,13 @@ void MainWindow::firstTimeInitializeGUI()
 	ui->textEditSnippetContent->setEnabled(false);
 }
 
+void MainWindow::enableGUI()
+{
+	ui->listWidgetSnippets->setEnabled(true);
+	ui->lineEditSnippetTitle->setEnabled(true);
+	ui->textEditSnippetContent->setEnabled(true);
+}
+
 void MainWindow::on_pushButtonNewSnippet_clicked()
 {
 	qDebug() << "Creating a new snippet";
@@ -34,4 +41,6 @@ void MainWindow::on_pushButtonNewSnippet_clicked()
 	Snippet *newItem = new Snippet;
 	newItem->setText("New Snippet");
 	ui->listWidgetSnippets->insertItem(ui->listWidgetSnippets->count(), (QListWidgetItem *) newItem);
+	
+	enableGUI();
 }
