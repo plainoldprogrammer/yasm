@@ -1,7 +1,7 @@
 #include "snippet.h"
 #include <QDebug>
 
-Snippet::Snippet()
+Snippet::Snippet() : title(""), content("")
 {
 	qDebug() << "New snippet created";
 }
