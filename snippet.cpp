@@ -6,6 +6,16 @@ Snippet::Snippet() : title("Snippet title"), content("Snippet content")
 	qDebug() << "New snippet created";
 }
 
+void Snippet::setId(int id)
+{
+	this->id = id;
+}
+
+int Snippet::getId()
+{
+	return this->id;
+}
+
 void Snippet::setTitle(QString title)
 {
 	this->title = title;

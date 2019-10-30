@@ -9,6 +9,9 @@ class Snippet : QListWidgetItem
 	public:
 		Snippet();
 		
+		void setId(int);
+		int getId();
+		
 		void setTitle(QString);
 		QString getTitle();
 		
@@ -16,6 +19,7 @@ class Snippet : QListWidgetItem
 		QString getContent();
 		void setText(QString);
 	private:
+		int id;
 		QString title;
 		QString content;
 };
