@@ -39,7 +39,7 @@ void MainWindow::on_pushButtonNewSnippet_clicked()
 	qDebug() << "Creating a new snippet";
 	
 	Snippet *newItem = new Snippet();
-	newItem->setText("New Snippet");
+	newItem->setText(newItem->getTitle());
 	newItem->setId(snippetsCount);
 	snippetsCount++;
 	
