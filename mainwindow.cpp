@@ -20,7 +20,7 @@ MainWindow::~MainWindow()
 void MainWindow::firstTimeInitializeGUI()
 {
 	ui->pushButtonNewSnippet->setText("New Snippet");
-	this->setWindowTitle("YASM (Alpha)");
+	this->setWindowTitle("YASM0 0.1 (Alpha)");
 	
 	ui->listWidgetSnippets->setEnabled(false);
 	ui->lineEditSnippetTitle->setEnabled(false);
