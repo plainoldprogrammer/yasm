@@ -57,6 +57,7 @@ void MainWindow::on_listWidgetSnippets_clicked()
 	Snippet *selectedSnippet = (Snippet *) selectedItem;
 	
 	ui->lineEditSnippetTitle->setText(selectedSnippet->getTitle());
+	ui->textEditSnippetContent->setText(selectedSnippet->getContent());
 	qDebug() << "Selecting an item list" << selectedSnippet->getId();
 }
 
@@ -82,7 +83,10 @@ void MainWindow::on_textEditSnippetContent_textChanged()
 	
 	if (ui->listWidgetSnippets->count() > 1)
 	{
-		selectedSnippetId = ((Snippet *) (ui->listWidgetSnippets->selectedItems().at(0)))->getId();
+		Snippet *selectedSnippet = (Snippet *) (ui->listWidgetSnippets->selectedItems().at(0));
+		selectedSnippetId = selectedSnippet->getId();
+		
+		selectedSnippet->setContent(ui->textEditSnippetContent->toPlainText());
 	}
 	
 	qDebug() << "Editing the content of the selected snippet" << selectedSnippetId;
