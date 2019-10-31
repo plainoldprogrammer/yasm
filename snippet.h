@@ -7,7 +7,7 @@
 class Snippet : QListWidgetItem
 {
 	public:
-		Snippet();
+		Snippet(int);
 		
 		void setId(int);
 		int getId();

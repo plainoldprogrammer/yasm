@@ -1,9 +1,10 @@
 #include "snippet.h"
 #include <QDebug>
 
-Snippet::Snippet() : title("Snippet title"), content("Snippet content")
+Snippet::Snippet(int id) : title("Snippet title"), content("Snippet content")
 {
-	qDebug() << "New snippet created";
+	this->setId(id);
+	qDebug() << "New snippet created [id=" << getId() << "]";
 }
 
 void Snippet::setId(int id)

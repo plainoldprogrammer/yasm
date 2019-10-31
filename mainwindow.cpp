@@ -36,17 +36,14 @@ void MainWindow::enableGUI()
 
 void MainWindow::on_pushButtonNewSnippet_clicked()
 {
-	qDebug() << "Creating a new snippet";
-	
-	Snippet *newItem = new Snippet();
-	newItem->setText(newItem->getTitle());
-	newItem->setId(snippetsCount);
 	snippetsCount++;
+	Snippet *newItem = new Snippet(snippetsCount);
+	newItem->setText(newItem->getTitle());
 	
 	ui->listWidgetSnippets->insertItem(ui->listWidgetSnippets->count(), (QListWidgetItem *) newItem);
+	ui->listWidgetSnippets->setItemSelected((QListWidgetItem *) newItem, true);
 	ui->lineEditSnippetTitle->setText(newItem->getTitle());
 	ui->textEditSnippetContent->setText(newItem->getContent());
-	ui->listWidgetSnippets->setItemSelected((QListWidgetItem *) newItem, true);
 	
 	enableGUI();
 }
@@ -65,7 +62,7 @@ void MainWindow::on_lineEditSnippetTitle_textChanged()
 {
 	int selectedSnippetId = -1;
 	
-	if (ui->listWidgetSnippets->count() > 1)
+	if (ui->listWidgetSnippets->count() > 0)
 	{
 		Snippet *selectedSnippet = (Snippet *) (ui->listWidgetSnippets->selectedItems().at(0));
 		selectedSnippetId = selectedSnippet->getId();
@@ -73,21 +70,22 @@ void MainWindow::on_lineEditSnippetTitle_textChanged()
 		selectedSnippet->setTitle(ui->lineEditSnippetTitle->text());
 		ui->listWidgetSnippets->selectedItems().at(0)->setText(selectedSnippet->getTitle());	
 	}
-	
-	qDebug() << "Editing the title of the selected snippet" << selectedSnippetId;
 }
 
 void MainWindow::on_textEditSnippetContent_textChanged()
 {
 	int selectedSnippetId = -1;
 	
-	if (ui->listWidgetSnippets->count() > 1)
+	if (ui->listWidgetSnippets->count() > 0)
 	{
 		Snippet *selectedSnippet = (Snippet *) (ui->listWidgetSnippets->selectedItems().at(0));
 		selectedSnippetId = selectedSnippet->getId();
 		
 		selectedSnippet->setContent(ui->textEditSnippetContent->toPlainText());
 	}
-	
-	qDebug() << "Editing the content of the selected snippet" << selectedSnippetId;
+}
+
+void MainWindow::logListWidgetSnippets()
+{
+	qDebug() << "Elements on listWidgetSnippets=[" << ui->listWidgetSnippets->count() << "]";
 }

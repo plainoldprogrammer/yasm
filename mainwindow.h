@@ -18,6 +18,7 @@ public:
 	~MainWindow();
 	void firstTimeInitializeGUI();
 	void enableGUI();
+	void logListWidgetSnippets();
 	
 private:
 	Ui::MainWindow *ui;
