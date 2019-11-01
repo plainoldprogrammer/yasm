@@ -57,12 +57,12 @@
      </rect>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButtonRemoveSelectedSnippet">
+   <widget class="QPushButton" name="pushButtonRemoveSnippet">
     <property name="geometry">
      <rect>
-      <x>170</x>
+      <x>152</x>
       <y>500</y>
-      <width>93</width>
+      <width>111</width>
       <height>28</height>
      </rect>
     </property>
