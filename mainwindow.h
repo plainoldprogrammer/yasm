@@ -18,6 +18,7 @@ public:
 	~MainWindow();
 	void firstTimeInitializeGUI();
 	void enableGUI();
+	void disableGUI();
 	void logListWidgetSnippets();
 	
 private:

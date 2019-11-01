@@ -21,7 +21,7 @@ void MainWindow::firstTimeInitializeGUI()
 {
 	ui->pushButtonNewSnippet->setText("New Snippet");
 	ui->pushButtonRemoveSnippet->setText("Remove Snippet");
-	this->setWindowTitle("YASM0 v0.1 (Alpha)");
+	this->setWindowTitle("YASM0 v0.2 (Alpha)");
 
 	ui->pushButtonRemoveSnippet->setEnabled(false);	
 	ui->listWidgetSnippets->setEnabled(false);
@@ -35,6 +35,14 @@ void MainWindow::enableGUI()
 	ui->listWidgetSnippets->setEnabled(true);
 	ui->lineEditSnippetTitle->setEnabled(true);
 	ui->textEditSnippetContent->setEnabled(true);
+}
+
+void MainWindow::disableGUI()
+{
+	ui->pushButtonRemoveSnippet->setEnabled(false);
+	ui->listWidgetSnippets->setEnabled(false);
+	ui->lineEditSnippetTitle->setEnabled(false);
+	ui->textEditSnippetContent->setEnabled(false);
 }
 
 void MainWindow::on_pushButtonNewSnippet_clicked()
@@ -57,6 +65,20 @@ void MainWindow::on_pushButtonRemoveSnippet_clicked()
 	{
 		Snippet *removedItem = (Snippet *) ui->listWidgetSnippets->takeItem(ui->listWidgetSnippets->currentRow());
 		qDebug() << "removed item id=[" << removedItem->getId() << "]";
+		
+		if (ui->listWidgetSnippets->count() > 0)
+		{
+			QListWidgetItem *selectedItem = ui->listWidgetSnippets->selectedItems().at(0);
+			Snippet *selectedSnippet = (Snippet *) selectedItem;
+			ui->lineEditSnippetTitle->setText(selectedSnippet->getTitle());
+			ui->textEditSnippetContent->setText(selectedSnippet->getContent());
+		}
+		else if (ui->listWidgetSnippets->count() == 0)
+		{
+			ui->lineEditSnippetTitle->setText("");
+			ui->textEditSnippetContent->setText("");
+			disableGUI();
+		}
 	}
 }
 
@@ -67,7 +89,7 @@ void MainWindow::on_listWidgetSnippets_clicked()
 	
 	ui->lineEditSnippetTitle->setText(selectedSnippet->getTitle());
 	ui->textEditSnippetContent->setText(selectedSnippet->getContent());
-	qDebug() << "Selecting an item list" << selectedSnippet->getId();
+	qDebug() << "Snippet selected [id=" << selectedSnippet->getId() << "]";
 }
 
 void MainWindow::on_lineEditSnippetTitle_textChanged()
