@@ -57,6 +57,17 @@ void MainWindow::on_pushButtonNewSnippet_clicked()
 	Snippet *newItem = new Snippet(snippetsCount);
 	newItem->setText(newItem->getTitle());
 	
+	QSqlQuery sqlQuery;
+	
+	if (sqlQuery.exec("INSERT INTO 'snippets' ('id', 'title', 'snippet') VALUES (NULL, '" + newItem->getTitle() + "', '" + newItem->getContent() + "');"))
+	{
+		qDebug() << "New snippet inserted in table snippets";
+	}
+	else
+	{
+		qWarning() << "Can't insert a snippet in table snippets";
+	}
+	
 	ui->listWidgetSnippets->insertItem(ui->listWidgetSnippets->count(), (QListWidgetItem *) newItem);
 	ui->listWidgetSnippets->setItemSelected((QListWidgetItem *) newItem, true);
 	ui->lineEditSnippetTitle->setText(newItem->getTitle());
