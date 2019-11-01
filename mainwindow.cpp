@@ -85,6 +85,11 @@ void MainWindow::on_textEditSnippetContent_textChanged()
 	}
 }
 
+void MainWindow::on_pushButtonRemoveSelectedSnippet_clicked()
+{
+	qDebug() << "Removing the selected snippet";
+}
+
 void MainWindow::logListWidgetSnippets()
 {
 	qDebug() << "Elements on listWidgetSnippets=[" << ui->listWidgetSnippets->count() << "]";
