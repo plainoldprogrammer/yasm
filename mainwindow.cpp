@@ -9,6 +9,7 @@ MainWindow::MainWindow(QWidget *parent)
 , ui(new Ui::MainWindow)
 {
 	ui->setupUi(this);
+	createDBConnection();
 	firstTimeInitializeGUI();
 }
 
@@ -122,4 +123,9 @@ void MainWindow::on_textEditSnippetContent_textChanged()
 void MainWindow::logListWidgetSnippets()
 {
 	qDebug() << "Elements on listWidgetSnippets=[" << ui->listWidgetSnippets->count() << "]";
+}
+
+void MainWindow::createDBConnection()
+{
+	qDebug() << "Connecting with the database";
 }

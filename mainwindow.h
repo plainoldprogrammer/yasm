@@ -20,6 +20,7 @@ public:
 	void enableGUI();
 	void disableGUI();
 	void logListWidgetSnippets();
+	void createDBConnection();
 	
 private:
 	Ui::MainWindow *ui;
