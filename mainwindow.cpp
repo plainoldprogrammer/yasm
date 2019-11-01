@@ -53,7 +53,11 @@ void MainWindow::on_pushButtonNewSnippet_clicked()
 
 void MainWindow::on_pushButtonRemoveSnippet_clicked()
 {
-	qDebug() << "Removing the selected snippet";
+	if (ui->listWidgetSnippets->selectedItems().count() > 0 && ui->listWidgetSnippets->currentRow() > 0)
+	{
+		Snippet *removedItem = (Snippet *) ui->listWidgetSnippets->takeItem(ui->listWidgetSnippets->currentRow());
+		qDebug() << "removed item id=[" << removedItem->getId() << "]";
+	}
 }
 
 void MainWindow::on_listWidgetSnippets_clicked()
