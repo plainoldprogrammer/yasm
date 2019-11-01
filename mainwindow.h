@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QSqlDatabase>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -21,6 +22,7 @@ public:
 	void disableGUI();
 	void logListWidgetSnippets();
 	void createDBConnection();
+	QSqlDatabase db;
 	
 private:
 	Ui::MainWindow *ui;

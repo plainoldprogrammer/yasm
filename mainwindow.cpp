@@ -3,6 +3,11 @@
 #include "snippet.h"
 #include <QDebug>
 #include <QListWidgetItem>
+#include <QSqlDatabase>
+#include <QDir>
+#include <QSqlDatabase>
+#include <QSqlQuery>
+#include <QMessageBox>
 
 MainWindow::MainWindow(QWidget *parent)
 : QMainWindow(parent)
@@ -128,4 +133,46 @@ void MainWindow::logListWidgetSnippets()
 void MainWindow::createDBConnection()
 {
 	qDebug() << "Connecting with the database";
+	
+	const QString DRIVER("QSQLITE");	
+	
+	if (QSqlDatabase::isDriverAvailable)
+	{
+		qDebug() << "QSQLITE driver is available";
+	}
+	
+	QString dbFolder = "C:\\tmp\\";
+	QDir dbDirectory(dbFolder);
+	QString sqliteFileName = "snippets.db";
+	QString dbURI = dbFolder + sqliteFileName;
+	
+	db = QSqlDatabase::addDatabase(DRIVER);
+	db.setDatabaseName(dbURI);
+	
+	if (!dbDirectory.exists())
+	{
+		dbDirectory.mkdir(".");
+		
+		QMessageBox::StandardButton notification;
+		notification = QMessageBox::information(this, "New Database Created", "A new directory and a new database\nhas beencreated");
+	}
+	
+	if (db.open())
+	{
+		qDebug() << "The db has been opened";
+	}
+	else
+	{
+		qWarning() << "Can't open db";
+	}
+	
+	QSqlQuery sqlQuery;
+	if (sqlQuery.exec("CREATE TABLE IF NOT EXISTS 'snippets' ('id' INTEGER PRIMARY KEY AUTOINCREMENT, 'title' TEXT, 'snippet' TEXT, 'datetime' DATETIME DEFAULT CURRENT_TIMESTAMP)"))
+	{
+		qDebug() << "Table snippets has been created";
+	}
+	else
+	{
+		qWarning() << "Can't create table snippets";
+	}
 }
