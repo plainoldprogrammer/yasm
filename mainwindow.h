@@ -8,8 +8,6 @@ QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
 
-static int snippetsCount = 0;
-
 class MainWindow : public QMainWindow
 {
 	Q_OBJECT
@@ -22,10 +20,12 @@ public:
 	void disableGUI();
 	void logListWidgetSnippets();
 	void createDBConnection();
-	QSqlDatabase db;
+	int getMaxIdFromDb();
 	
 private:
 	Ui::MainWindow *ui;
+	QSqlDatabase db;
+	int snippetId;
 	
 private slots:
 	void on_pushButtonNewSnippet_clicked();

@@ -15,6 +15,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
 	ui->setupUi(this);
 	createDBConnection();
+	snippetId = getMaxIdFromDb();
 	firstTimeInitializeGUI();
 }
 
@@ -53,8 +54,8 @@ void MainWindow::disableGUI()
 
 void MainWindow::on_pushButtonNewSnippet_clicked()
 {
-	snippetsCount++;
-	Snippet *newItem = new Snippet(snippetsCount);
+	snippetId++;
+	Snippet *newItem = new Snippet(snippetId);
 	newItem->setText(newItem->getTitle());
 	
 	QSqlQuery sqlQuery;
@@ -186,4 +187,25 @@ void MainWindow::createDBConnection()
 	{
 		qWarning() << "Can't create table snippets";
 	}
+}
+
+int MainWindow::getMaxIdFromDb()
+{
+	int maxId = -1;
+	QSqlQuery sqlQuery;
+	
+	if (sqlQuery.exec("SELECT MAX(id) FROM 'snippets';"))
+	{
+		if(sqlQuery.next())
+		{
+			qDebug() << "Selecting the max id from db";
+			maxId = sqlQuery.value(0).toInt();
+		}
+	}
+	else
+	{
+		qWarning() << "Can't selecte the max id from db";
+	}
+	
+	return maxId;
 }
