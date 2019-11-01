@@ -22,7 +22,8 @@ void MainWindow::firstTimeInitializeGUI()
 	ui->pushButtonNewSnippet->setText("New Snippet");
 	ui->pushButtonRemoveSnippet->setText("Remove Snippet");
 	this->setWindowTitle("YASM0 v0.1 (Alpha)");
-	
+
+	ui->pushButtonRemoveSnippet->setEnabled(false);	
 	ui->listWidgetSnippets->setEnabled(false);
 	ui->lineEditSnippetTitle->setEnabled(false);
 	ui->textEditSnippetContent->setEnabled(false);
@@ -30,6 +31,7 @@ void MainWindow::firstTimeInitializeGUI()
 
 void MainWindow::enableGUI()
 {
+	ui->pushButtonRemoveSnippet->setEnabled(true);
 	ui->listWidgetSnippets->setEnabled(true);
 	ui->lineEditSnippetTitle->setEnabled(true);
 	ui->textEditSnippetContent->setEnabled(true);
