@@ -34,6 +34,17 @@ void MainWindow::firstTimeInitializeGUI()
 	ui->listWidgetSnippets->setEnabled(false);
 	ui->lineEditSnippetTitle->setEnabled(false);
 	ui->textEditSnippetContent->setEnabled(false);
+	
+	QSqlQuery sqlQuery;
+	
+	if (sqlQuery.exec("SELECT * FROM 'snippets';"))
+	{
+		qDebug() << "Reading all snippets from the db";
+	}
+	else
+	{
+		qWarning() << "Can't read the snippets from the db";
+	}
 }
 
 void MainWindow::enableGUI()
