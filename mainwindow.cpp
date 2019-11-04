@@ -215,7 +215,7 @@ int MainWindow::getMaxIdFromDb()
 	}
 	else
 	{
-		qWarning() << "Can't selecte the max id from db";
+		qWarning() << "Can't select the max id from db";
 	}
 	
 	return maxId;
