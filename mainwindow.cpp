@@ -40,6 +40,11 @@ void MainWindow::firstTimeInitializeGUI()
 	if (sqlQuery.exec("SELECT * FROM 'snippets';"))
 	{
 		qDebug() << "Reading all snippets from the db";
+		
+		while (sqlQuery.next())
+		{
+			qDebug() << "Snippet id=[" << sqlQuery.value(0).toInt() << "] title=[" << sqlQuery.value(1).toString() << "]";
+		}
 	}
 	else
 	{
