@@ -61,6 +61,7 @@ void MainWindow::firstTimeInitializeGUI()
 			
 			ui->listWidgetSnippets->insertItem(ui->listWidgetSnippets->count(), (QListWidgetItem *) snippetRecoveredFromDb);
 			ui->listWidgetSnippets->setItemSelected((QListWidgetItem *) snippetRecoveredFromDb, true);
+			ui->listWidgetSnippets->setCurrentRow(ui->listWidgetSnippets->count() - 1);
 			ui->lineEditSnippetTitle->setText(snippetRecoveredFromDb->getTitle());
 			ui->textEditSnippetContent->setText(snippetRecoveredFromDb->getContent());
 		}
@@ -111,6 +112,7 @@ void MainWindow::on_pushButtonNewSnippet_clicked()
 	
 	ui->listWidgetSnippets->insertItem(ui->listWidgetSnippets->count(), (QListWidgetItem *) newItem);
 	ui->listWidgetSnippets->setItemSelected((QListWidgetItem *) newItem, true);
+	ui->listWidgetSnippets->setCurrentRow(ui->listWidgetSnippets->count() - 1);
 	ui->lineEditSnippetTitle->setText(newItem->getTitle());
 	ui->textEditSnippetContent->setText(newItem->getContent());
 	
