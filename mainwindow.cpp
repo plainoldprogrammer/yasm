@@ -130,6 +130,9 @@ void MainWindow::on_pushButtonRemoveSnippet_clicked()
 			Snippet *selectedSnippet = (Snippet *) selectedItem;
 			ui->lineEditSnippetTitle->setText(selectedSnippet->getTitle());
 			ui->textEditSnippetContent->setText(selectedSnippet->getContent());
+			
+			QSqlQuery sqlQuery;
+			sqlQuery.exec("DELETE FROM 'snippets' WHERE id=" + QString::number(selectedSnippet->getId()) + ";");
 		}
 		else if (ui->listWidgetSnippets->count() == 0)
 		{
