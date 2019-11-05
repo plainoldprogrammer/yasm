@@ -28,7 +28,7 @@ void MainWindow::firstTimeInitializeGUI()
 {
 	ui->pushButtonNewSnippet->setText("New Snippet");
 	ui->pushButtonRemoveSnippet->setText("Remove Snippet");
-	this->setWindowTitle("YASM0 v0.4 (Alpha)");
+	this->setWindowTitle("YASM0 v0.5 (Alpha)");
 
 	ui->pushButtonRemoveSnippet->setEnabled(false);	
 	ui->listWidgetSnippets->setEnabled(false);
