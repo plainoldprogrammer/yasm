@@ -39,11 +39,35 @@ void MainWindow::firstTimeInitializeGUI()
 	
 	if (sqlQuery.exec("SELECT * FROM 'snippets';"))
 	{
+		bool isAnySnippetOnDb = false;
+		
 		qDebug() << "Reading all snippets from the db";
+		QVector<Snippet> snippetsFromDb;	
+		Snippet *snippetRecoveredFromDb;
 		
 		while (sqlQuery.next())
 		{
 			qDebug() << "Snippet id=[" << sqlQuery.value(0).toInt() << "] title=[" << sqlQuery.value(1).toString() << "]";
+			
+			int snippetFromDbId = sqlQuery.value(0).toInt();
+			QString snippetFromDbTitle = sqlQuery.value(1).toString();
+			QString snippetFromDbContent = sqlQuery.value(2).toString();
+			isAnySnippetOnDb = true;
+			
+			snippetRecoveredFromDb = new Snippet(snippetFromDbId);
+			snippetRecoveredFromDb->setTitle(snippetFromDbTitle);
+			snippetRecoveredFromDb->setText(snippetRecoveredFromDb->getTitle());
+			snippetRecoveredFromDb->setContent(snippetFromDbContent);
+			
+			ui->listWidgetSnippets->insertItem(ui->listWidgetSnippets->count(), (QListWidgetItem *) snippetRecoveredFromDb);
+			ui->listWidgetSnippets->setItemSelected((QListWidgetItem *) snippetRecoveredFromDb, true);
+			ui->lineEditSnippetTitle->setText(snippetRecoveredFromDb->getTitle());
+			ui->textEditSnippetContent->setText(snippetRecoveredFromDb->getContent());
+		}
+		
+		if (isAnySnippetOnDb)
+		{
+			enableGUI();
 		}
 	}
 	else
