@@ -161,6 +161,9 @@ void MainWindow::on_lineEditSnippetTitle_textChanged()
 		
 		selectedSnippet->setTitle(ui->lineEditSnippetTitle->text());
 		ui->listWidgetSnippets->selectedItems().at(0)->setText(selectedSnippet->getTitle());	
+		
+		QSqlQuery sqlQuery;
+		sqlQuery.exec("UPDATE 'snippets' SET 'title'='" + selectedSnippet->getTitle() + "' WHERE id=" + QString::number(selectedSnippet->getId()) + ";");
 	}
 }
 
