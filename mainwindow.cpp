@@ -121,8 +121,14 @@ void MainWindow::on_pushButtonRemoveSnippet_clicked()
 {
 	if (ui->listWidgetSnippets->selectedItems().count() > 0 && ui->listWidgetSnippets->currentRow() >= 0)
 	{
+		bool isTheLastElement = false;
 		Snippet *removedItem = (Snippet *) ui->listWidgetSnippets->takeItem(ui->listWidgetSnippets->currentRow());
 		qDebug() << "removed item id=[" << removedItem->getId() << "]";
+		
+		if (ui->listWidgetSnippets->count()  == 0)
+		{
+			isTheLastElement = true;
+		}
 		
 		if (ui->listWidgetSnippets->count() > 0)
 		{
@@ -132,10 +138,18 @@ void MainWindow::on_pushButtonRemoveSnippet_clicked()
 			ui->textEditSnippetContent->setText(selectedSnippet->getContent());
 			
 			QSqlQuery sqlQuery;
-			sqlQuery.exec("DELETE FROM 'snippets' WHERE id=" + QString::number(selectedSnippet->getId()) + ";");
+			sqlQuery.exec("DELETE FROM 'snippets' WHERE id=" + QString::number(removedItem->getId()) + ";");
+			
 		}
 		else if (ui->listWidgetSnippets->count() == 0)
 		{
+			if (isTheLastElement)
+			{
+				QSqlQuery sqlQuery;
+				sqlQuery.exec("DELETE FROM 'snippets' WHERE id=" + QString::number(removedItem->getId()) + ";");
+				isTheLastElement = false;
+			}
+			
 			ui->lineEditSnippetTitle->setText("");
 			ui->textEditSnippetContent->setText("");
 			disableGUI();
