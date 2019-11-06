@@ -93,6 +93,11 @@ void MainWindow::disableGUI()
 	ui->textEditSnippetContent->setEnabled(false);
 }
 
+void MainWindow::on_pushButtonNewCategory_clicked()
+{
+	qDebug() << ("Creating a new category");
+}
+
 void MainWindow::on_pushButtonNewSnippet_clicked()
 {
 	snippetId++;
