@@ -105,6 +105,15 @@ void MainWindow::on_pushButtonNewCategory_clicked()
 	if (ok && !newCategory.isEmpty())
 	{
 		ui->listWidgetCategories->insertItem(ui->listWidgetCategories->count(), newCategory);
+		
+		QSqlQuery sqlQuery;
+		if (sqlQuery.exec("INSERT INTO 'categories' ('id', 'category') VALUES (NULL, '" + newCategory + "');"))
+		{
+			qDebug() << "New category created on database";
+		}
+		else
+		{
+		}
 	}
 }
 
@@ -120,7 +129,6 @@ void MainWindow::on_pushButtonNewSnippet_clicked()
 	newItem->setText(newItem->getTitle());
 	
 	QSqlQuery sqlQuery;
-	
 	if (sqlQuery.exec("INSERT INTO 'snippets' ('id', 'title', 'snippet') VALUES (NULL, '" + newItem->getTitle() + "', '" + newItem->getContent() + "');"))
 	{
 		qDebug() << "New snippet inserted in table snippets";
