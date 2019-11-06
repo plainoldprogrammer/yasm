@@ -22,6 +22,7 @@ MainWindow::MainWindow(QWidget *parent)
 MainWindow::~MainWindow()
 {
 	delete ui;
+	db.close();
 }
 
 void MainWindow::firstTimeInitializeGUI()
@@ -230,7 +231,7 @@ void MainWindow::createDBConnection()
 		qDebug() << "QSQLITE driver is available";
 	}
 	
-	QString dbFolder = "C:\\tmp\\";
+	QString dbFolder = "C:\\tmp\\db\\";
 	QDir dbDirectory(dbFolder);
 	QString sqliteFileName = "snippets.db";
 	QString dbURI = dbFolder + sqliteFileName;
@@ -243,7 +244,7 @@ void MainWindow::createDBConnection()
 		dbDirectory.mkdir(".");
 		
 		QMessageBox::StandardButton notification;
-		notification = QMessageBox::information(this, "New Database Created", "A new directory and a new database\nhas been created");
+		notification = QMessageBox::information(this, "New Directory Created", "A new directory for the database\nhas been created.");
 	}
 	
 	if (db.open())
@@ -256,7 +257,7 @@ void MainWindow::createDBConnection()
 	}
 	
 	QSqlQuery sqlQuery;
-	if (sqlQuery.exec("CREATE TABLE IF NOT EXISTS 'snippets' ('id' INTEGER PRIMARY KEY AUTOINCREMENT, 'title' TEXT, 'snippet' TEXT, 'datetime' DATETIME DEFAULT CURRENT_TIMESTAMP)"))
+	if (sqlQuery.exec("CREATE TABLE IF NOT EXISTS 'snippets' ('id' INTEGER PRIMARY KEY AUTOINCREMENT, 'title' TEXT, 'snippet' TEXT, 'datetime' DATETIME DEFAULT CURRENT_TIMESTAMP);"))
 	{
 		qDebug() << "Table snippets has been created";
 	}
