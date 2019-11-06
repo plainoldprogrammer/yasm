@@ -8,6 +8,7 @@
 #include <QSqlDatabase>
 #include <QSqlQuery>
 #include <QMessageBox>
+#include <QInputDialog>
 
 MainWindow::MainWindow(QWidget *parent)
 : QMainWindow(parent)
@@ -98,7 +99,13 @@ void MainWindow::disableGUI()
 
 void MainWindow::on_pushButtonNewCategory_clicked()
 {
-	qDebug() << "Creating a new category";
+	bool ok;
+	QString newCategory = QInputDialog::getText(this, "New Category", "Category Name:\t\t\t\t", QLineEdit::Normal, "", &ok);
+	
+	if (ok && !newCategory.isEmpty())
+	{
+		ui->listWidgetCategories->insertItem(ui->listWidgetCategories->count(), newCategory);
+	}
 }
 
 void MainWindow::on_pushButtonRemoveCategory_clicked()
