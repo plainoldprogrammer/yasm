@@ -96,9 +96,9 @@
    <widget class="QPushButton" name="pushButtonRemoveCategory">
     <property name="geometry">
      <rect>
-      <x>140</x>
+      <x>120</x>
       <y>500</y>
-      <width>93</width>
+      <width>111</width>
       <height>28</height>
      </rect>
     </property>

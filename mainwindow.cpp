@@ -26,6 +26,8 @@ MainWindow::~MainWindow()
 
 void MainWindow::firstTimeInitializeGUI()
 {
+	ui->pushButtonNewCategory->setText("New Category");
+	ui->pushButtonRemoveCategory->setText("Remove Category");
 	ui->pushButtonNewSnippet->setText("New Snippet");
 	ui->pushButtonRemoveSnippet->setText("Remove Snippet");
 	this->setWindowTitle("YASM0 v0.5 (Alpha)");
