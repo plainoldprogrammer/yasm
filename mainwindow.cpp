@@ -231,7 +231,7 @@ void MainWindow::createDBConnection()
 		dbDirectory.mkdir(".");
 		
 		QMessageBox::StandardButton notification;
-		notification = QMessageBox::information(this, "New Database Created", "A new directory and a new database\nhas beencreated");
+		notification = QMessageBox::information(this, "New Database Created", "A new directory and a new database\nhas been created");
 	}
 	
 	if (db.open())
