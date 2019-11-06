@@ -95,7 +95,12 @@ void MainWindow::disableGUI()
 
 void MainWindow::on_pushButtonNewCategory_clicked()
 {
-	qDebug() << ("Creating a new category");
+	qDebug() << "Creating a new category";
+}
+
+void MainWindow::on_pushButtonRemoveCategory_clicked()
+{
+	qDebug() << "Removing a category";
 }
 
 void MainWindow::on_pushButtonNewSnippet_clicked()

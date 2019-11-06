@@ -29,6 +29,7 @@ private:
 	
 private slots:
 	void on_pushButtonNewCategory_clicked();
+	void on_pushButtonRemoveCategory_clicked();
 	void on_pushButtonNewSnippet_clicked();
 	void on_pushButtonRemoveSnippet_clicked();
 	void on_listWidgetSnippets_clicked();
