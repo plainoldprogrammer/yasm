@@ -70,7 +70,7 @@
      <string>PushButton</string>
     </property>
    </widget>
-   <widget class="QListWidget" name="listWidget">
+   <widget class="QListWidget" name="listWidgetCategories">
     <property name="geometry">
      <rect>
       <x>10</x>
