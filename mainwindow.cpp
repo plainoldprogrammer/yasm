@@ -265,6 +265,15 @@ void MainWindow::createDBConnection()
 	{
 		qWarning() << "Can't create table snippets";
 	}
+	
+	if (sqlQuery.exec("CREATE TABLE IF NOT EXISTS 'categories' ('id' INTEGER PRIMARY KEY AUTOINCREMENT, 'category' TEXT, 'datetime' DATETIME DEFAULT CURRENT_TIMESTAMP);"))
+	{
+		qDebug() << "Table categories has been created";
+	}
+	else
+	{
+		qWarning() << "Can't create table categories";
+	}
 }
 
 int MainWindow::getMaxIdFromDb()
