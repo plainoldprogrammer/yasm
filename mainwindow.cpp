@@ -285,5 +285,11 @@ int MainWindow::getMaxIdFromDb()
 		qWarning() << "Can't select the max id from db";
 	}
 	
+	// On empty table SQL returns -1. Assign a correct initial value.
+	if (maxId < 0)
+	{
+		maxId = 0;
+	}
+	
 	return maxId;
 }
