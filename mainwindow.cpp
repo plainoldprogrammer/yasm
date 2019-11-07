@@ -122,17 +122,20 @@ void MainWindow::on_pushButtonNewCategory_clicked()
 	
 	if (ok && !newCategory.isEmpty())
 	{
-		ui->listWidgetCategories->insertItem(ui->listWidgetCategories->count(), newCategory);
-		
 		QSqlQuery sqlQuery;
 		if(!isCategoryAlreadyOnDb(newCategory))
 		{
 			if (sqlQuery.exec("INSERT INTO 'categories' ('id', 'category') VALUES (NULL, '" + newCategory + "');"))
 			{
 				qDebug() << "New category created on database";
+				
+				ui->listWidgetCategories->insertItem(ui->listWidgetCategories->count(), newCategory);
+				ui->listWidgetCategories->setItemSelected(ui->listWidgetCategories->item(ui->listWidgetCategories->count() - 1), true);
+				ui->listWidgetCategories->setCurrentRow(ui->listWidgetCategories->count() - 1);
 			}
 			else
 			{
+				qWarning() << "Can't create category on database";
 			}
 		}
 	}
