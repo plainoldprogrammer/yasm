@@ -22,6 +22,7 @@ public:
 	void createDBConnection();
 	int getMaxIdFromDb();
 	bool isCategoryAlreadyOnDb(QString);
+	bool thereIsSomeCategoryOnDb();
 	
 private:
 	Ui::MainWindow *ui;

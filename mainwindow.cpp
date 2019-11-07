@@ -34,7 +34,10 @@ void MainWindow::firstTimeInitializeGUI()
 	ui->pushButtonRemoveSnippet->setText("Remove Snippet");
 	this->setWindowTitle("YASM0 v0.5 (Alpha)");
 
+	ui->pushButtonRemoveCategory->setEnabled(false);
+	ui->pushButtonNewSnippet->setEnabled(false);
 	ui->pushButtonRemoveSnippet->setEnabled(false);	
+	ui->listWidgetCategories->setEnabled(false);
 	ui->listWidgetSnippets->setEnabled(false);
 	ui->lineEditSnippetTitle->setEnabled(false);
 	ui->textEditSnippetContent->setEnabled(false);
@@ -43,8 +46,6 @@ void MainWindow::firstTimeInitializeGUI()
 	
 	if (sqlQuery.exec("SELECT * FROM 'snippets';"))
 	{
-		bool isAnySnippetOnDb = false;
-		
 		qDebug() << "Reading all snippets from the db";
 		QVector<Snippet> snippetsFromDb;	
 		Snippet *snippetRecoveredFromDb;
@@ -56,7 +57,6 @@ void MainWindow::firstTimeInitializeGUI()
 			int snippetFromDbId = sqlQuery.value(0).toInt();
 			QString snippetFromDbTitle = sqlQuery.value(1).toString();
 			QString snippetFromDbContent = sqlQuery.value(2).toString();
-			isAnySnippetOnDb = true;
 			
 			snippetRecoveredFromDb = new Snippet(snippetFromDbId);
 			snippetRecoveredFromDb->setTitle(snippetFromDbTitle);
@@ -70,7 +70,7 @@ void MainWindow::firstTimeInitializeGUI()
 			ui->textEditSnippetContent->setText(snippetRecoveredFromDb->getContent());
 		}
 		
-		if (isAnySnippetOnDb)
+		if (thereIsSomeCategoryOnDb())
 		{
 			enableGUI();
 		}
@@ -83,7 +83,10 @@ void MainWindow::firstTimeInitializeGUI()
 
 void MainWindow::enableGUI()
 {
+	ui->pushButtonRemoveCategory->setEnabled(true);
+	ui->pushButtonNewSnippet->setEnabled(true);
 	ui->pushButtonRemoveSnippet->setEnabled(true);
+	ui->listWidgetCategories->setEnabled(true);
 	ui->listWidgetSnippets->setEnabled(true);
 	ui->lineEditSnippetTitle->setEnabled(true);
 	ui->textEditSnippetContent->setEnabled(true);
@@ -118,6 +121,11 @@ void MainWindow::on_pushButtonNewCategory_clicked()
 			}
 		}
 	}
+	
+	if (thereIsSomeCategoryOnDb())
+	{
+		enableGUI();
+	}
 }
 
 void MainWindow::on_pushButtonRemoveCategory_clicked()
@@ -127,6 +135,7 @@ void MainWindow::on_pushButtonRemoveCategory_clicked()
 
 void MainWindow::on_pushButtonNewSnippet_clicked()
 {
+	qDebug() << "The current snippetId: " << snippetId;
 	snippetId++;
 	Snippet *newItem = new Snippet(snippetId);
 	newItem->setText(newItem->getTitle());
@@ -299,7 +308,7 @@ int MainWindow::getMaxIdFromDb()
 	int maxId = -1;
 	QSqlQuery sqlQuery;
 	
-	if (sqlQuery.exec("SELECT seq FROM SQLITE_SEQUENCE;"))
+	if (sqlQuery.exec("SELECT seq FROM SQLITE_SEQUENCE';"))
 	{
 		if(sqlQuery.next())
 		{
@@ -324,8 +333,8 @@ int MainWindow::getMaxIdFromDb()
 bool MainWindow::isCategoryAlreadyOnDb(QString category)
 {
 	bool categoryMatch = false;
-	QSqlQuery sqlQuery;
 	
+	QSqlQuery sqlQuery;
 	sqlQuery.exec("SELECT category FROM categories ORDER BY datetime ASC;");
 	
 	while (sqlQuery.next())
@@ -341,4 +350,26 @@ bool MainWindow::isCategoryAlreadyOnDb(QString category)
 	}
 	
 	return categoryMatch;
+}
+
+bool MainWindow::thereIsSomeCategoryOnDb()
+{
+	int countCategoriesOnDb = 0;
+	
+	QSqlQuery sqlQuery;
+	sqlQuery.exec("SELECT COUNT(*) FROM 'categories';");
+	
+	if (sqlQuery.next())
+	{
+		countCategoriesOnDb = sqlQuery.value(0).toInt();
+	}
+	
+	qDebug() << "categories on db: " + QString::number(countCategoriesOnDb);
+	
+	if (countCategoriesOnDb != 0)
+	{
+		return true;
+	}
+	
+	return false;
 }
