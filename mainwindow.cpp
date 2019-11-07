@@ -308,7 +308,7 @@ int MainWindow::getMaxIdFromDb()
 	int maxId = -1;
 	QSqlQuery sqlQuery;
 	
-	if (sqlQuery.exec("SELECT seq FROM SQLITE_SEQUENCE';"))
+	if (sqlQuery.exec("SELECT seq FROM SQLITE_SEQUENCE WHERE name='snippets';"))
 	{
 		if(sqlQuery.next())
 		{
