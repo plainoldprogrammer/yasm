@@ -107,12 +107,15 @@ void MainWindow::on_pushButtonNewCategory_clicked()
 		ui->listWidgetCategories->insertItem(ui->listWidgetCategories->count(), newCategory);
 		
 		QSqlQuery sqlQuery;
-		if (sqlQuery.exec("INSERT INTO 'categories' ('id', 'category') VALUES (NULL, '" + newCategory + "');"))
+		if(!isCategoryAlreadyOnDb(newCategory))
 		{
-			qDebug() << "New category created on database";
-		}
-		else
-		{
+			if (sqlQuery.exec("INSERT INTO 'categories' ('id', 'category') VALUES (NULL, '" + newCategory + "');"))
+			{
+				qDebug() << "New category created on database";
+			}
+			else
+			{
+			}
 		}
 	}
 }
@@ -316,4 +319,26 @@ int MainWindow::getMaxIdFromDb()
 	}
 	
 	return maxId;
+}
+
+bool MainWindow::isCategoryAlreadyOnDb(QString category)
+{
+	bool categoryMatch = false;
+	QSqlQuery sqlQuery;
+	
+	sqlQuery.exec("SELECT category FROM categories ORDER BY datetime ASC;");
+	
+	while (sqlQuery.next())
+	{
+		QString retrievedCategory = sqlQuery.value(0).toString();
+		
+		if (category.compare(retrievedCategory, Qt::CaseInsensitive) == 0)
+		{
+			qDebug() << category + " already exist on database";
+			categoryMatch = true;
+			break;
+		}
+	}
+	
+	return categoryMatch;
 }

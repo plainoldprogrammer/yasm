@@ -21,6 +21,7 @@ public:
 	void logListWidgetSnippets();
 	void createDBConnection();
 	int getMaxIdFromDb();
+	bool isCategoryAlreadyOnDb(QString);
 	
 private:
 	Ui::MainWindow *ui;
