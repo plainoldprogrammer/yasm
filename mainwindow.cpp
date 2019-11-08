@@ -46,7 +46,7 @@ void MainWindow::firstTimeInitializeGUI()
 	
 	if (thereIsSomeCategoryOnDb())
 	{
-		if (sqlQuery.exec("SELECT category FROM 'categories' ORDER BY category ASC;"))
+		if (sqlQuery.exec("SELECT category FROM 'categories' ORDER BY datetime ASC;"))
 		{
 			qDebug("Reading all categories from the db");
 			
@@ -61,8 +61,15 @@ void MainWindow::firstTimeInitializeGUI()
 		}
 	
 		displaySnippets();
-	
-		enableGUI();
+		
+		if (thereIsSomeCategoryOnDb() && thereIsSomeSnippetOnDb(ui->listWidgetCategories->selectedItems().at(0)->text()))
+		{
+			enableGUI();
+		}
+		else
+		{
+			ui->pushButtonNewSnippet->setEnabled(true);
+		}
 	}	
 	
 	else
@@ -109,6 +116,7 @@ void MainWindow::on_pushButtonNewCategory_clicked()
 				ui->listWidgetCategories->setCurrentRow(ui->listWidgetCategories->count() - 1);
 				
 				clearUi();
+				disableGUI();
 			}
 			else
 			{
@@ -117,7 +125,7 @@ void MainWindow::on_pushButtonNewCategory_clicked()
 		}
 	}
 	
-	if (thereIsSomeCategoryOnDb())
+	if (thereIsSomeCategoryOnDb() && thereIsSomeSnippetOnDb(newCategory))
 	{
 		enableGUI();
 	}
@@ -371,6 +379,26 @@ bool MainWindow::thereIsSomeCategoryOnDb()
 	qDebug() << "categories on db: " + QString::number(countCategoriesOnDb);
 	
 	if (countCategoriesOnDb != 0)
+	{
+		return true;
+	}
+	
+	return false;
+}
+
+bool MainWindow::thereIsSomeSnippetOnDb(QString category)
+{
+	int countSnippetsOnDb = 0;
+	
+	QSqlQuery sqlQuery;
+	sqlQuery.exec("SELECT COUNT(*) FROM 'snippets' WHERE category='" + category + "';");
+	
+	if (sqlQuery.next())
+	{
+		countSnippetsOnDb = sqlQuery.value(0).toInt();
+	}
+	
+	if (countSnippetsOnDb != 0)
 	{
 		return true;
 	}

@@ -23,6 +23,7 @@ public:
 	int getMaxIdFromDb();
 	bool isCategoryAlreadyOnDb(QString);
 	bool thereIsSomeCategoryOnDb();
+	bool thereIsSomeSnippetOnDb(QString);
 	void clearUi();
 	void displaySnippets();
 	
