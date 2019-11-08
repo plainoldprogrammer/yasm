@@ -23,6 +23,8 @@ public:
 	int getMaxIdFromDb();
 	bool isCategoryAlreadyOnDb(QString);
 	bool thereIsSomeCategoryOnDb();
+	void clearUi();
+	void displaySnippets();
 	
 private:
 	Ui::MainWindow *ui;
