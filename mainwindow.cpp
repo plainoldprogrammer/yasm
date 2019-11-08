@@ -75,17 +75,20 @@ void MainWindow::firstTimeInitializeGUI()
 				QString snippetFromDbContent = sqlQuery.value(2).toString();
 				QString snippetFromDbCategory = sqlQuery.value(3).toString();
 				
-				snippetRecoveredFromDb = new Snippet(snippetFromDbId);
-				snippetRecoveredFromDb->setTitle(snippetFromDbTitle);
-				snippetRecoveredFromDb->setText(snippetRecoveredFromDb->getTitle());
-				snippetRecoveredFromDb->setContent(snippetFromDbContent);
-				snippetRecoveredFromDb->setCategory(snippetFromDbCategory);
-				
-				ui->listWidgetSnippets->insertItem(ui->listWidgetSnippets->count(), (QListWidgetItem *) snippetRecoveredFromDb);
-				ui->listWidgetSnippets->setItemSelected((QListWidgetItem *) snippetRecoveredFromDb, true);
-				ui->listWidgetSnippets->setCurrentRow(ui->listWidgetSnippets->count() - 1);
-				ui->lineEditSnippetTitle->setText(snippetRecoveredFromDb->getTitle());
-				ui->textEditSnippetContent->setText(snippetRecoveredFromDb->getContent());
+				if (snippetFromDbCategory.compare(ui->listWidgetCategories->selectedItems().at(0)->text(), Qt::CaseInsensitive) == 0)
+				{
+					snippetRecoveredFromDb = new Snippet(snippetFromDbId);
+					snippetRecoveredFromDb->setTitle(snippetFromDbTitle);
+					snippetRecoveredFromDb->setText(snippetRecoveredFromDb->getTitle());
+					snippetRecoveredFromDb->setContent(snippetFromDbContent);
+					snippetRecoveredFromDb->setCategory(snippetFromDbCategory);
+					
+					ui->listWidgetSnippets->insertItem(ui->listWidgetSnippets->count(), (QListWidgetItem *) snippetRecoveredFromDb);
+					ui->listWidgetSnippets->setItemSelected((QListWidgetItem *) snippetRecoveredFromDb, true);
+					ui->listWidgetSnippets->setCurrentRow(ui->listWidgetSnippets->count() - 1);
+					ui->lineEditSnippetTitle->setText(snippetRecoveredFromDb->getTitle());
+					ui->textEditSnippetContent->setText(snippetRecoveredFromDb->getContent());
+				}
 			}
 		}
 	
@@ -218,6 +221,45 @@ void MainWindow::on_pushButtonRemoveSnippet_clicked()
 			ui->lineEditSnippetTitle->setText("");
 			ui->textEditSnippetContent->setText("");
 			disableGUI();
+		}
+	}
+}
+
+void MainWindow::on_listWidgetCategories_clicked()
+{
+	qDebug() << "Displaying snippets from category: " << ui->listWidgetCategories->selectedItems().at(0)->text();
+	
+	QSqlQuery sqlQuery;
+	
+	if (sqlQuery.exec("SELECT * FROM 'snippets';"))
+	{
+		qDebug() << "Reading all snippets from the db";
+		QVector<Snippet> snippetsFromDb;	
+		Snippet *snippetRecoveredFromDb;
+		
+		while (sqlQuery.next())
+		{
+			qDebug() << "Snippet id=[" << sqlQuery.value(0).toInt() << "] title=[" << sqlQuery.value(1).toString() << "]";
+			
+			int snippetFromDbId = sqlQuery.value(0).toInt();
+			QString snippetFromDbTitle = sqlQuery.value(1).toString();
+			QString snippetFromDbContent = sqlQuery.value(2).toString();
+			QString snippetFromDbCategory = sqlQuery.value(3).toString();
+			
+			if (snippetFromDbCategory.compare(ui->listWidgetCategories->selectedItems().at(0)->text(), Qt::CaseInsensitive) == 0)
+			{
+				snippetRecoveredFromDb = new Snippet(snippetFromDbId);
+				snippetRecoveredFromDb->setTitle(snippetFromDbTitle);
+				snippetRecoveredFromDb->setText(snippetRecoveredFromDb->getTitle());
+				snippetRecoveredFromDb->setContent(snippetFromDbContent);
+				snippetRecoveredFromDb->setCategory(snippetFromDbCategory);
+				
+				ui->listWidgetSnippets->insertItem(ui->listWidgetSnippets->count(), (QListWidgetItem *) snippetRecoveredFromDb);
+				ui->listWidgetSnippets->setItemSelected((QListWidgetItem *) snippetRecoveredFromDb, true);
+				ui->listWidgetSnippets->setCurrentRow(ui->listWidgetSnippets->count() - 1);
+				ui->lineEditSnippetTitle->setText(snippetRecoveredFromDb->getTitle());
+				ui->textEditSnippetContent->setText(snippetRecoveredFromDb->getContent());
+			}
 		}
 	}
 }
