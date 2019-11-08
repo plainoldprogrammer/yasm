@@ -32,7 +32,7 @@ void MainWindow::firstTimeInitializeGUI()
 	ui->pushButtonRemoveCategory->setText("Remove Category");
 	ui->pushButtonNewSnippet->setText("New Snippet");
 	ui->pushButtonRemoveSnippet->setText("Remove Snippet");
-	this->setWindowTitle("YASM0 v0.5 (Alpha)");
+	this->setWindowTitle("YASM0 v0.6 (Beta)");
 
 	ui->pushButtonRemoveCategory->setEnabled(false);
 	ui->pushButtonNewSnippet->setEnabled(false);
