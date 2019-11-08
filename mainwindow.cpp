@@ -107,6 +107,8 @@ void MainWindow::on_pushButtonNewCategory_clicked()
 				ui->listWidgetCategories->insertItem(ui->listWidgetCategories->count(), newCategory);
 				ui->listWidgetCategories->setItemSelected(ui->listWidgetCategories->item(ui->listWidgetCategories->count() - 1), true);
 				ui->listWidgetCategories->setCurrentRow(ui->listWidgetCategories->count() - 1);
+				
+				clearUi();
 			}
 			else
 			{
