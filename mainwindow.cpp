@@ -302,7 +302,7 @@ void MainWindow::createDBConnection()
 	}
 	
 	QSqlQuery sqlQuery;
-	if (sqlQuery.exec("CREATE TABLE IF NOT EXISTS 'snippets' ('id' INTEGER PRIMARY KEY AUTOINCREMENT, 'title' TEXT, 'snippet' TEXT, 'datetime' DATETIME DEFAULT CURRENT_TIMESTAMP);"))
+	if (sqlQuery.exec("CREATE TABLE IF NOT EXISTS 'snippets' ('id' INTEGER PRIMARY KEY AUTOINCREMENT, 'title' TEXT, 'snippet' TEXT, 'category' TEXT, 'datetime' DATETIME DEFAULT CURRENT_TIMESTAMP);"))
 	{
 		qDebug() << "Table snippets has been created";
 	}
