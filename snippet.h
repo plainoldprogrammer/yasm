@@ -18,11 +18,15 @@ class Snippet : QListWidgetItem
 		void setContent(QString);
 		QString getContent();
 		
+		void setCategory(QString);
+		QString getCategory();
+		
 		void setText(QString);
 	private:
 		int id;
 		QString title;
 		QString content;
+		QString category;
 };
 
 #endif

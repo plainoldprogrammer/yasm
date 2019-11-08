@@ -37,7 +37,18 @@ QString Snippet::getContent()
 	return this->content;
 }
 
+void Snippet::setCategory(QString category)
+{
+	this->category = category;
+}
+
+QString Snippet::getCategory()
+{
+	return this->category;
+}
+
 void Snippet::setText(QString text)
 {
 	QListWidgetItem::setText(text);
 }
+

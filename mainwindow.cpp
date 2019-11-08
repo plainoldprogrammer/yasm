@@ -73,11 +73,13 @@ void MainWindow::firstTimeInitializeGUI()
 				int snippetFromDbId = sqlQuery.value(0).toInt();
 				QString snippetFromDbTitle = sqlQuery.value(1).toString();
 				QString snippetFromDbContent = sqlQuery.value(2).toString();
+				QString snippetFromDbCategory = sqlQuery.value(3).toString();
 				
 				snippetRecoveredFromDb = new Snippet(snippetFromDbId);
 				snippetRecoveredFromDb->setTitle(snippetFromDbTitle);
 				snippetRecoveredFromDb->setText(snippetRecoveredFromDb->getTitle());
 				snippetRecoveredFromDb->setContent(snippetFromDbContent);
+				snippetRecoveredFromDb->setCategory(snippetFromDbCategory);
 				
 				ui->listWidgetSnippets->insertItem(ui->listWidgetSnippets->count(), (QListWidgetItem *) snippetRecoveredFromDb);
 				ui->listWidgetSnippets->setItemSelected((QListWidgetItem *) snippetRecoveredFromDb, true);
@@ -158,8 +160,11 @@ void MainWindow::on_pushButtonNewSnippet_clicked()
 	Snippet *newItem = new Snippet(snippetId);
 	newItem->setText(newItem->getTitle());
 	
+	QListWidgetItem *selectedCategory = ui->listWidgetCategories->selectedItems().at(0);
+	newItem->setCategory(selectedCategory->text());
+	
 	QSqlQuery sqlQuery;
-	if (sqlQuery.exec("INSERT INTO 'snippets' ('id', 'title', 'snippet') VALUES (NULL, '" + newItem->getTitle() + "', '" + newItem->getContent() + "');"))
+	if (sqlQuery.exec("INSERT INTO 'snippets' ('id', 'title', 'snippet', 'category') VALUES (NULL, '" + newItem->getTitle() + "', '" + newItem->getContent() + "', '" + newItem->getCategory() + "');"))
 	{
 		qDebug() << "New snippet inserted in table snippets";
 	}
