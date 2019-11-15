@@ -133,7 +133,27 @@ void MainWindow::on_pushButtonNewCategory_clicked()
 
 void MainWindow::on_pushButtonRemoveCategory_clicked()
 {
-	qDebug() << "Removing a category";
+	QString removedCategory = ui->listWidgetCategories->selectedItems().at(0)->text();
+	qDebug() << "Removing a category" << removedCategory;
+	
+	QSqlQuery sqlQuery;
+	if (sqlQuery.exec("DELETE FROM 'snippets' WHERE category='" + removedCategory + "';"))
+	{
+		qDebug() << "All snippets from category " + removedCategory + " has been removed";
+	}
+	else
+	{
+		qWarning() << "Can't removed snippets from category " + removedCategory;
+	}
+	
+	if (sqlQuery.exec("DELETE FROM 'categories' WHERE category='" + removedCategory + "';"))
+	{
+		qDebug() << "Category " + removedCategory + " has been removed";
+	}
+	else
+	{
+		qWarning() << "Can't remove category " + removedCategory;
+	}
 }
 
 void MainWindow::on_pushButtonNewSnippet_clicked()
