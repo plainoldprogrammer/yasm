@@ -34,7 +34,10 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 
 # Define the application icon
-win32:RC_ICONS += icon.ico
+win32:RC_ICONS += icons/icon.ico
  
 # Define the applicatioon name
 TARGET = Yasm
+
+RESOURCES += \
+    resources.qrc

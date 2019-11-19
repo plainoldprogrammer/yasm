@@ -57,6 +57,7 @@ void MainWindow::firstTimeInitializeGUI()
 				QString categoryRecoveredFromDb = sqlQuery.value(0).toString();
 				
 				ui->listWidgetCategories->insertItem(ui->listWidgetCategories->count(), categoryRecoveredFromDb);
+				ui->listWidgetCategories->item(ui->listWidgetCategories->count() - 1)->setIcon(QIcon(":/images/icons/folder.png"));
 				ui->listWidgetCategories->setItemSelected(ui->listWidgetCategories->item(ui->listWidgetCategories->count() - 1), true);
 				ui->listWidgetCategories->setCurrentRow(ui->listWidgetCategories->count() - 1);
 			}
@@ -128,6 +129,7 @@ void MainWindow::on_pushButtonNewCategory_clicked()
 				qDebug() << "New category created on database";
 				
 				ui->listWidgetCategories->insertItem(ui->listWidgetCategories->count(), newCategory);
+				ui->listWidgetCategories->item(ui->listWidgetCategories->count() - 1)->setIcon(QIcon(":/images/icons/folder.png"));
 				ui->listWidgetCategories->setItemSelected(ui->listWidgetCategories->item(ui->listWidgetCategories->count() - 1), true);
 				ui->listWidgetCategories->setCurrentRow(ui->listWidgetCategories->count() - 1);
 				
