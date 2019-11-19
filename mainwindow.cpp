@@ -64,7 +64,7 @@ void MainWindow::firstTimeInitializeGUI()
 		}
 	
 		displaySnippets();
-		adjustGUIForSnippetCreation();
+		adjustGUIForSnippetCreation(ui->listWidgetCategories->selectedItems().at(0)->text());
 	}	
 	
 	else
@@ -106,9 +106,9 @@ void MainWindow::disableGUI()
 	ui->textEditSnippetContent->setEnabled(false);
 }
 
-void MainWindow::adjustGUIForSnippetCreation()
+void MainWindow::adjustGUIForSnippetCreation(QString category)
 {
-	if (thereIsSomeCategoryOnDb() && thereIsSomeSnippetOnDb(ui->listWidgetCategories->selectedItems().at(0)->text()))
+	if (thereIsSomeCategoryOnDb() && thereIsSomeSnippetOnDb(category))
 	{
 		enableGUI();
 	}
@@ -148,11 +148,11 @@ void MainWindow::on_pushButtonNewCategory_clicked()
 		}
 		else
 		{
-			QMessageBox::warning(this, "Warning", "Category " + newCategory + " already exist");
+			QMessageBox::warning(this, "Warning", "Category " + newCategory + " already exists");
 		}
 	}
 	
-	adjustGUIForSnippetCreation();
+	adjustGUIForSnippetCreation(newCategory);
 }
 
 void MainWindow::on_pushButtonRemoveCategory_clicked()

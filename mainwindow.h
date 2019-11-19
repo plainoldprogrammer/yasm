@@ -19,7 +19,7 @@ public:
 	void setDefaultEditorFont();
 	void enableGUI();
 	void disableGUI();
-	void adjustGUIForSnippetCreation();
+	void adjustGUIForSnippetCreation(QString);
 	void logListWidgetSnippets();
 	void createDBConnection();
 	int getMaxIdFromDb();
