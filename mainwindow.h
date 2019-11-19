@@ -16,6 +16,7 @@ public:
 	MainWindow(QWidget *parent = nullptr);
 	~MainWindow();
 	void firstTimeInitializeGUI();
+	void setDefaultEditorFont();
 	void enableGUI();
 	void disableGUI();
 	void logListWidgetSnippets();

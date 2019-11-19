@@ -42,6 +42,8 @@ void MainWindow::firstTimeInitializeGUI()
 	ui->lineEditSnippetTitle->setEnabled(false);
 	ui->textEditSnippetContent->setEnabled(false);
 	
+	setDefaultEditorFont();
+	
 	QSqlQuery sqlQuery;
 	
 	if (thereIsSomeCategoryOnDb())
@@ -76,6 +78,20 @@ void MainWindow::firstTimeInitializeGUI()
 	{
 		qWarning() << "Can't read the snippets from the db";
 	}
+}
+
+void MainWindow::setDefaultEditorFont()
+{
+	QFont font;
+	font.setFamily("Courier");
+	font.setStyleHint(QFont::Monospace);
+	font.setFixedPitch(true);
+	font.setPointSize(10);
+	ui->textEditSnippetContent->setFont(font);
+	
+	const int tabStop = 4;
+	QFontMetrics metrics(font);
+	ui->textEditSnippetContent->setTabStopWidth(tabStop * metrics.width(' '));
 }
 
 void MainWindow::enableGUI()
