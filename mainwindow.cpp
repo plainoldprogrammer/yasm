@@ -306,7 +306,7 @@ void MainWindow::createDBConnection()
 		qDebug() << "QSQLITE driver is available";
 	}
 	
-	QString dbFolder = "C:\\plainoldprogrammer\\";
+	QString dbFolder = "C:\\tmp\\";
 	QDir dbDirectory(dbFolder);
 	QString sqliteFileName = "snippets.db";
 	QString dbURI = dbFolder + sqliteFileName;
