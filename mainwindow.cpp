@@ -146,6 +146,10 @@ void MainWindow::on_pushButtonNewCategory_clicked()
 				qWarning() << "Can't create category on database";
 			}
 		}
+		else
+		{
+			QMessageBox::warning(this, "Warning", "Category " + newCategory + " already exist");
+		}
 	}
 	
 	adjustGUIForSnippetCreation();
