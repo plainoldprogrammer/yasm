@@ -64,15 +64,7 @@ void MainWindow::firstTimeInitializeGUI()
 		}
 	
 		displaySnippets();
-		
-		if (thereIsSomeCategoryOnDb() && thereIsSomeSnippetOnDb(ui->listWidgetCategories->selectedItems().at(0)->text()))
-		{
-			enableGUI();
-		}
-		else
-		{
-			ui->pushButtonNewSnippet->setEnabled(true);
-		}
+		adjustGUIForSnippetCreation();
 	}	
 	
 	else
@@ -114,6 +106,19 @@ void MainWindow::disableGUI()
 	ui->textEditSnippetContent->setEnabled(false);
 }
 
+void MainWindow::adjustGUIForSnippetCreation()
+{
+	if (thereIsSomeCategoryOnDb() && thereIsSomeSnippetOnDb(ui->listWidgetCategories->selectedItems().at(0)->text()))
+	{
+		enableGUI();
+	}
+	else
+	{
+		ui->pushButtonRemoveCategory->setEnabled(true);
+		ui->pushButtonNewSnippet->setEnabled(true);
+	}
+}
+
 void MainWindow::on_pushButtonNewCategory_clicked()
 {
 	bool ok;
@@ -143,10 +148,7 @@ void MainWindow::on_pushButtonNewCategory_clicked()
 		}
 	}
 	
-	if (thereIsSomeCategoryOnDb() && thereIsSomeSnippetOnDb(newCategory))
-	{
-		enableGUI();
-	}
+	adjustGUIForSnippetCreation();
 }
 
 void MainWindow::on_pushButtonRemoveCategory_clicked()
