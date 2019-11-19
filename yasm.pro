@@ -36,3 +36,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 # Define the application icon
 win32:RC_ICONS += icon.ico
  
+# Define the applicatioon name
+TARGET = Yasm
