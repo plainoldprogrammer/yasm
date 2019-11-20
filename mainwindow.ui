@@ -14,124 +14,62 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QTextEdit" name="textEditSnippetContent">
-    <property name="geometry">
-     <rect>
-      <x>550</x>
-      <y>40</y>
-      <width>481</width>
-      <height>451</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="lineEditSnippetTitle">
-    <property name="geometry">
-     <rect>
-      <x>550</x>
-      <y>10</y>
-      <width>481</width>
-      <height>22</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButtonNewSnippet">
-    <property name="geometry">
-     <rect>
-      <x>240</x>
-      <y>500</y>
-      <width>93</width>
-      <height>28</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>PushButton</string>
-    </property>
-   </widget>
-   <widget class="QListWidget" name="listWidgetSnippets">
-    <property name="geometry">
-     <rect>
-      <x>240</x>
-      <y>40</y>
-      <width>300</width>
-      <height>451</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButtonRemoveSnippet">
-    <property name="geometry">
-     <rect>
-      <x>430</x>
-      <y>500</y>
-      <width>111</width>
-      <height>28</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>PushButton</string>
-    </property>
-   </widget>
-   <widget class="QListWidget" name="listWidgetCategories">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>40</y>
-      <width>220</width>
-      <height>451</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButtonNewCategory">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>500</y>
-      <width>93</width>
-      <height>28</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>PushButton</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButtonRemoveCategory">
-    <property name="geometry">
-     <rect>
-      <x>120</x>
-      <y>500</y>
-      <width>111</width>
-      <height>28</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>PushButton</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="labelCategories">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>20</y>
-      <width>71</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Categories</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="labelSnippets">
-    <property name="geometry">
-     <rect>
-      <x>240</x>
-      <y>20</y>
-      <width>61</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Snippets</string>
-    </property>
-   </widget>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <widget class="QLabel" name="labelCategories">
+      <property name="text">
+       <string>Categories</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="2">
+     <widget class="QLabel" name="labelSnippets">
+      <property name="text">
+       <string>Snippets</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="4">
+     <widget class="QLineEdit" name="lineEditSnippetTitle"/>
+    </item>
+    <item row="1" column="0" colspan="2">
+     <widget class="QListWidget" name="listWidgetCategories"/>
+    </item>
+    <item row="1" column="2" colspan="2">
+     <widget class="QListWidget" name="listWidgetSnippets"/>
+    </item>
+    <item row="1" column="4">
+     <widget class="QTextEdit" name="textEditSnippetContent"/>
+    </item>
+    <item row="2" column="0">
+     <widget class="QPushButton" name="pushButtonNewCategory">
+      <property name="text">
+       <string>PushButton</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="1">
+     <widget class="QPushButton" name="pushButtonRemoveCategory">
+      <property name="text">
+       <string>PushButton</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="2">
+     <widget class="QPushButton" name="pushButtonNewSnippet">
+      <property name="text">
+       <string>PushButton</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="3">
+     <widget class="QPushButton" name="pushButtonRemoveSnippet">
+      <property name="text">
+       <string>PushButton</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
