@@ -299,6 +299,11 @@ void MainWindow::on_listWidgetCategories_clicked()
 	}
 }
 
+void MainWindow::on_listWidgetCategories_currentItemChanged()
+{
+	displaySnippets();
+}
+
 void MainWindow::on_listWidgetSnippets_clicked()
 {
 	QListWidgetItem *selectedItem = ui->listWidgetSnippets->selectedItems().at(0);
