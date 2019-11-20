@@ -60,6 +60,7 @@ void MainWindow::firstTimeInitializeGUI()
 				ui->listWidgetCategories->item(ui->listWidgetCategories->count() - 1)->setIcon(QIcon(":/images/icons/folder.png"));
 				ui->listWidgetCategories->setItemSelected(ui->listWidgetCategories->item(ui->listWidgetCategories->count() - 1), true);
 				ui->listWidgetCategories->setCurrentRow(ui->listWidgetCategories->count() - 1);
+				ui->listWidgetCategories->setEnabled(true);
 			}
 		}
 	
@@ -140,6 +141,7 @@ void MainWindow::on_pushButtonNewCategory_clicked()
 				
 				clearUi();
 				disableGUI();
+				ui->listWidgetCategories->setEnabled(true);
 			}
 			else
 			{
@@ -158,6 +160,8 @@ void MainWindow::on_pushButtonNewCategory_clicked()
 void MainWindow::on_pushButtonRemoveCategory_clicked()
 {
 	QString removedCategory = ui->listWidgetCategories->selectedItems().at(0)->text();
+	ui->listWidgetCategories->takeItem(ui->listWidgetCategories->currentRow());
+	
 	qDebug() << "Removing a category" << removedCategory;
 	
 	QSqlQuery sqlQuery;
@@ -178,6 +182,31 @@ void MainWindow::on_pushButtonRemoveCategory_clicked()
 	{
 		qWarning() << "Can't remove category " + removedCategory;
 	}
+	
+	ui->listWidgetSnippets->clear();
+	
+	if (ui->listWidgetCategories->count() == 0)
+	{
+		ui->listWidgetCategories->setEnabled(false);
+		ui->listWidgetSnippets->setEnabled(false);
+		ui->lineEditSnippetTitle->setEnabled(false);
+		ui->textEditSnippetContent->setEnabled(false);
+		ui->pushButtonRemoveCategory->setEnabled(false);
+		ui->pushButtonNewSnippet->setEnabled(false);
+		ui->pushButtonRemoveSnippet->setEnabled(false);
+	}
+	
+	if (ui->listWidgetCategories->count() > 0)
+	{
+		qDebug() << "Now the selected category is " + ui->listWidgetCategories->selectedItems().at(0)->text();
+	}
+	else
+	{
+		qDebug() << "The categories list is empty";
+		clearUi();
+	}
+	
+	displaySnippets();
 }
 
 void MainWindow::on_pushButtonNewSnippet_clicked()
@@ -253,6 +282,21 @@ void MainWindow::on_listWidgetCategories_clicked()
 {
 	clearUi();
 	displaySnippets();
+	
+	if (ui->listWidgetSnippets->count() > 0)
+	{
+		ui->listWidgetSnippets->setEnabled(true);
+		ui->pushButtonRemoveSnippet->setEnabled(true);
+		ui->lineEditSnippetTitle->setEnabled(true);
+		ui->textEditSnippetContent->setEnabled(true);
+	}
+	else
+	{
+		ui->listWidgetSnippets->setEnabled(false);
+		ui->pushButtonRemoveSnippet->setEnabled(false);
+		ui->lineEditSnippetTitle->setEnabled(false);
+		ui->textEditSnippetContent->setEnabled(false);
+	}
 }
 
 void MainWindow::on_listWidgetSnippets_clicked()
