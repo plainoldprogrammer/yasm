@@ -6,27 +6,27 @@
 
 class Snippet : QListWidgetItem
 {
-	public:
-		Snippet(int);
-		
-		void setId(int);
-		int getId();
-		
-		void setTitle(QString);
-		QString getTitle();
-		
-		void setContent(QString);
-		QString getContent();
-		
-		void setCategory(QString);
-		QString getCategory();
-		
-		void setText(QString);
-	private:
-		int id;
-		QString title;
-		QString content;
-		QString category;
+public:
+    Snippet(int);
+
+    void setId(int);
+    int getId();
+
+    void setTitle(QString);
+    QString getTitle();
+
+    void setContent(QString);
+    QString getContent();
+
+    void setCategory(QString);
+    QString getCategory();
+
+    void setText(QString);
+private:
+    int id;
+    QString title;
+    QString content;
+    QString category;
 };
 
 #endif
