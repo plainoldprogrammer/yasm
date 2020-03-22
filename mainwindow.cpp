@@ -24,6 +24,7 @@ MainWindow::~MainWindow()
 {
     delete ui;
     db.close();
+    this->releaseMemory();
 }
 
 void MainWindow::firstTimeInitializeGUI()
@@ -562,4 +563,9 @@ void MainWindow::displaySnippets()
             }
         }
     }
+}
+
+void MainWindow::releaseMemory()
+{
+    qDebug() << "Releasing the memory of all the snippets";
 }
