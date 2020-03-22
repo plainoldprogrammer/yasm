@@ -13,6 +13,9 @@ The *yasm* (Yet Another Snippet Manager) is a C++/Qt application which let to st
 
 <img src="https://raw.githubusercontent.com/plainoldprogrammer/yasm/master/screenshots/screenshot-main-window.jpg" width="742" height="445">
 
+**Version 1.0 (Stable)**
+* Navigate through arrow keys in the snippet list.
+
 **Version 0.9 (Beta)**
 * Resize automatically all the widget properly when the window is maximized.
 * Navigation in the categories list throught the arrow keys.
