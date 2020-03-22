@@ -311,12 +311,26 @@ void MainWindow::on_listWidgetSnippets_clicked()
 
     ui->lineEditSnippetTitle->setText(selectedSnippet->getTitle());
     ui->textEditSnippetContent->setText(selectedSnippet->getContent());
-    qDebug() << "Snippet selected [id=" << selectedSnippet->getId() << "]";
+    qDebug() << "Snippet selected [ id=" << selectedSnippet->getId() << "]";
 }
 
 void MainWindow::on_listWidgetSnippets_currentItemChanged()
 {
-    qDebug() << "Selected wnippet changed through keyboard arrow";
+    if (ui->listWidgetSnippets != NULL)
+    {
+        if (ui->listWidgetSnippets->count() > 0)
+        {
+            if (ui->listWidgetSnippets->selectedItems().count() > 0)
+            {
+                QListWidgetItem *selectedItem = ui->listWidgetSnippets->selectedItems().at(0);
+                Snippet *selectedSnippet = (Snippet *) selectedItem;
+
+                ui->lineEditSnippetTitle->setText(selectedSnippet->getTitle());
+                ui->textEditSnippetContent->setText(selectedSnippet->getContent());
+                qDebug() << "Snippet selected [ id=" << selectedSnippet->getId() << "]";
+            }
+        }
+    }
 }
 
 void MainWindow::on_lineEditSnippetTitle_textChanged()
