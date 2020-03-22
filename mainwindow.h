@@ -42,6 +42,7 @@ private slots:
     void on_listWidgetCategories_clicked();
     void on_listWidgetCategories_currentItemChanged();
     void on_listWidgetSnippets_clicked();
+    void on_listWidgetSnippets_currentItemChanged();
     void on_lineEditSnippetTitle_textChanged();
     void on_textEditSnippetContent_textChanged();
 };

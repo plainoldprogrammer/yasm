@@ -314,6 +314,11 @@ void MainWindow::on_listWidgetSnippets_clicked()
     qDebug() << "Snippet selected [id=" << selectedSnippet->getId() << "]";
 }
 
+void MainWindow::on_listWidgetSnippets_currentItemChanged()
+{
+    qDebug() << "Selected wnippet changed through keyboard arrow";
+}
+
 void MainWindow::on_lineEditSnippetTitle_textChanged()
 {
     int selectedSnippetId = -1;
