@@ -28,7 +28,7 @@ public:
     bool thereIsSomeSnippetOnDb(QString);
     void clearUi();
     void displaySnippets();
-    void releaseMemory();
+    void releaseMemoryOfCurrentCategory();
 
 private:
     Ui::MainWindow *ui;

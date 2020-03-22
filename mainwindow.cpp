@@ -24,7 +24,7 @@ MainWindow::~MainWindow()
 {
     delete ui;
     db.close();
-    this->releaseMemory();
+    this->releaseMemoryOfCurrentCategory();
 }
 
 void MainWindow::firstTimeInitializeGUI()
@@ -281,6 +281,7 @@ void MainWindow::on_pushButtonRemoveSnippet_clicked()
 
 void MainWindow::on_listWidgetCategories_clicked()
 {
+    releaseMemoryOfCurrentCategory();
     clearUi();
     displaySnippets();
 
@@ -565,7 +566,16 @@ void MainWindow::displaySnippets()
     }
 }
 
-void MainWindow::releaseMemory()
+void MainWindow::releaseMemoryOfCurrentCategory()
 {
-    qDebug() << "Releasing the memory of all the snippets";
+    qDebug() << "Releasing the memory of" << ui->listWidgetSnippets->count() << "snippets";
+
+    // NOTE:	On each delete operation, the size of listWidgetSnippets decreases by 1 automatically,
+    //			for that reason dont increment i counter.
+    for (int i = 0; i < ui->listWidgetSnippets->count();)
+    {
+        Snippet *snippet = ((Snippet *) (ui->listWidgetSnippets->item(i)));
+        qDebug() << "Releasing memory of snippet: " << snippet->getTitle();
+        delete snippet;
+    }
 }
