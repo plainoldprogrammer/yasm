@@ -320,6 +320,7 @@ void MainWindow::on_listWidgetSnippets_currentItemChanged()
     {
         if (ui->listWidgetSnippets->count() > 0)
         {
+            // Ensure that the list is selected previously by a click.
             if (ui->listWidgetSnippets->selectedItems().count() > 0)
             {
                 QListWidgetItem *selectedItem = ui->listWidgetSnippets->selectedItems().at(0);
