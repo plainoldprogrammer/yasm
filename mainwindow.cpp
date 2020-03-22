@@ -32,7 +32,7 @@ void MainWindow::firstTimeInitializeGUI()
     ui->pushButtonRemoveCategory->setText("Remove Category");
     ui->pushButtonNewSnippet->setText("New Snippet");
     ui->pushButtonRemoveSnippet->setText("Remove Snippet");
-    this->setWindowTitle("Yasm v1.0");
+    this->setWindowTitle("Yasm v1.0 (Dev)");
 
     ui->pushButtonRemoveCategory->setEnabled(false);
     ui->pushButtonNewSnippet->setEnabled(false);
@@ -383,7 +383,7 @@ void MainWindow::createDBConnection()
         qDebug() << "QSQLITE driver is available";
     }
 
-    QString dbFolder = "C:\\yasm\\";
+    QString dbFolder = "C:\\plainoldprogrammer\\dev\\databases\\";
     QDir dbDirectory(dbFolder);
     QString sqliteFileName = "snippets.db";
     QString dbURI = dbFolder + sqliteFileName;
