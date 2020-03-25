@@ -4,7 +4,7 @@
 Snippet::Snippet(int id) : title("Snippet title"), content("Snippet content")
 {
     this->setId(id);
-    qDebug() << "New snippet created [id=" << getId() << "]";
+    // qDebug() << "New snippet created [ id=" << getId() << "]";
 }
 
 void Snippet::setId(int id)

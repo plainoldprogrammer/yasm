@@ -279,9 +279,10 @@ void MainWindow::on_pushButtonRemoveSnippet_clicked()
     }
 }
 
-void MainWindow::on_listWidgetCategories_clicked()
+void MainWindow::on_listWidgetCategories_itemSelectionChanged()
 {
     // releaseMemoryOfCurrentCategory();
+
     clearUi();
     displaySnippets();
 
@@ -299,11 +300,6 @@ void MainWindow::on_listWidgetCategories_clicked()
         ui->lineEditSnippetTitle->setEnabled(false);
         ui->textEditSnippetContent->setEnabled(false);
     }
-}
-
-void MainWindow::on_listWidgetCategories_currentItemChanged()
-{
-    displaySnippets();
 }
 
 void MainWindow::on_listWidgetSnippets_clicked()
@@ -330,7 +326,7 @@ void MainWindow::on_listWidgetSnippets_currentItemChanged()
 
                 ui->lineEditSnippetTitle->setText(selectedSnippet->getTitle());
                 ui->textEditSnippetContent->setText(selectedSnippet->getContent());
-                qDebug() << "Snippet selected [ id=" << selectedSnippet->getId() << "]";
+                // qDebug() << "Snippet selected [ id=" << selectedSnippet->getId() << "]";
             }
         }
     }
@@ -530,6 +526,7 @@ void MainWindow::clearUi()
 
 void MainWindow::displaySnippets()
 {
+    qDebug() << "displaySnippets() start";
     ui->listWidgetSnippets->clear();
 
     QString selectedCategory = ui->listWidgetCategories->selectedItems().at(0)->text();
@@ -537,7 +534,7 @@ void MainWindow::displaySnippets()
 
     if (sqlQuery.exec("SELECT * FROM 'snippets' WHERE category = '" + selectedCategory + "';"))
     {
-        qDebug() << "Reading all snippets from the db";
+        // qDebug() << "Reading snippets of the category" << selectedCategory << "from the db";
         QVector<Snippet> snippetsFromDb;
         Snippet *snippetRecoveredFromDb;
 
