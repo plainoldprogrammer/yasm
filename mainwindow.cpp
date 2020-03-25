@@ -24,7 +24,7 @@ MainWindow::~MainWindow()
 {
     delete ui;
     db.close();
-    this->releaseMemoryOfCurrentCategory();
+    // this->releaseMemoryOfCurrentCategory();
 }
 
 void MainWindow::firstTimeInitializeGUI()
@@ -281,7 +281,7 @@ void MainWindow::on_pushButtonRemoveSnippet_clicked()
 
 void MainWindow::on_listWidgetCategories_clicked()
 {
-    releaseMemoryOfCurrentCategory();
+    // releaseMemoryOfCurrentCategory();
     clearUi();
     displaySnippets();
 
