@@ -24,7 +24,6 @@ MainWindow::~MainWindow()
 {
     delete ui;
     db.close();
-    // this->releaseMemoryOfCurrentCategory();
 }
 
 void MainWindow::firstTimeInitializeGUI()
@@ -65,7 +64,6 @@ void MainWindow::firstTimeInitializeGUI()
             }
         }
 
-        displaySnippets();
         adjustGUIForSnippetCreation(ui->listWidgetCategories->selectedItems().at(0)->text());
     }
 
@@ -281,9 +279,11 @@ void MainWindow::on_pushButtonRemoveSnippet_clicked()
 
 void MainWindow::on_listWidgetCategories_itemSelectionChanged()
 {
-    // releaseMemoryOfCurrentCategory();
-
+    qDebug() << endl << endl << "onListWidgetCategories_itemSelectionChanged()";
+    qDebug() << "clearUI()";
     clearUi();
+    qDebug();
+    qDebug() << "displaySnippets()";
     displaySnippets();
 
     if (ui->listWidgetSnippets->count() > 0)
@@ -549,19 +549,5 @@ void MainWindow::displaySnippets()
             ui->lineEditSnippetTitle->setText(snippetRecoveredFromDb->getTitle());
             ui->textEditSnippetContent->setText(snippetRecoveredFromDb->getContent());
         }
-    }
-}
-
-void MainWindow::releaseMemoryOfCurrentCategory()
-{
-    qDebug() << "Releasing the memory of" << ui->listWidgetSnippets->count() << "snippets";
-
-    // NOTE:	On each delete operation, the size of listWidgetSnippets decreases by 1 automatically,
-    //			for that reason dont increment i counter.
-    for (int i = 0; i < ui->listWidgetSnippets->count();)
-    {
-        Snippet *snippet = ((Snippet *) (ui->listWidgetSnippets->item(i)));
-        qDebug() << "Releasing memory of snippet: " << snippet->getTitle();
-        delete snippet;
     }
 }

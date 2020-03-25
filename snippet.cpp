@@ -7,6 +7,11 @@ Snippet::Snippet(int id) : title("Snippet title"), content("Snippet content")
     // qDebug() << "New snippet created [ id=" << getId() << "]";
 }
 
+Snippet::~Snippet()
+{
+    qDebug() << "Destructor of snippet: " << this->getTitle();
+}
+
 void Snippet::setId(int id)
 {
     this->id = id;
