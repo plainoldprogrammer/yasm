@@ -302,17 +302,7 @@ void MainWindow::on_listWidgetCategories_itemSelectionChanged()
     }
 }
 
-void MainWindow::on_listWidgetSnippets_clicked()
-{
-    QListWidgetItem *selectedItem = ui->listWidgetSnippets->selectedItems().at(0);
-    Snippet *selectedSnippet = (Snippet *) selectedItem;
-
-    ui->lineEditSnippetTitle->setText(selectedSnippet->getTitle());
-    ui->textEditSnippetContent->setText(selectedSnippet->getContent());
-    qDebug() << "Snippet selected [ id=" << selectedSnippet->getId() << "]";
-}
-
-void MainWindow::on_listWidgetSnippets_currentItemChanged()
+void MainWindow::on_listWidgetSnippets_itemSelectionChanged()
 {
     if (ui->listWidgetSnippets != NULL)
     {
