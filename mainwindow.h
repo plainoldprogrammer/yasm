@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QSqlDatabase>
+#include <QVBoxLayout>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -28,6 +29,10 @@ public:
     bool thereIsSomeSnippetOnDb(QString);
     void clearUi();
     void displaySnippets();
+    void configureMenuBar();
+    QMenuBar *menuBar;
+    QMenu *fileMenu;
+    QMenu *editMenu;
 
 private:
     Ui::MainWindow *ui;

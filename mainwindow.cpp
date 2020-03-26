@@ -9,6 +9,7 @@
 #include <QSqlQuery>
 #include <QMessageBox>
 #include <QInputDialog>
+#include <QMenuBar>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -24,10 +25,16 @@ MainWindow::~MainWindow()
 {
     delete ui;
     db.close();
+
+    delete editMenu;
+    delete fileMenu;
+    delete menuBar;
 }
 
 void MainWindow::firstTimeInitializeGUI()
 {
+    configureMenuBar();
+
     ui->pushButtonNewCategory->setText("New Category");
     ui->pushButtonRemoveCategory->setText("Remove Category");
     ui->pushButtonNewSnippet->setText("New Snippet");
@@ -71,6 +78,23 @@ void MainWindow::firstTimeInitializeGUI()
     {
         qWarning() << "Can't read the snippets from the db";
     }
+}
+
+void MainWindow::configureMenuBar()
+{
+    menuBar = new QMenuBar();
+
+    fileMenu = new QMenu("File");
+    fileMenu->addAction("Exit");
+    menuBar->addMenu(fileMenu);
+
+    editMenu = new QMenu("Edit");
+    editMenu->addAction("Cut");
+    editMenu->addAction("Copy");
+    editMenu->addAction("Paste");
+    menuBar->addMenu(editMenu);
+
+    this->setMenuBar(menuBar);
 }
 
 void MainWindow::setDefaultEditorFont()
