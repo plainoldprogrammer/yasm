@@ -30,14 +30,14 @@ public:
     void clearUi();
     void displaySnippets();
     void configureMenuBar();
-    QMenuBar *menuBar;
-    QMenu *fileMenu;
-    QMenu *editMenu;
 
 private:
     Ui::MainWindow *ui;
     QSqlDatabase db;
     int snippetId;
+    QMenuBar *menuBar;
+    QMenu *fileMenu;
+    QMenu *editMenu;
 
 private slots:
     void on_pushButtonNewCategory_clicked();
