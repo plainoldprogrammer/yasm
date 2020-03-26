@@ -1,15 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "snippet.h"
-#include <QDebug>
-#include <QListWidgetItem>
-#include <QSqlDatabase>
-#include <QDir>
-#include <QSqlDatabase>
-#include <QSqlQuery>
-#include <QMessageBox>
-#include <QInputDialog>
-#include <QMenuBar>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)

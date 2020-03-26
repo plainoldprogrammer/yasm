@@ -3,7 +3,15 @@
 
 #include <QMainWindow>
 #include <QSqlDatabase>
-#include <QVBoxLayout>
+#include <QDebug>
+#include <QListWidgetItem>
+#include <QSqlDatabase>
+#include <QDir>
+#include <QSqlDatabase>
+#include <QSqlQuery>
+#include <QMessageBox>
+#include <QInputDialog>
+#include <QMenuBar>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
