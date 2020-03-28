@@ -46,6 +46,7 @@ private:
     QMenuBar *menuBar;
     QMenu *fileMenu;
     QMenu *editMenu;
+    QMenu *toolsMenu;
     QMenu *helpMenu;
 
 private slots:
