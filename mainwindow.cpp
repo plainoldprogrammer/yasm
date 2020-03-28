@@ -85,6 +85,10 @@ void MainWindow::configureMenuBar()
     editMenu->addAction("Paste");
     menuBar->addMenu(editMenu);
 
+    helpMenu = new QMenu("Help");
+    helpMenu->addAction("About Yasm");
+    menuBar->addMenu(helpMenu);
+
     this->setMenuBar(menuBar);
 }
 

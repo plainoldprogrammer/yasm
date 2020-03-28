@@ -46,6 +46,7 @@ private:
     QMenuBar *menuBar;
     QMenu *fileMenu;
     QMenu *editMenu;
+    QMenu *helpMenu;
 
 private slots:
     void on_pushButtonNewCategory_clicked();
