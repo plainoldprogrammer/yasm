@@ -22,7 +22,8 @@ void MainWindow::firstTimeInitializeGUI()
 {
     ui->actionCopy->setEnabled(false);
     ui->actionCut->setEnabled(false);
-    ui->actionPaste->setEnabled(false);
+
+    connect(QApplication::clipboard(), SIGNAL(dataChanged()), this, SLOT(on_clipboard_contentChanged()));
 
     ui->pushButtonNewCategory->setText("New Category");
     ui->pushButtonRemoveCategory->setText("Remove Category");
@@ -571,6 +572,7 @@ void MainWindow::on_actionCopy_triggered()
 void MainWindow::on_actionPaste_triggered()
 {
     qDebug() << "Action paste clicked";
+    ui->textEditSnippetContent->paste();
 }
 
 void MainWindow::on_actionSettings_triggered()
@@ -589,5 +591,19 @@ void MainWindow::on_textEditSnippetContent_selectionChanged()
     {
         ui->actionCut->setEnabled(true);
         ui->actionCopy->setEnabled(true);
+    }
+}
+
+void MainWindow::on_clipboard_contentChanged()
+{
+    qDebug() << "Clipboard changed";
+
+    if (QApplication::clipboard()->mimeData()->hasText())
+    {
+        ui->actionPaste->setEnabled(true);
+    }
+    else
+    {
+        ui->actionPaste->setEnabled(false);
     }
 }

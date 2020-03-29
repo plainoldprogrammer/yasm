@@ -11,6 +11,9 @@
 #include <QSqlQuery>
 #include <QMessageBox>
 #include <QInputDialog>
+#include <QApplication>
+#include <QClipboard>
+#include <QMimeData>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -58,5 +61,6 @@ private slots:
     void on_actionSettings_triggered();
     void on_actionAbout_Yasm_triggered();
     void on_textEditSnippetContent_selectionChanged();
+    void on_clipboard_contentChanged();
 };
 #endif // MAINWINDOW_H
