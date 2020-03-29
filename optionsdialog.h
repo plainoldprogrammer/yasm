@@ -20,6 +20,7 @@ public:
 
 private:
     Ui::OptionsDialog *ui;
+    QString defaultDbFilePath;
 
 private slots:
     void on_pushButtonSelectDbPath_clicked();

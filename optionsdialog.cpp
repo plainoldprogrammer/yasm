@@ -18,12 +18,20 @@ OptionsDialog::~OptionsDialog()
 
 void OptionsDialog::on_pushButtonSelectDbPath_clicked()
 {
-    qDebug() << "Select a new Db path";
-    QString selectedDbPath = QFileDialog::getOpenFileName(this, tr("Open Database"), "c:\\", tr("Database File (*.db)"));
-    ui->lineEditDbPath->setText(selectedDbPath);
+    QString selectedDbFilePath = QFileDialog::getOpenFileName(this, tr("Open Database"), "c:\\", tr("Database File (*.db)"));
+
+    if (selectedDbFilePath.isEmpty())
+    {
+        ui->lineEditDbPath->setText(defaultDbFilePath);
+    }
+    else
+    {
+        ui->lineEditDbPath->setText(selectedDbFilePath);
+    }
 }
 
 void OptionsDialog::setDefaultDbFilePath(QString dbFilePath)
 {
-    ui->lineEditDbPath->setText(dbFilePath);
+    defaultDbFilePath = dbFilePath;
+    ui->lineEditDbPath->setText(defaultDbFilePath);
 }
