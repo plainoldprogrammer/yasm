@@ -547,6 +547,7 @@ void MainWindow::displaySnippets()
 void MainWindow::on_actionExit_triggered()
 {
     qDebug() << "Action exit clicked";
+    this->close();
 }
 
 void MainWindow::on_actionCut_triggered()
