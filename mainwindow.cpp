@@ -22,7 +22,6 @@ void MainWindow::firstTimeInitializeGUI()
 {
     ui->actionCopy->setEnabled(false);
     ui->actionCut->setEnabled(false);
-
     connect(QApplication::clipboard(), SIGNAL(dataChanged()), this, SLOT(on_clipboard_contentChanged()));
 
     ui->pushButtonNewCategory->setText("New Category");
@@ -557,22 +556,45 @@ void MainWindow::on_actionExit_triggered()
 
 void MainWindow::on_actionCut_triggered()
 {
-    qDebug() << "Action cut clicked";
-    ui->textEditSnippetContent->cut();
+    if (ui->lineEditSnippetTitle->hasFocus())
+    {
+        ui->lineEditSnippetTitle->cut();
+    }
+    else if (ui->textEditSnippetContent->hasFocus())
+    {
+        ui->textEditSnippetContent->cut();
+    }
+
     ui->actionCut->setEnabled(false);
+    ui->actionCopy->setEnabled(false);
 }
 
 void MainWindow::on_actionCopy_triggered()
 {
-    qDebug() << "Action copy clicked";
-    ui->textEditSnippetContent->copy();
+    if (ui->lineEditSnippetTitle->hasFocus())
+    {
+        ui->lineEditSnippetTitle->copy();
+    }
+    else if (ui->textEditSnippetContent->hasFocus())
+    {
+        ui->textEditSnippetContent->copy();
+    }
+
+    ui->actionCut->setEnabled(false);
     ui->actionCopy->setEnabled(false);
 }
 
 void MainWindow::on_actionPaste_triggered()
 {
-    qDebug() << "Action paste clicked";
-    ui->textEditSnippetContent->paste();
+
+    if (ui->lineEditSnippetTitle->hasFocus())
+    {
+        ui->lineEditSnippetTitle->paste();
+    }
+    else if (ui->textEditSnippetContent->hasFocus())
+    {
+        ui->textEditSnippetContent->paste();
+    }
 }
 
 void MainWindow::on_actionSettings_triggered()
@@ -583,6 +605,15 @@ void MainWindow::on_actionSettings_triggered()
 void MainWindow::on_actionAbout_Yasm_triggered()
 {
     qDebug() << "Action about clicked";
+}
+
+void MainWindow::on_lineEditSnippetTitle_selectionChanged()
+{
+    if (ui->lineEditSnippetTitle->hasSelectedText())
+    {
+        ui->actionCut->setEnabled(true);
+        ui->actionCopy->setEnabled(true);
+    }
 }
 
 void MainWindow::on_textEditSnippetContent_selectionChanged()
@@ -596,8 +627,6 @@ void MainWindow::on_textEditSnippetContent_selectionChanged()
 
 void MainWindow::on_clipboard_contentChanged()
 {
-    qDebug() << "Clipboard changed";
-
     if (QApplication::clipboard()->mimeData()->hasText())
     {
         ui->actionPaste->setEnabled(true);

@@ -60,6 +60,7 @@ private slots:
     void on_actionPaste_triggered();
     void on_actionSettings_triggered();
     void on_actionAbout_Yasm_triggered();
+    void on_lineEditSnippetTitle_selectionChanged();
     void on_textEditSnippetContent_selectionChanged();
     void on_clipboard_contentChanged();
 };
