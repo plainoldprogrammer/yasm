@@ -57,5 +57,6 @@ private slots:
     void on_actionPaste_triggered();
     void on_actionSettings_triggered();
     void on_actionAbout_Yasm_triggered();
+    void on_textEditSnippetContent_selectionChanged();
 };
 #endif // MAINWINDOW_H

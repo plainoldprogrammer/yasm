@@ -20,6 +20,10 @@ MainWindow::~MainWindow()
 
 void MainWindow::firstTimeInitializeGUI()
 {
+    ui->actionCopy->setEnabled(false);
+    ui->actionCut->setEnabled(false);
+    ui->actionPaste->setEnabled(false);
+
     ui->pushButtonNewCategory->setText("New Category");
     ui->pushButtonRemoveCategory->setText("Remove Category");
     ui->pushButtonNewSnippet->setText("New Snippet");
@@ -553,6 +557,8 @@ void MainWindow::on_actionExit_triggered()
 void MainWindow::on_actionCut_triggered()
 {
     qDebug() << "Action cut clicked";
+    ui->textEditSnippetContent->cut();
+    ui->actionCut->setEnabled(false);
 }
 
 void MainWindow::on_actionCopy_triggered()
@@ -573,4 +579,12 @@ void MainWindow::on_actionSettings_triggered()
 void MainWindow::on_actionAbout_Yasm_triggered()
 {
     qDebug() << "Action about clicked";
+}
+
+void MainWindow::on_textEditSnippetContent_selectionChanged()
+{
+    if (ui->textEditSnippetContent->textCursor().hasSelection())
+    {
+        ui->actionCut->setEnabled(true);
+    }
 }
