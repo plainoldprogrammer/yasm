@@ -604,7 +604,7 @@ void MainWindow::on_actionSettings_triggered()
 
 void MainWindow::on_actionAbout_Yasm_triggered()
 {
-    qDebug() << "Action about clicked";
+    QMessageBox::information(this, "About Yasm", "Yasm\nYet Another Snippet Manager\nVersion: 1.0 (Dev)\nRelease date: 2020\nDeveloper: Plainoldprogrammer");
 }
 
 void MainWindow::on_lineEditSnippetTitle_selectionChanged()
