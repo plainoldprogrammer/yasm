@@ -42,7 +42,7 @@
     <item>
      <widget class="QLabel" name="labelDbPath">
       <property name="text">
-       <string>DB Path:</string>
+       <string>DB File:</string>
       </property>
      </widget>
     </item>

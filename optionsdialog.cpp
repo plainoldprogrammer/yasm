@@ -23,7 +23,7 @@ void OptionsDialog::on_pushButtonSelectDbPath_clicked()
     ui->lineEditDbPath->setText(selectedDbPath);
 }
 
-void OptionsDialog::setDefaultDbPath(QString dbPath)
+void OptionsDialog::setDefaultDbFilePath(QString dbFilePath)
 {
-    ui->lineEditDbPath->setText(dbPath);
+    ui->lineEditDbPath->setText(dbFilePath);
 }

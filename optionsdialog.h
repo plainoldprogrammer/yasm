@@ -16,7 +16,7 @@ class OptionsDialog : public QDialog
 public:
     explicit OptionsDialog(QWidget *parent = nullptr);
     ~OptionsDialog();
-    void setDefaultDbPath(QString);
+    void setDefaultDbFilePath(QString);
 
 private:
     Ui::OptionsDialog *ui;

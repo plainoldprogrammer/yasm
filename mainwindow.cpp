@@ -22,7 +22,7 @@ MainWindow::~MainWindow()
 void MainWindow::firstTimeInitializeGUI()
 {
     optionsDialog = new OptionsDialog(this);
-    optionsDialog->setDefaultDbPath(dbPath);
+    optionsDialog->setDefaultDbFilePath(dbFilePath);
 
     ui->actionCut->setEnabled(false);
     ui->actionCopy->setEnabled(false);
@@ -380,7 +380,7 @@ void MainWindow::createDBConnection()
 
     db = QSqlDatabase::addDatabase(DRIVER);
     db.setDatabaseName(dbURI);
-    dbPath = dbURI;
+    dbFilePath = dbURI;
 
     if (!dbDirectory.exists())
     {

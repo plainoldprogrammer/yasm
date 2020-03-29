@@ -48,7 +48,7 @@ private:
     QSqlDatabase db;
     int snippetId;
     OptionsDialog *optionsDialog;
-    QString dbPath;
+    QString dbFilePath;
 
 private slots:
     void on_pushButtonNewCategory_clicked();
