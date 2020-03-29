@@ -564,6 +564,8 @@ void MainWindow::on_actionCut_triggered()
 void MainWindow::on_actionCopy_triggered()
 {
     qDebug() << "Action copy clicked";
+    ui->textEditSnippetContent->copy();
+    ui->actionCopy->setEnabled(false);
 }
 
 void MainWindow::on_actionPaste_triggered()
@@ -586,5 +588,6 @@ void MainWindow::on_textEditSnippetContent_selectionChanged()
     if (ui->textEditSnippetContent->textCursor().hasSelection())
     {
         ui->actionCut->setEnabled(true);
+        ui->actionCopy->setEnabled(true);
     }
 }
