@@ -15,6 +15,8 @@
 #include <QClipboard>
 #include <QMimeData>
 
+#include "optionsdialog.h"
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -44,6 +46,7 @@ private:
     Ui::MainWindow *ui;
     QSqlDatabase db;
     int snippetId;
+    OptionsDialog *optionsDialog;
 
 private slots:
     void on_pushButtonNewCategory_clicked();

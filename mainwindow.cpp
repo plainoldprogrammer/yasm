@@ -16,10 +16,13 @@ MainWindow::~MainWindow()
 {
     delete ui;
     db.close();
+    delete optionsDialog;
 }
 
 void MainWindow::firstTimeInitializeGUI()
 {
+    optionsDialog = new OptionsDialog(this);
+
     ui->actionCopy->setEnabled(false);
     ui->actionCut->setEnabled(false);
     connect(QApplication::clipboard(), SIGNAL(dataChanged()), this, SLOT(on_clipboard_contentChanged()));
@@ -600,6 +603,7 @@ void MainWindow::on_actionPaste_triggered()
 void MainWindow::on_actionOptions_triggered()
 {
     qDebug() << "Action settings clicked";
+    optionsDialog->show();
 }
 
 void MainWindow::on_actionAbout_Yasm_triggered()
