@@ -16,16 +16,10 @@ MainWindow::~MainWindow()
 {
     delete ui;
     db.close();
-
-    delete editMenu;
-    delete fileMenu;
-    delete menuBar;
 }
 
 void MainWindow::firstTimeInitializeGUI()
 {
-    configureMenuBar();
-
     ui->pushButtonNewCategory->setText("New Category");
     ui->pushButtonRemoveCategory->setText("Remove Category");
     ui->pushButtonNewSnippet->setText("New Snippet");
@@ -69,31 +63,6 @@ void MainWindow::firstTimeInitializeGUI()
     {
         qWarning() << "Can't read the snippets from the db";
     }
-}
-
-void MainWindow::configureMenuBar()
-{
-    menuBar = new QMenuBar();
-
-    fileMenu = new QMenu("File");
-    fileMenu->addAction("Exit");
-    menuBar->addMenu(fileMenu);
-
-    editMenu = new QMenu("Edit");
-    editMenu->addAction("Cut");
-    editMenu->addAction("Copy");
-    editMenu->addAction("Paste");
-    menuBar->addMenu(editMenu);
-
-    toolsMenu = new QMenu("Tools");
-    toolsMenu->addAction("Settings");
-    menuBar->addMenu(toolsMenu);
-
-    helpMenu = new QMenu("Help");
-    helpMenu->addAction("About Yasm");
-    menuBar->addMenu(helpMenu);
-
-    this->setMenuBar(menuBar);
 }
 
 void MainWindow::setDefaultEditorFont()
@@ -573,4 +542,9 @@ void MainWindow::displaySnippets()
             ui->textEditSnippetContent->setText(snippetRecoveredFromDb->getContent());
         }
     }
+}
+
+void MainWindow::on_actionExit_triggered()
+{
+    qDebug() << "Action exit clicked";
 }

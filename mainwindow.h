@@ -11,7 +11,6 @@
 #include <QSqlQuery>
 #include <QMessageBox>
 #include <QInputDialog>
-#include <QMenuBar>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -37,17 +36,11 @@ public:
     bool thereIsSomeSnippetOnDb(QString);
     void clearUi();
     void displaySnippets();
-    void configureMenuBar();
 
 private:
     Ui::MainWindow *ui;
     QSqlDatabase db;
     int snippetId;
-    QMenuBar *menuBar;
-    QMenu *fileMenu;
-    QMenu *editMenu;
-    QMenu *toolsMenu;
-    QMenu *helpMenu;
 
 private slots:
     void on_pushButtonNewCategory_clicked();
@@ -58,5 +51,6 @@ private slots:
     void on_listWidgetSnippets_itemSelectionChanged();
     void on_lineEditSnippetTitle_textChanged();
     void on_textEditSnippetContent_textChanged();
+    void on_actionExit_triggered();
 };
 #endif // MAINWINDOW_H
