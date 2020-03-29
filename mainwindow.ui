@@ -98,7 +98,7 @@
     <property name="title">
      <string>Tools</string>
     </property>
-    <addaction name="actionSettings"/>
+    <addaction name="actionOptions"/>
    </widget>
    <widget class="QMenu" name="menuHelp">
     <property name="title">
@@ -137,9 +137,9 @@
     <string>Paste</string>
    </property>
   </action>
-  <action name="actionSettings">
+  <action name="actionOptions">
    <property name="text">
-    <string>Settings</string>
+    <string>Options</string>
    </property>
   </action>
   <action name="actionAbout_Yasm">

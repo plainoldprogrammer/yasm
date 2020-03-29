@@ -58,7 +58,7 @@ private slots:
     void on_actionCut_triggered();
     void on_actionCopy_triggered();
     void on_actionPaste_triggered();
-    void on_actionSettings_triggered();
+    void on_actionOptions_triggered();
     void on_actionAbout_Yasm_triggered();
     void on_lineEditSnippetTitle_selectionChanged();
     void on_textEditSnippetContent_selectionChanged();

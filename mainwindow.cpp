@@ -597,7 +597,7 @@ void MainWindow::on_actionPaste_triggered()
     }
 }
 
-void MainWindow::on_actionSettings_triggered()
+void MainWindow::on_actionOptions_triggered()
 {
     qDebug() << "Action settings clicked";
 }
