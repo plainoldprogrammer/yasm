@@ -7,7 +7,8 @@ OptionsDialog::OptionsDialog(QWidget *parent) :
 {
     ui->setupUi(this);
     this->setWindowTitle("Options");
-
+    this->setMinimumSize(this->size());
+    this->setMaximumSize(this->size());
 }
 
 OptionsDialog::~OptionsDialog()
@@ -20,4 +21,9 @@ void OptionsDialog::on_pushButtonSelectDbPath_clicked()
     qDebug() << "Select a new Db path";
     QString selectedDbPath = QFileDialog::getOpenFileName(this, tr("Open Database"), "c:\\", tr("Database File (*.db)"));
     ui->lineEditDbPath->setText(selectedDbPath);
+}
+
+void OptionsDialog::setDefaultDbPath(QString dbPath)
+{
+    ui->lineEditDbPath->setText(dbPath);
 }

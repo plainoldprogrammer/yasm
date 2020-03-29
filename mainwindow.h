@@ -41,12 +41,14 @@ public:
     bool thereIsSomeSnippetOnDb(QString);
     void clearUi();
     void displaySnippets();
+    void detectIfClipboardHasSomething();
 
 private:
     Ui::MainWindow *ui;
     QSqlDatabase db;
     int snippetId;
     OptionsDialog *optionsDialog;
+    QString dbPath;
 
 private slots:
     void on_pushButtonNewCategory_clicked();

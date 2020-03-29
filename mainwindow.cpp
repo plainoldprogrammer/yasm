@@ -22,9 +22,12 @@ MainWindow::~MainWindow()
 void MainWindow::firstTimeInitializeGUI()
 {
     optionsDialog = new OptionsDialog(this);
+    optionsDialog->setDefaultDbPath(dbPath);
 
-    ui->actionCopy->setEnabled(false);
     ui->actionCut->setEnabled(false);
+    ui->actionCopy->setEnabled(false);
+    detectIfClipboardHasSomething();
+
     connect(QApplication::clipboard(), SIGNAL(dataChanged()), this, SLOT(on_clipboard_contentChanged()));
 
     ui->pushButtonNewCategory->setText("New Category");
@@ -377,6 +380,7 @@ void MainWindow::createDBConnection()
 
     db = QSqlDatabase::addDatabase(DRIVER);
     db.setDatabaseName(dbURI);
+    dbPath = dbURI;
 
     if (!dbDirectory.exists())
     {
@@ -630,6 +634,11 @@ void MainWindow::on_textEditSnippetContent_selectionChanged()
 }
 
 void MainWindow::on_clipboard_contentChanged()
+{
+    detectIfClipboardHasSomething();
+}
+
+void MainWindow::detectIfClipboardHasSomething()
 {
     if (QApplication::clipboard()->mimeData()->hasText())
     {
