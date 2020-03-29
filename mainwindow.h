@@ -52,5 +52,10 @@ private slots:
     void on_lineEditSnippetTitle_textChanged();
     void on_textEditSnippetContent_textChanged();
     void on_actionExit_triggered();
+    void on_actionCut_triggered();
+    void on_actionCopy_triggered();
+    void on_actionPaste_triggered();
+    void on_actionSettings_triggered();
+    void on_actionAbout_Yasm_triggered();
 };
 #endif // MAINWINDOW_H

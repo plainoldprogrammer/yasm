@@ -548,3 +548,28 @@ void MainWindow::on_actionExit_triggered()
 {
     qDebug() << "Action exit clicked";
 }
+
+void MainWindow::on_actionCut_triggered()
+{
+    qDebug() << "Action cut clicked";
+}
+
+void MainWindow::on_actionCopy_triggered()
+{
+    qDebug() << "Action copy clicked";
+}
+
+void MainWindow::on_actionPaste_triggered()
+{
+    qDebug() << "Action paste clicked";
+}
+
+void MainWindow::on_actionSettings_triggered()
+{
+    qDebug() << "Action settings clicked";
+}
+
+void MainWindow::on_actionAbout_Yasm_triggered()
+{
+    qDebug() << "Action about clicked";
+}
