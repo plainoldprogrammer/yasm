@@ -2,6 +2,8 @@
 #define OPTIONSDIALOG_H
 
 #include <QDialog>
+#include <QDebug>
+#include <QFileDialog>
 
 namespace Ui {
 class OptionsDialog;
@@ -17,6 +19,9 @@ public:
 
 private:
     Ui::OptionsDialog *ui;
+
+private slots:
+    void on_pushButtonSelectDbPath_clicked();
 };
 
 #endif // OPTIONSDIALOG_H

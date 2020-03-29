@@ -14,3 +14,10 @@ OptionsDialog::~OptionsDialog()
 {
     delete ui;
 }
+
+void OptionsDialog::on_pushButtonSelectDbPath_clicked()
+{
+    qDebug() << "Select a new Db path";
+    QString selectedDbPath = QFileDialog::getOpenFileName(this, tr("Open Database"), "c:\\", tr("Database File (*.db)"));
+    ui->lineEditDbPath->setText(selectedDbPath);
+}

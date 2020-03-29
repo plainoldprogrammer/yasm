@@ -15,8 +15,8 @@ MainWindow::MainWindow(QWidget *parent)
 MainWindow::~MainWindow()
 {
     delete ui;
-    db.close();
     delete optionsDialog;
+    db.close();
 }
 
 void MainWindow::firstTimeInitializeGUI()
