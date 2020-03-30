@@ -523,35 +523,38 @@ void MainWindow::displaySnippets()
     qDebug() << "displaySnippets() start";
     ui->listWidgetSnippets->clear();
 
-    QString selectedCategory = ui->listWidgetCategories->selectedItems().at(0)->text();
-    QSqlQuery sqlQuery;
-
-    if (sqlQuery.exec("SELECT * FROM 'snippets' WHERE category = '" + selectedCategory + "';"))
+    if (ui->listWidgetCategories->selectedItems().size() > 0)
     {
-        // qDebug() << "Reading snippets of the category" << selectedCategory << "from the db";
-        QVector<Snippet> snippetsFromDb;
-        Snippet *snippetRecoveredFromDb;
+        QString selectedCategory = ui->listWidgetCategories->selectedItems().at(0)->text();
+        QSqlQuery sqlQuery;
 
-        while (sqlQuery.next())
+        if (sqlQuery.exec("SELECT * FROM 'snippets' WHERE category = '" + selectedCategory + "';"))
         {
-            qDebug() << "Snippet id=[" << sqlQuery.value(0).toInt() << "] title=[" << sqlQuery.value(1).toString() << "]";
+            // qDebug() << "Reading snippets of the category" << selectedCategory << "from the db";
+            QVector<Snippet> snippetsFromDb;
+            Snippet *snippetRecoveredFromDb;
 
-            int snippetFromDbId = sqlQuery.value(0).toInt();
-            QString snippetFromDbTitle = sqlQuery.value(1).toString();
-            QString snippetFromDbContent = sqlQuery.value(2).toString();
-            QString snippetFromDbCategory = sqlQuery.value(3).toString();
+            while (sqlQuery.next())
+            {
+                qDebug() << "Snippet id=[" << sqlQuery.value(0).toInt() << "] title=[" << sqlQuery.value(1).toString() << "]";
 
-            snippetRecoveredFromDb = new Snippet(snippetFromDbId);
-            snippetRecoveredFromDb->setTitle(snippetFromDbTitle);
-            snippetRecoveredFromDb->setText(snippetRecoveredFromDb->getTitle());
-            snippetRecoveredFromDb->setContent(snippetFromDbContent);
-            snippetRecoveredFromDb->setCategory(snippetFromDbCategory);
+                int snippetFromDbId = sqlQuery.value(0).toInt();
+                QString snippetFromDbTitle = sqlQuery.value(1).toString();
+                QString snippetFromDbContent = sqlQuery.value(2).toString();
+                QString snippetFromDbCategory = sqlQuery.value(3).toString();
 
-            ui->listWidgetSnippets->insertItem(ui->listWidgetSnippets->count(), (QListWidgetItem *) snippetRecoveredFromDb);
-            ui->listWidgetSnippets->setItemSelected((QListWidgetItem *) snippetRecoveredFromDb, true);
-            ui->listWidgetSnippets->setCurrentRow(ui->listWidgetSnippets->count() - 1);
-            ui->lineEditSnippetTitle->setText(snippetRecoveredFromDb->getTitle());
-            ui->textEditSnippetContent->setText(snippetRecoveredFromDb->getContent());
+                snippetRecoveredFromDb = new Snippet(snippetFromDbId);
+                snippetRecoveredFromDb->setTitle(snippetFromDbTitle);
+                snippetRecoveredFromDb->setText(snippetRecoveredFromDb->getTitle());
+                snippetRecoveredFromDb->setContent(snippetFromDbContent);
+                snippetRecoveredFromDb->setCategory(snippetFromDbCategory);
+
+                ui->listWidgetSnippets->insertItem(ui->listWidgetSnippets->count(), (QListWidgetItem *) snippetRecoveredFromDb);
+                ui->listWidgetSnippets->setItemSelected((QListWidgetItem *) snippetRecoveredFromDb, true);
+                ui->listWidgetSnippets->setCurrentRow(ui->listWidgetSnippets->count() - 1);
+                ui->lineEditSnippetTitle->setText(snippetRecoveredFromDb->getTitle());
+                ui->textEditSnippetContent->setText(snippetRecoveredFromDb->getContent());
+            }
         }
     }
 }
@@ -613,6 +616,8 @@ void MainWindow::on_actionOptions_triggered()
     {
         qDebug() << "Ok";
         qDebug() << "Read the file: " << optionsDialog.getSelectedDbFilePath();
+        ui->listWidgetSnippets->clear();
+        ui->listWidgetCategories->clear();
     }
     else
     {
