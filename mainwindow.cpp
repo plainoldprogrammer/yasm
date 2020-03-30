@@ -10,6 +10,7 @@ MainWindow::MainWindow(QWidget *parent)
     createDBConnection();
     snippetId = getMaxIdFromDb();
     firstTimeInitializeGUI();
+    qDebug() << "dbFilePath after firstTimeInitializeGUI: " << dbFilePath;
 }
 
 MainWindow::~MainWindow()
@@ -26,6 +27,7 @@ void MainWindow::firstTimeInitializeGUI()
 
     ui->actionCut->setEnabled(false);
     ui->actionCopy->setEnabled(false);
+
     detectIfClipboardHasSomething();
 
     connect(QApplication::clipboard(), SIGNAL(dataChanged()), this, SLOT(on_clipboard_contentChanged()));

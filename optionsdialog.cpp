@@ -18,14 +18,20 @@ OptionsDialog::~OptionsDialog()
 
 void OptionsDialog::on_pushButtonSelectDbPath_clicked()
 {
-    QString selectedDbFilePath = QFileDialog::getOpenFileName(this, tr("Open Database"), "c:\\", tr("Database File (*.db)"));
+    QString selectedDbFilePath = QFileDialog::getOpenFileName(this, tr("Open Database"), "c:\\", tr("Database File (*.db)")).replace("/", "\\");
 
     if (selectedDbFilePath.isEmpty())
     {
         ui->lineEditDbPath->setText(defaultDbFilePath);
     }
+    else if (selectedDbFilePath.compare(ui->lineEditDbPath->text()) == 0)
+    {
+        qDebug() << "Selected the same file that is already selected";
+        ui->lineEditDbPath->setText(selectedDbFilePath);
+    }
     else
     {
+        qDebug() << "A different file has been selected";
         ui->lineEditDbPath->setText(selectedDbFilePath);
     }
 }
