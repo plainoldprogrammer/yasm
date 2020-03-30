@@ -598,6 +598,7 @@ void MainWindow::on_actionOptions_triggered()
         db.close();
 
         createDBConnection(optionsDialog.getSelectedDbFilePath());
+        snippetId = getMaxIdFromDb();
         retrieveDataFromDb();
     }
     else
