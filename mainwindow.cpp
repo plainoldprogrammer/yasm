@@ -624,6 +624,29 @@ void MainWindow::on_actionOptions_triggered()
         db.close();
 
         createDBConnection(optionsDialog.getSelectedDbFilePath());
+
+        QSqlQuery sqlQuery;
+
+        if (thereIsSomeCategoryOnDb())
+        {
+            if (sqlQuery.exec("SELECT category FROM 'categories' ORDER BY datetime ASC;"))
+            {
+                qDebug("Reading all categories from the db");
+
+                while (sqlQuery.next())
+                {
+                    QString categoryRecoveredFromDb = sqlQuery.value(0).toString();
+
+                    ui->listWidgetCategories->insertItem(ui->listWidgetCategories->count(), categoryRecoveredFromDb);
+                    ui->listWidgetCategories->item(ui->listWidgetCategories->count() - 1)->setIcon(QIcon(":/images/icons/folder.png"));
+                    ui->listWidgetCategories->setItemSelected(ui->listWidgetCategories->item(ui->listWidgetCategories->count() - 1), true);
+                    ui->listWidgetCategories->setCurrentRow(ui->listWidgetCategories->count() - 1);
+                    ui->listWidgetCategories->setEnabled(true);
+                }
+            }
+
+            adjustGUIForSnippetCreation(ui->listWidgetCategories->selectedItems().at(0)->text());
+        }
     }
     else
     {
