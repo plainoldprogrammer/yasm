@@ -8,7 +8,7 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    createDBConnection();
+    createDBConnection("C:\\plainoldprogrammer\\dev\\databases\\snippets.db");
     snippetId = getMaxIdFromDb();
     firstTimeInitializeGUI();
     qDebug() << "dbFilePath after firstTimeInitializeGUI: " << dbFilePath;
@@ -363,7 +363,7 @@ void MainWindow::logListWidgetSnippets()
     qDebug() << "Elements on listWidgetSnippets=[" << ui->listWidgetSnippets->count() << "]";
 }
 
-void MainWindow::createDBConnection()
+void MainWindow::createDBConnection(QString filePath)
 {
     qDebug() << "Connecting with the database";
 
@@ -377,7 +377,8 @@ void MainWindow::createDBConnection()
     QString dbFolder = "C:\\plainoldprogrammer\\dev\\databases\\";
     QDir dbDirectory(dbFolder);
     QString sqliteFileName = "snippets.db";
-    QString dbURI = dbFolder + sqliteFileName;
+    // QString dbURI = dbFolder + sqliteFileName;
+    QString dbURI = filePath;
 
     db = QSqlDatabase::addDatabase(DRIVER);
     db.setDatabaseName(dbURI);
@@ -618,6 +619,11 @@ void MainWindow::on_actionOptions_triggered()
         qDebug() << "Read the file: " << optionsDialog.getSelectedDbFilePath();
         ui->listWidgetSnippets->clear();
         ui->listWidgetCategories->clear();
+
+        // Close the previous database file in order to open the new selected.
+        db.close();
+
+        createDBConnection(optionsDialog.getSelectedDbFilePath());
     }
     else
     {
