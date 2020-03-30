@@ -17,10 +17,12 @@ public:
     explicit OptionsDialog(QWidget *parent = nullptr);
     ~OptionsDialog();
     void setDefaultDbFilePath(QString);
+    QString getSelectedDbFilePath();
 
 private:
     Ui::OptionsDialog *ui;
     QString defaultDbFilePath;
+    QString selectedDbFilePath;
 
 private slots:
     void on_pushButtonSelectDbPath_clicked();

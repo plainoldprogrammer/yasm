@@ -612,6 +612,7 @@ void MainWindow::on_actionOptions_triggered()
     if (optionsDialog.exec() == QDialog::Accepted)
     {
         qDebug() << "Ok";
+        qDebug() << "Read the file: " << optionsDialog.getSelectedDbFilePath();
     }
     else
     {
