@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "snippet.h"
+#include "optionsdialog.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -16,14 +17,12 @@ MainWindow::MainWindow(QWidget *parent)
 MainWindow::~MainWindow()
 {
     delete ui;
-    delete optionsDialog;
     db.close();
 }
 
 void MainWindow::firstTimeInitializeGUI()
 {
-    optionsDialog = new OptionsDialog(this);
-    optionsDialog->setDefaultDbFilePath(dbFilePath);
+    optionsDialog.setDefaultDbFilePath(dbFilePath);
 
     ui->actionCut->setEnabled(false);
     ui->actionCopy->setEnabled(false);
@@ -608,8 +607,16 @@ void MainWindow::on_actionPaste_triggered()
 
 void MainWindow::on_actionOptions_triggered()
 {
-    qDebug() << "Action settings clicked";
-    optionsDialog->show();
+    optionsDialog.setModal(true);
+
+    if (optionsDialog.exec() == QDialog::Accepted)
+    {
+        qDebug() << "Ok";
+    }
+    else
+    {
+        qDebug() << "Cancel";
+    }
 }
 
 void MainWindow::on_actionAbout_Yasm_triggered()

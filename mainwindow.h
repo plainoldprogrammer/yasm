@@ -47,7 +47,7 @@ private:
     Ui::MainWindow *ui;
     QSqlDatabase db;
     int snippetId;
-    OptionsDialog *optionsDialog;
+    OptionsDialog optionsDialog;
     QString dbFilePath;
 
 private slots:
