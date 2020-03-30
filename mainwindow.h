@@ -42,6 +42,7 @@ public:
     void clearUi();
     void displaySnippets();
     void detectIfClipboardHasSomething();
+    void retrieveDataFromDb();
 
 private:
     Ui::MainWindow *ui;
