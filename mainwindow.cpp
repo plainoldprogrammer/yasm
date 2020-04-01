@@ -8,10 +8,14 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
     createDBConnection("C:\\plainoldprogrammer\\dev\\databases\\snippets.db");
     snippetId = getMaxIdFromDb();
+
     firstTimeInitializeGUI();
     qDebug() << "dbFilePath after firstTimeInitializeGUI: " << dbFilePath;
+
+    new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_Q), this, SLOT(close()));
 }
 
 MainWindow::~MainWindow()

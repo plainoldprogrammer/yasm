@@ -14,6 +14,8 @@
 #include <QApplication>
 #include <QClipboard>
 #include <QMimeData>
+#include <QShortcut>
+#include <QKeySequence>
 
 #include "optionsdialog.h"
 
