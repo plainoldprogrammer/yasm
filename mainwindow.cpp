@@ -11,6 +11,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     dbFilePath = "C:\\plainoldprogrammer\\dev\\databases\\snippets.db";
     snippetId = createDBConnection(dbFilePath);
+    lastCategoryOnDb = getLastCategoryOnDb();
     firstTimeInitializeGUI();
 
     new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_Q), this, SLOT(close()));
@@ -257,12 +258,26 @@ void MainWindow::on_pushButtonRemoveSnippet_clicked()
 
 void MainWindow::on_listWidgetCategories_itemSelectionChanged()
 {
-    qDebug() << endl << endl << "onListWidgetCategories_itemSelectionChanged()";
-    qDebug() << "clearUI()";
+    qDebug() << endl << "onListWidgetCategories_itemSelectionChanged()";
     clearUi();
-    qDebug();
-    qDebug() << "displaySnippets()";
-    displaySnippets();
+
+    if (ui->listWidgetCategories->selectedItems().size() > 0)
+    {
+        QString currentCategory = ui->listWidgetCategories->selectedItems().at(0)->text();
+        qDebug() << "Category changed: " << currentCategory;
+
+        if (isRetrievingDataFromDb)
+        {
+            if ((currentCategory.compare(lastCategoryOnDb) == 0))
+            {
+                displaySnippets();
+            }
+        }
+        else
+        {
+            displaySnippets();
+        }
+    }
 
     if (ui->listWidgetSnippets->count() > 0)
     {
@@ -644,9 +659,13 @@ void MainWindow::detectIfClipboardHasSomething()
 
 void MainWindow::retrieveDataFromDb()
 {
+    isRetrievingDataFromDb = true;
+
     QSqlQuery sqlQuery;
     if (thereIsSomeCategoryOnDb())
     {
+        lastCategoryOnDb = getLastCategoryOnDb();
+
         if (sqlQuery.exec("SELECT category FROM 'categories' ORDER BY datetime ASC;"))
         {
             qDebug("Reading all categories from the db");
@@ -669,6 +688,8 @@ void MainWindow::retrieveDataFromDb()
     {
         qWarning() << "Can't read the snippets from the db";
     }
+
+    isRetrievingDataFromDb = false;
 }
 
 void MainWindow::on_shortcut_openDb_pressed()
@@ -694,4 +715,13 @@ void MainWindow::openAnotherDb()
     createDBConnection(optionsDialog.getSelectedDbFilePath());
     snippetId = getMaxIdFromDb();
     retrieveDataFromDb();
+}
+
+QString MainWindow::getLastCategoryOnDb()
+{
+    QSqlQuery sqlQuery;
+    sqlQuery.exec("SELECT category FROM categories ORDER BY id DESC LIMIT 1;");
+    sqlQuery.next();
+
+    return sqlQuery.value(0).toString();
 }

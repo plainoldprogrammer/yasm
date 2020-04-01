@@ -46,6 +46,7 @@ public:
     void detectIfClipboardHasSomething();
     void retrieveDataFromDb();
     void openAnotherDb();
+    QString getLastCategoryOnDb();
 
 private:
     Ui::MainWindow *ui;
@@ -53,6 +54,8 @@ private:
     int snippetId;
     OptionsDialog optionsDialog;
     QString dbFilePath;
+    QString lastCategoryOnDb;
+    bool isRetrievingDataFromDb;
 
 private slots:
     void on_pushButtonNewCategory_clicked();
