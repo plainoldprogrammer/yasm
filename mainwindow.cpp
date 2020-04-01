@@ -10,8 +10,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
 
     dbFilePath = "C:\\plainoldprogrammer\\dev\\databases\\snippets.db";
-    createDBConnection(dbFilePath);
-    snippetId = getMaxIdFromDb();
+    snippetId = createDBConnection(dbFilePath);
 
     firstTimeInitializeGUI();
 
@@ -342,7 +341,7 @@ void MainWindow::logListWidgetSnippets()
     qDebug() << "Elements on listWidgetSnippets=[" << ui->listWidgetSnippets->count() << "]";
 }
 
-void MainWindow::createDBConnection(QString filePath)
+int MainWindow::createDBConnection(QString filePath)
 {
     qDebug() << "Connecting with the database";
 
@@ -397,6 +396,8 @@ void MainWindow::createDBConnection(QString filePath)
     {
         qWarning() << "Can't create table categories";
     }
+
+    return getMaxIdFromDb();
 }
 
 int MainWindow::getMaxIdFromDb()
