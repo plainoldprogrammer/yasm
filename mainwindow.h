@@ -45,6 +45,7 @@ public:
     void displaySnippets();
     void detectIfClipboardHasSomething();
     void retrieveDataFromDb();
+    void openAnotherDb();
 
 private:
     Ui::MainWindow *ui;

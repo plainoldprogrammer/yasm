@@ -25,6 +25,7 @@ void OptionsDialog::setDefaultDbFilePath(QString dbFilePath)
 {
     defaultDbFilePath = dbFilePath;
     ui->lineEditDbPath->setText(defaultDbFilePath);
+    selectedDbFilePath = defaultDbFilePath;
 }
 
 QString OptionsDialog::getSelectedDbFilePath()
@@ -38,20 +39,20 @@ QString OptionsDialog::getSelectedDbFilePath()
  */
 void OptionsDialog::openFileDialogToSelectDb()
 {
+    QString previousSelectedDbFilePath = selectedDbFilePath;
     selectedDbFilePath = QFileDialog::getOpenFileName(this, tr("Open Database"), "c:\\", tr("Database File (*.db)")).replace("/", "\\");
 
     if (selectedDbFilePath.isEmpty())
     {
+        selectedDbFilePath = previousSelectedDbFilePath;
         ui->lineEditDbPath->setText(defaultDbFilePath);
     }
     else if (selectedDbFilePath.compare(ui->lineEditDbPath->text()) == 0)
     {
-        qDebug() << "Selected the same file that is already selected";
         ui->lineEditDbPath->setText(selectedDbFilePath);
     }
     else
     {
-        qDebug() << "A different file has been selected";
         ui->lineEditDbPath->setText(selectedDbFilePath);
     }
 }

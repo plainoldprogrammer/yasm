@@ -9,11 +9,11 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    createDBConnection("C:\\plainoldprogrammer\\dev\\databases\\snippets.db");
+    dbFilePath = "C:\\plainoldprogrammer\\dev\\databases\\snippets.db";
+    createDBConnection(dbFilePath);
     snippetId = getMaxIdFromDb();
 
     firstTimeInitializeGUI();
-    qDebug() << "dbFilePath after firstTimeInitializeGUI: " << dbFilePath;
 
     new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_Q), this, SLOT(close()));
     new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_O), this, SLOT(on_shortcut_openDb_pressed()));
@@ -361,7 +361,6 @@ void MainWindow::createDBConnection(QString filePath)
 
     db = QSqlDatabase::addDatabase(DRIVER);
     db.setDatabaseName(dbURI);
-    dbFilePath = dbURI;
 
     if (!dbDirectory.exists())
     {
@@ -597,15 +596,7 @@ void MainWindow::on_actionOptions_triggered()
     {
         qDebug() << "Ok";
         qDebug() << "Read the file: " << optionsDialog.getSelectedDbFilePath();
-        ui->listWidgetSnippets->clear();
-        ui->listWidgetCategories->clear();
-
-        // Close the previous database file in order to open the new selected.
-        db.close();
-
-        createDBConnection(optionsDialog.getSelectedDbFilePath());
-        snippetId = getMaxIdFromDb();
-        retrieveDataFromDb();
+        openAnotherDb();
     }
     else
     {
@@ -684,10 +675,18 @@ void MainWindow::retrieveDataFromDb()
 
 void MainWindow::on_shortcut_openDb_pressed()
 {
-    qDebug() << "Selecting a new db";
-
+    QString previousSelectedDbOnDialog = optionsDialog.getSelectedDbFilePath();
     optionsDialog.openFileDialogToSelectDb();
+    QString newSelectedDbOnDialog = optionsDialog.getSelectedDbFilePath();
 
+    if ( !(previousSelectedDbOnDialog.compare(newSelectedDbOnDialog) == 0) )
+    {
+        openAnotherDb();
+    }
+}
+
+void MainWindow::openAnotherDb()
+{
     ui->listWidgetSnippets->clear();
     ui->listWidgetCategories->clear();
 
