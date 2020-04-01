@@ -71,5 +71,6 @@ private slots:
     void on_lineEditSnippetTitle_selectionChanged();
     void on_textEditSnippetContent_selectionChanged();
     void on_clipboard_contentChanged();
+    void on_shortcut_openDb_pressed();
 };
 #endif // MAINWINDOW_H

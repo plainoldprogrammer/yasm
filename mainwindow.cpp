@@ -16,6 +16,7 @@ MainWindow::MainWindow(QWidget *parent)
     qDebug() << "dbFilePath after firstTimeInitializeGUI: " << dbFilePath;
 
     new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_Q), this, SLOT(close()));
+    new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_O), this, SLOT(on_shortcut_openDb_pressed()));
 }
 
 MainWindow::~MainWindow()
@@ -679,4 +680,21 @@ void MainWindow::retrieveDataFromDb()
     {
         qWarning() << "Can't read the snippets from the db";
     }
+}
+
+void MainWindow::on_shortcut_openDb_pressed()
+{
+    qDebug() << "Selecting a new db";
+
+    optionsDialog.openFileDialogToSelectDb();
+
+    ui->listWidgetSnippets->clear();
+    ui->listWidgetCategories->clear();
+
+    // Close the previous database file in order to open the new selected.
+    db.close();
+
+    createDBConnection(optionsDialog.getSelectedDbFilePath());
+    snippetId = getMaxIdFromDb();
+    retrieveDataFromDb();
 }

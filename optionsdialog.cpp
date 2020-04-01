@@ -18,6 +18,26 @@ OptionsDialog::~OptionsDialog()
 
 void OptionsDialog::on_pushButtonSelectDbPath_clicked()
 {
+    openFileDialogToSelectDb();
+}
+
+void OptionsDialog::setDefaultDbFilePath(QString dbFilePath)
+{
+    defaultDbFilePath = dbFilePath;
+    ui->lineEditDbPath->setText(defaultDbFilePath);
+}
+
+QString OptionsDialog::getSelectedDbFilePath()
+{
+    return selectedDbFilePath;
+}
+
+/*
+ *	This public member function is implemented because the file dialog should be openen also by a
+ *	shortcut (Ctrl + O) from the main window and is not possible to call directly a private slot.
+ */
+void OptionsDialog::openFileDialogToSelectDb()
+{
     selectedDbFilePath = QFileDialog::getOpenFileName(this, tr("Open Database"), "c:\\", tr("Database File (*.db)")).replace("/", "\\");
 
     if (selectedDbFilePath.isEmpty())
@@ -34,15 +54,4 @@ void OptionsDialog::on_pushButtonSelectDbPath_clicked()
         qDebug() << "A different file has been selected";
         ui->lineEditDbPath->setText(selectedDbFilePath);
     }
-}
-
-void OptionsDialog::setDefaultDbFilePath(QString dbFilePath)
-{
-    defaultDbFilePath = dbFilePath;
-    ui->lineEditDbPath->setText(defaultDbFilePath);
-}
-
-QString OptionsDialog::getSelectedDbFilePath()
-{
-    return selectedDbFilePath;
 }
