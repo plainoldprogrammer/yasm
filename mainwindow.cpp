@@ -11,7 +11,6 @@ MainWindow::MainWindow(QWidget *parent)
 
     dbFilePath = "C:\\plainoldprogrammer\\dev\\databases\\snippets.db";
     snippetId = createDBConnection(dbFilePath);
-
     firstTimeInitializeGUI();
 
     new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_Q), this, SLOT(close()));
@@ -32,13 +31,13 @@ void MainWindow::firstTimeInitializeGUI()
     ui->actionCopy->setEnabled(false);
 
     detectIfClipboardHasSomething();
-
     connect(QApplication::clipboard(), SIGNAL(dataChanged()), this, SLOT(on_clipboard_contentChanged()));
 
     ui->pushButtonNewCategory->setText("New Category");
     ui->pushButtonRemoveCategory->setText("Remove Category");
     ui->pushButtonNewSnippet->setText("New Snippet");
     ui->pushButtonRemoveSnippet->setText("Remove Snippet");
+    this->setDefaultEditorFont();
     this->setWindowTitle("Yasm v1.0 (Dev)");
 
     ui->pushButtonRemoveCategory->setEnabled(false);
@@ -48,8 +47,6 @@ void MainWindow::firstTimeInitializeGUI()
     ui->listWidgetSnippets->setEnabled(false);
     ui->lineEditSnippetTitle->setEnabled(false);
     ui->textEditSnippetContent->setEnabled(false);
-
-    setDefaultEditorFont();
 
     retrieveDataFromDb();
 }
