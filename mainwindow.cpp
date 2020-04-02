@@ -10,7 +10,8 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
 
     dbFilePath = "C:\\plainoldprogrammer\\dev\\databases\\snippets.db";
-    snippetId = createDbConnection(dbFilePath);
+    checkDefaultDbDirectory();
+    snippetId = createDbConnection();
     lastCategoryOnDb = getLastCategoryOnDb();
     firstTimeInitializeGUI();
 
@@ -353,7 +354,7 @@ void MainWindow::logListWidgetSnippets()
     qDebug() << "Elements on listWidgetSnippets=[" << ui->listWidgetSnippets->count() << "]";
 }
 
-int MainWindow::createDbConnection(QString filePath)
+int MainWindow::createDbConnection()
 {
     qDebug() << "Connecting with the database";
 
@@ -364,22 +365,8 @@ int MainWindow::createDbConnection(QString filePath)
         qDebug() << "QSQLITE driver is available";
     }
 
-    QString dbFolder = "C:\\plainoldprogrammer\\dev\\databases\\";
-    QDir dbDirectory(dbFolder);
-    QString sqliteFileName = "snippets.db";
-    // QString dbURI = dbFolder + sqliteFileName;
-    QString dbURI = filePath;
-
     db = QSqlDatabase::addDatabase(DRIVER);
-    db.setDatabaseName(dbURI);
-
-    if (!dbDirectory.exists())
-    {
-        dbDirectory.mkdir(".");
-
-        QMessageBox::StandardButton notification;
-        notification = QMessageBox::information(this, "New Directory Created", "A new directory for the database\nhas been created.");
-    }
+    db.setDatabaseName(dbFilePath);
 
     if (db.open())
     {
@@ -712,7 +699,8 @@ void MainWindow::openAnotherDb()
     // Close the previous database file in order to open the new selected.
     db.close();
 
-    createDbConnection(optionsDialog.getSelectedDbFilePath());
+    dbFilePath = optionsDialog.getSelectedDbFilePath();
+    createDbConnection();
     snippetId = getMaxIdFromDb();
     retrieveDataFromDb();
 }
@@ -724,4 +712,16 @@ QString MainWindow::getLastCategoryOnDb()
     sqlQuery.next();
 
     return sqlQuery.value(0).toString();
+}
+
+void MainWindow::checkDefaultDbDirectory()
+{
+    QFileInfo file(dbFilePath);
+    QDir dbDirectory(file.path().replace("/", "\\").append("\\"));
+
+    if (!dbDirectory.exists())
+    {
+        dbDirectory.mkdir(".");
+        QMessageBox::information(this, "New Directory Created", "A new directory for the database\nhas been created.");
+    }
 }

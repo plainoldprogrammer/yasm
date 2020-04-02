@@ -16,6 +16,7 @@
 #include <QMimeData>
 #include <QShortcut>
 #include <QKeySequence>
+#include <QFileInfo>
 
 #include "optionsdialog.h"
 
@@ -36,7 +37,7 @@ public:
     void disableGUI();
     void adjustGUIForSnippetCreation(QString);
     void logListWidgetSnippets();
-    int createDbConnection(QString);
+    int createDbConnection();
     int getMaxIdFromDb();
     bool isCategoryAlreadyOnDb(QString);
     bool thereIsSomeCategoryOnDb();
@@ -47,6 +48,7 @@ public:
     void retrieveDataFromDb();
     void openAnotherDb();
     QString getLastCategoryOnDb();
+    void checkDefaultDbDirectory();
 
 private:
     Ui::MainWindow *ui;
