@@ -36,7 +36,7 @@ public:
     void disableGUI();
     void adjustGUIForSnippetCreation(QString);
     void logListWidgetSnippets();
-    int createDBConnection(QString);
+    int createDbConnection(QString);
     int getMaxIdFromDb();
     bool isCategoryAlreadyOnDb(QString);
     bool thereIsSomeCategoryOnDb();

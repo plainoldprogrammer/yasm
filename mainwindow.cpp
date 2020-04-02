@@ -10,7 +10,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
 
     dbFilePath = "C:\\plainoldprogrammer\\dev\\databases\\snippets.db";
-    snippetId = createDBConnection(dbFilePath);
+    snippetId = createDbConnection(dbFilePath);
     lastCategoryOnDb = getLastCategoryOnDb();
     firstTimeInitializeGUI();
 
@@ -353,7 +353,7 @@ void MainWindow::logListWidgetSnippets()
     qDebug() << "Elements on listWidgetSnippets=[" << ui->listWidgetSnippets->count() << "]";
 }
 
-int MainWindow::createDBConnection(QString filePath)
+int MainWindow::createDbConnection(QString filePath)
 {
     qDebug() << "Connecting with the database";
 
@@ -712,7 +712,7 @@ void MainWindow::openAnotherDb()
     // Close the previous database file in order to open the new selected.
     db.close();
 
-    createDBConnection(optionsDialog.getSelectedDbFilePath());
+    createDbConnection(optionsDialog.getSelectedDbFilePath());
     snippetId = getMaxIdFromDb();
     retrieveDataFromDb();
 }
