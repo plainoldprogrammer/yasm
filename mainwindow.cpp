@@ -212,7 +212,7 @@ void MainWindow::on_pushButtonNewSnippet_clicked()
     ui->listWidgetSnippets->setItemSelected((QListWidgetItem *) newItem, true);
     ui->listWidgetSnippets->setCurrentRow(ui->listWidgetSnippets->count() - 1);
     ui->lineEditSnippetTitle->setText(newItem->getTitle());
-    ui->textEditSnippetContent->setText(newItem->getContent());
+    ui->textEditSnippetContent->setPlainText(newItem->getContent());
 
     enableGUI();
 }
@@ -235,7 +235,7 @@ void MainWindow::on_pushButtonRemoveSnippet_clicked()
             QListWidgetItem *selectedItem = ui->listWidgetSnippets->selectedItems().at(0);
             Snippet *selectedSnippet = (Snippet *) selectedItem;
             ui->lineEditSnippetTitle->setText(selectedSnippet->getTitle());
-            ui->textEditSnippetContent->setText(selectedSnippet->getContent());
+            ui->textEditSnippetContent->setPlainText(selectedSnippet->getContent());
 
             QSqlQuery sqlQuery;
             sqlQuery.exec("DELETE FROM 'snippets' WHERE id=" + QString::number(removedItem->getId()) + ";");
@@ -251,7 +251,7 @@ void MainWindow::on_pushButtonRemoveSnippet_clicked()
             }
 
             ui->lineEditSnippetTitle->setText("");
-            ui->textEditSnippetContent->setText("");
+            ui->textEditSnippetContent->setPlainText("");
             disableGUI();
         }
     }
@@ -309,7 +309,7 @@ void MainWindow::on_listWidgetSnippets_itemSelectionChanged()
                 Snippet *selectedSnippet = (Snippet *) selectedItem;
 
                 ui->lineEditSnippetTitle->setText(selectedSnippet->getTitle());
-                ui->textEditSnippetContent->setText(selectedSnippet->getContent());
+                ui->textEditSnippetContent->setPlainText(selectedSnippet->getContent());
                 // qDebug() << "Snippet selected [ id=" << selectedSnippet->getId() << "]";
             }
         }
@@ -533,7 +533,7 @@ void MainWindow::displaySnippets()
                 ui->listWidgetSnippets->setItemSelected((QListWidgetItem *) snippetRecoveredFromDb, true);
                 ui->listWidgetSnippets->setCurrentRow(ui->listWidgetSnippets->count() - 1);
                 ui->lineEditSnippetTitle->setText(snippetRecoveredFromDb->getTitle());
-                ui->textEditSnippetContent->setText(snippetRecoveredFromDb->getContent());
+                ui->textEditSnippetContent->setPlainText(snippetRecoveredFromDb->getContent());
             }
         }
     }
