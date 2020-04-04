@@ -310,7 +310,6 @@ void MainWindow::on_listWidgetSnippets_itemSelectionChanged()
 
                 ui->lineEditSnippetTitle->setText(selectedSnippet->getTitle());
                 ui->textEditSnippetContent->setPlainText(selectedSnippet->getContent());
-                // qDebug() << "Snippet selected [ id=" << selectedSnippet->getId() << "]";
             }
         }
     }
@@ -509,7 +508,6 @@ void MainWindow::displaySnippets()
 
         if (sqlQuery.exec("SELECT * FROM 'snippets' WHERE category = '" + selectedCategory + "';"))
         {
-            // qDebug() << "Reading snippets of the category" << selectedCategory << "from the db";
             QVector<Snippet> snippetsFromDb;
             Snippet *snippetRecoveredFromDb;
 
