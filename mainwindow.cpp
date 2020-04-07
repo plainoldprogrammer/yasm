@@ -39,7 +39,7 @@ void MainWindow::firstTimeInitializeGUI()
     ui->pushButtonRemoveCategory->setText("Remove Category");
     ui->pushButtonNewSnippet->setText("New Snippet");
     ui->pushButtonRemoveSnippet->setText("Remove Snippet");
-    this->setWindowTitle("Yasm v1.0 (Dev)");
+    this->setWindowTitle("Yasm");
     this->setDefaultEditorFont();
 
     ui->pushButtonRemoveCategory->setEnabled(false);
