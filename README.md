@@ -24,7 +24,7 @@ The *YASM* (Yet Another Snippet Manager) is a C++/Qt desktop application that al
 * Each category now has an folder icon.
 * Each snippet now has a file icon.
 * Can open a user specific database (through options menu or Ctrl + O shortcut).
-* Are categories and snippets are fully navigated through arrow keys
+* Are categories and snippets are fully navigated through arrow keys.
 
 **Version 1.0 (Stable)**
 * Navigation through arrow keys in the snippet list.
