@@ -13,6 +13,16 @@ The *YASM* (Yet Another Snippet Manager) is a C++/Qt application which let to st
 
 <img src="https://raw.githubusercontent.com/plainoldprogrammer/yasm/master/screenshots/screenshot-main-window.jpg" width="742" height="445">
 
+**Version 1.1 (Stable)**
+* Better internal memory managemet.
+* A lot fast performance compare to the previous version.
+* A menu bar has been introduced.
+* Each category now has an folder icon.
+* Each snippet now has a file icon.
+* Can open a user specific database (through options menu or Ctrl + O shortcut).
+* Are categories and snippets are fully navigated through arrow keys
+
+
 **Version 1.0 (Stable)**
 * Navigation through arrow keys in the snippet list.
 
