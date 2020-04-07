@@ -1,4 +1,4 @@
-# Yasm
+# YASM
 
 The *YASM* (Yet Another Snippet Manager) is a C++/Qt desktop application that allows you to store code snippets under categories.
 
