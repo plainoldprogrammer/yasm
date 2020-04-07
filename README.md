@@ -1,6 +1,10 @@
-# yasm
+# Yasm
 
-The *YASM* (Yet Another Snippet Manager) is a C++/Qt application which let to store specific code snippets under categories.
+The *YASM* (Yet Another Snippet Manager) is a C++/Qt desktop application that allows you to store code snippets under categories.
+
+<img src="https://raw.githubusercontent.com/plainoldprogrammer/yasm/master/screenshots/screenshot-main-window.jpg" width="742" height="445">
+
+---
 
 **Capabilities**
 
@@ -9,9 +13,9 @@ The *YASM* (Yet Another Snippet Manager) is a C++/Qt application which let to st
 * Write the code directly to the editor.
 * Store automatically the code that write down on the code area.
 
-**Screenshot**
+---
 
-<img src="https://raw.githubusercontent.com/plainoldprogrammer/yasm/master/screenshots/screenshot-main-window.jpg" width="742" height="445">
+### Version History
 
 **Version 1.1 (Stable)**
 * Better internal memory managemet.
@@ -21,7 +25,6 @@ The *YASM* (Yet Another Snippet Manager) is a C++/Qt application which let to st
 * Each snippet now has a file icon.
 * Can open a user specific database (through options menu or Ctrl + O shortcut).
 * Are categories and snippets are fully navigated through arrow keys
-
 
 **Version 1.0 (Stable)**
 * Navigation through arrow keys in the snippet list.
