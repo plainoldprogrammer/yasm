@@ -209,6 +209,7 @@ void MainWindow::on_pushButtonNewSnippet_clicked()
     }
 
     ui->listWidgetSnippets->insertItem(ui->listWidgetSnippets->count(), (QListWidgetItem *) newItem);
+    ui->listWidgetSnippets->item(ui->listWidgetSnippets->count() - 1)->setIcon(QIcon(":/images/icons/file.png"));
     ui->listWidgetSnippets->setItemSelected((QListWidgetItem *) newItem, true);
     ui->listWidgetSnippets->setCurrentRow(ui->listWidgetSnippets->count() - 1);
     ui->lineEditSnippetTitle->setText(newItem->getTitle());
