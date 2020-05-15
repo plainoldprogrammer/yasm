@@ -9,8 +9,8 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    // dbFilePath = "C:\\Program Files (x86)\\Plainoldprogrammer\\Yasm_development\\db\\snippets.db";
-    dbFilePath = "C:\\Program Files (x86)\\Plainoldprogrammer\\Yasm\\db\\snippets.db";
+    // dbFilePath = "C:\\Plainoldprogrammer\\Yasm_development\\db\\snippets.db";
+    dbFilePath = "C:\\Plainoldprogrammer\\Yasm\\db\\snippets.db";
     checkDefaultDbDirectory();
     snippetId = createDbConnection();
     lastCategoryOnDb = getLastCategoryOnDb();
