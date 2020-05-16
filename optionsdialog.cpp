@@ -84,3 +84,8 @@ void OptionsDialog::addAvailableFonts()
         ui->comboBoxFonts->addItem(*constIterator);
     }
 }
+
+QString OptionsDialog::getSelectedFont()
+{
+    return ui->comboBoxFonts->currentText();
+}

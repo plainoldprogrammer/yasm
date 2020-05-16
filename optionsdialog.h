@@ -22,6 +22,7 @@ public:
     QString getSelectedDbFilePath();
     void openFileDialogToSelectDb();
     QString getSelectedTheme();
+    QString getSelectedFont();
 
 private:
     Ui::OptionsDialog *ui;

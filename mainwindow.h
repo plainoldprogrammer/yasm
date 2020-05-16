@@ -50,6 +50,7 @@ public:
     QString getLastCategoryOnDb();
     void checkDefaultDbDirectory();
     void applySelectedTheme();
+    void applySelectedFont();
 
 private:
     Ui::MainWindow *ui;

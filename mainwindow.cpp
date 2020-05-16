@@ -599,6 +599,8 @@ void MainWindow::on_actionOptions_triggered()
         openAnotherDb();
 
         applySelectedTheme();
+
+        applySelectedFont();
     }
     else
     {
@@ -765,4 +767,9 @@ void MainWindow::applySelectedTheme()
     palette.setColor(QPalette::Base, backgroundColor);
     palette.setColor(QPalette::Text, fontColor);
     ui->textEditSnippetContent->setPalette(palette);
+}
+
+void MainWindow::applySelectedFont()
+{
+    ui->textEditSnippetContent->setFontFamily(optionsDialog.getSelectedFont());
 }
