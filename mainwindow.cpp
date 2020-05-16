@@ -598,6 +598,8 @@ void MainWindow::on_actionOptions_triggered()
         qDebug() << "Ok";
         qDebug() << "Read the file: " << optionsDialog.getSelectedDbFilePath();
         openAnotherDb();
+
+        qDebug() << "Applying the selected theme: " << optionsDialog.getSelectedTheme();
     }
     else
     {

@@ -19,6 +19,7 @@ public:
     void setDefaultDbFilePath(QString);
     QString getSelectedDbFilePath();
     void openFileDialogToSelectDb();
+    QString getSelectedTheme();
 
 private:
     Ui::OptionsDialog *ui;

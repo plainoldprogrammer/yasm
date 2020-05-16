@@ -9,6 +9,9 @@ OptionsDialog::OptionsDialog(QWidget *parent) :
     this->setWindowTitle("Options");
     this->setMinimumSize(this->size());
     this->setMaximumSize(this->size());
+
+    ui->comboBoxTheme->addItem("Light");
+    ui->comboBoxTheme->addItem("Dark");
 }
 
 OptionsDialog::~OptionsDialog()
@@ -55,4 +58,9 @@ void OptionsDialog::openFileDialogToSelectDb()
     {
         ui->lineEditDbPath->setText(selectedDbFilePath);
     }
+}
+
+QString OptionsDialog::getSelectedTheme()
+{
+    return ui->comboBoxTheme->currentText();
 }
