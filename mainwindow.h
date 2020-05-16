@@ -51,6 +51,7 @@ public:
     void checkDefaultDbDirectory();
     void applySelectedTheme();
     void applySelectedFont();
+    void applySelectedFontSize();
 
 private:
     Ui::MainWindow *ui;

@@ -100,3 +100,8 @@ void OptionsDialog::addAvailableFontSizes()
         ui->comboBoxFontSizes->addItem(QString::number(fontSizes.at(i)));
     }
 }
+
+QString OptionsDialog::getSelectedFontSize()
+{
+    return ui->comboBoxFontSizes->currentText();
+}

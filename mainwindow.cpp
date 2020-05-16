@@ -601,6 +601,8 @@ void MainWindow::on_actionOptions_triggered()
         applySelectedTheme();
 
         applySelectedFont();
+
+        applySelectedFontSize();
     }
     else
     {
@@ -772,4 +774,11 @@ void MainWindow::applySelectedTheme()
 void MainWindow::applySelectedFont()
 {
     ui->textEditSnippetContent->setFontFamily(optionsDialog.getSelectedFont());
+}
+
+void MainWindow::applySelectedFontSize()
+{
+    QFont font = ui->textEditSnippetContent->font();
+    font.setPointSize(optionsDialog.getSelectedFontSize().toInt());
+    ui->textEditSnippetContent->setFont(font);
 }

@@ -23,6 +23,7 @@ public:
     void openFileDialogToSelectDb();
     QString getSelectedTheme();
     QString getSelectedFont();
+    QString getSelectedFontSize();
 
 private:
     Ui::OptionsDialog *ui;
