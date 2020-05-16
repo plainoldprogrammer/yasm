@@ -599,7 +599,58 @@ void MainWindow::on_actionOptions_triggered()
         qDebug() << "Read the file: " << optionsDialog.getSelectedDbFilePath();
         openAnotherDb();
 
-        qDebug() << "Applying the selected theme: " << optionsDialog.getSelectedTheme();
+        QString selectedTheme = optionsDialog.getSelectedTheme();
+
+        if (selectedTheme.compare("Dark", Qt::CaseInsensitive) == 0)
+        {
+            QColor backgroundColor = QColor::fromRgb(060, 060, 060);
+            QColor fontColor = QColor::fromRgb(210, 210, 210);
+
+            QPalette palette = ui->listWidgetCategories->palette();
+            palette.setColor(QPalette::Base, backgroundColor);
+            palette.setColor(QPalette::Text, fontColor);
+            ui->listWidgetCategories->setPalette(palette);
+
+            palette = ui->listWidgetSnippets->palette();
+            palette.setColor(QPalette::Base, backgroundColor);
+            palette.setColor(QPalette::Text, fontColor);
+            ui->listWidgetSnippets->setPalette(palette);
+
+            palette = ui->lineEditSnippetTitle->palette();
+            palette.setColor(QPalette::Base, backgroundColor);
+            palette.setColor(QPalette::Text, fontColor);
+            ui->lineEditSnippetTitle->setPalette(palette);
+
+            palette = ui->textEditSnippetContent->palette();
+            palette.setColor(QPalette::Base, backgroundColor);
+            palette.setColor(QPalette::Text, fontColor);
+            ui->textEditSnippetContent->setPalette(palette);
+        }
+        else if (selectedTheme.compare("Light", Qt::CaseInsensitive) == 0)
+        {
+            QColor backgroundColor = QColor::fromRgb(255, 255, 255);
+            QColor fontColor = QColor::fromRgb(000, 000, 000);
+
+            QPalette palette = ui->listWidgetCategories->palette();
+            palette.setColor(QPalette::Base, backgroundColor);
+            palette.setColor(QPalette::Text, fontColor);
+            ui->listWidgetCategories->setPalette(palette);
+
+            palette = ui->listWidgetSnippets->palette();
+            palette.setColor(QPalette::Base, backgroundColor);
+            palette.setColor(QPalette::Text, fontColor);
+            ui->listWidgetSnippets->setPalette(palette);
+
+            palette = ui->lineEditSnippetTitle->palette();
+            palette.setColor(QPalette::Base, backgroundColor);
+            palette.setColor(QPalette::Text, fontColor);
+            ui->lineEditSnippetTitle->setPalette(palette);
+
+            palette = ui->textEditSnippetContent->palette();
+            palette.setColor(QPalette::Base, backgroundColor);
+            palette.setColor(QPalette::Text, fontColor);
+            ui->textEditSnippetContent->setPalette(palette);
+        }
     }
     else
     {
