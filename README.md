@@ -18,10 +18,10 @@
 ### Version History
 
 **Version 1.2 (Development)**
+* Now the application is protected to have only a single instance.
 * Now you can select between the light and dark themes.
-* Add of a protection to have a single instance application.
 * Fixed a bug that doesn't showed the snippet icon while on the newest created.
-* Displaying again the application version number on the title main window.
+* The application version number is showed again on the title bar.
 
 **Version 1.1 (Stable)**
 * Better internal memory managemet.
