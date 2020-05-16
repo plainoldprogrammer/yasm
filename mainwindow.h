@@ -18,6 +18,7 @@
 #include <QKeySequence>
 #include <QFileInfo>
 
+#include "snippet.h"
 #include "optionsdialog.h"
 
 QT_BEGIN_NAMESPACE

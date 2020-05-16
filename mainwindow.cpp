@@ -1,7 +1,5 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "snippet.h"
-#include "optionsdialog.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
