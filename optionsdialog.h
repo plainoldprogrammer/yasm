@@ -25,6 +25,7 @@ private:
     Ui::OptionsDialog *ui;
     QString defaultDbFilePath;
     QString selectedDbFilePath;
+    void addAvailableThemes();
 
 private slots:
     void on_pushButtonSelectDbPath_clicked();

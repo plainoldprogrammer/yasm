@@ -10,10 +10,7 @@ OptionsDialog::OptionsDialog(QWidget *parent) :
     this->setMinimumSize(this->size());
     this->setMaximumSize(this->size());
 
-    ui->comboBoxTheme->addItem("Dark");
-    ui->comboBoxTheme->addItem("Light");
-
-    ui->comboBoxTheme->setCurrentIndex(1);
+    addAvailableThemes();
 }
 
 OptionsDialog::~OptionsDialog()
@@ -65,4 +62,12 @@ void OptionsDialog::openFileDialogToSelectDb()
 QString OptionsDialog::getSelectedTheme()
 {
     return ui->comboBoxTheme->currentText();
+}
+
+void OptionsDialog::addAvailableThemes()
+{
+    ui->comboBoxTheme->addItem("Dark");
+    ui->comboBoxTheme->addItem("Light");
+
+    ui->comboBoxTheme->setCurrentIndex(1);
 }
