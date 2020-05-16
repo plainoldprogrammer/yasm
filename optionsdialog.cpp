@@ -10,8 +10,10 @@ OptionsDialog::OptionsDialog(QWidget *parent) :
     this->setMinimumSize(this->size());
     this->setMaximumSize(this->size());
 
-    ui->comboBoxTheme->addItem("Light");
     ui->comboBoxTheme->addItem("Dark");
+    ui->comboBoxTheme->addItem("Light");
+
+    ui->comboBoxTheme->setCurrentIndex(1);
 }
 
 OptionsDialog::~OptionsDialog()
