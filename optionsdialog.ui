@@ -84,7 +84,7 @@
     <string>Theme:</string>
    </property>
   </widget>
-  <widget class="QComboBox" name="comboBoxTheme">
+  <widget class="QComboBox" name="comboBoxThemes">
    <property name="geometry">
     <rect>
      <x>10</x>
@@ -130,7 +130,7 @@
     <string>Size:</string>
    </property>
   </widget>
-  <widget class="QComboBox" name="comboBoxFontSize">
+  <widget class="QComboBox" name="comboBoxFontSizes">
    <property name="geometry">
     <rect>
      <x>230</x>

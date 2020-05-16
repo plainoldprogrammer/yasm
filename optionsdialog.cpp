@@ -63,15 +63,15 @@ void OptionsDialog::openFileDialogToSelectDb()
 
 QString OptionsDialog::getSelectedTheme()
 {
-    return ui->comboBoxTheme->currentText();
+    return ui->comboBoxThemes->currentText();
 }
 
 void OptionsDialog::addAvailableThemes()
 {
-    ui->comboBoxTheme->addItem("Dark");
-    ui->comboBoxTheme->addItem("Light");
+    ui->comboBoxThemes->addItem("Dark");
+    ui->comboBoxThemes->addItem("Light");
 
-    ui->comboBoxTheme->setCurrentIndex(1);
+    ui->comboBoxThemes->setCurrentIndex(1);
 }
 
 void OptionsDialog::addAvailableFonts()
@@ -97,6 +97,6 @@ void OptionsDialog::addAvailableFontSizes()
 
     for (int i = 0; i < fontSizes.size(); i++)
     {
-        ui->comboBoxFontSize->addItem(QString::number(fontSizes.at(i)));
+        ui->comboBoxFontSizes->addItem(QString::number(fontSizes.at(i)));
     }
 }
