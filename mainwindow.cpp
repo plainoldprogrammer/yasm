@@ -771,7 +771,7 @@ void MainWindow::applySelectedTheme()
 
 void MainWindow::applySelectedFont()
 {
-    ui->textEditSnippetContent->setFontFamily(optionsDialog.getSelectedFont());
+    ui->textEditSnippetContent->setFont(optionsDialog.getSelectedFont());
 }
 
 void MainWindow::applySelectedFontSize()
