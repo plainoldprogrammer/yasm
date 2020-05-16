@@ -12,6 +12,7 @@ OptionsDialog::OptionsDialog(QWidget *parent) :
 
     addAvailableThemes();
     addAvailableFonts();
+    addAvailableFontSizes();
 }
 
 OptionsDialog::~OptionsDialog()
@@ -88,4 +89,14 @@ void OptionsDialog::addAvailableFonts()
 QString OptionsDialog::getSelectedFont()
 {
     return ui->comboBoxFonts->currentText();
+}
+
+void OptionsDialog::addAvailableFontSizes()
+{
+    QList<int> fontSizes = { 8, 9, 10, 11, 12, 14, 16, 18, 20, 22, 24, 26, 28, 36, 48, 72 };
+
+    for (int i = 0; i < fontSizes.size(); i++)
+    {
+        ui->comboBoxFontSize->addItem(QString::number(fontSizes.at(i)));
+    }
 }

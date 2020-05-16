@@ -30,6 +30,7 @@ private:
     QString selectedDbFilePath;
     void addAvailableThemes();
     void addAvailableFonts();
+    void addAvailableFontSizes();
 
 private slots:
     void on_pushButtonSelectDbPath_clicked();
