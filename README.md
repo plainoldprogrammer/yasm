@@ -20,7 +20,7 @@
 **Version 1.2 (Development)**
 * Now the application is protected to have only a single instance.
 * Now you can select between the light and dark themes.
-* Fixed a bug that doesn't showed the snippet icon while on the newest created.
+* Fixed a bug that doesn't showed the snippet icon on the newest created.
 * The application version number is showed again on the title bar.
 
 **Version 1.1 (Stable)**
