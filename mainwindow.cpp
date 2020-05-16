@@ -529,11 +529,9 @@ void MainWindow::displaySnippets()
 
                 ui->listWidgetSnippets->insertItem(ui->listWidgetSnippets->count(), (QListWidgetItem *) snippetRecoveredFromDb);
                 ui->listWidgetSnippets->item(ui->listWidgetSnippets->count() - 1)->setIcon(QIcon(":/images/icons/file.png"));
-                ui->listWidgetSnippets->setItemSelected((QListWidgetItem *) snippetRecoveredFromDb, true);
-                ui->listWidgetSnippets->setCurrentRow(ui->listWidgetSnippets->count() - 1);
-                ui->lineEditSnippetTitle->setText(snippetRecoveredFromDb->getTitle());
-                ui->textEditSnippetContent->setPlainText(snippetRecoveredFromDb->getContent());
             }
+
+            ui->listWidgetSnippets->setItemSelected((QListWidgetItem *) snippetRecoveredFromDb, true);
         }
     }
 }
