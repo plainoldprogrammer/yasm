@@ -49,6 +49,7 @@ public:
     void openAnotherDb();
     QString getLastCategoryOnDb();
     void checkDefaultDbDirectory();
+    void applySelectedTheme();
 
 private:
     Ui::MainWindow *ui;
