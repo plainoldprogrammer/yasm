@@ -4,6 +4,8 @@
 #include <QDialog>
 #include <QDebug>
 #include <QFileDialog>
+#include <QFontDatabase>
+#include <QStringList>
 
 namespace Ui {
 class OptionsDialog;
@@ -26,6 +28,7 @@ private:
     QString defaultDbFilePath;
     QString selectedDbFilePath;
     void addAvailableThemes();
+    void addAvailableFonts();
 
 private slots:
     void on_pushButtonSelectDbPath_clicked();

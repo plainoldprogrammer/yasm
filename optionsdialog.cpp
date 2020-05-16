@@ -11,6 +11,7 @@ OptionsDialog::OptionsDialog(QWidget *parent) :
     this->setMaximumSize(this->size());
 
     addAvailableThemes();
+    addAvailableFonts();
 }
 
 OptionsDialog::~OptionsDialog()
@@ -70,4 +71,16 @@ void OptionsDialog::addAvailableThemes()
     ui->comboBoxTheme->addItem("Light");
 
     ui->comboBoxTheme->setCurrentIndex(1);
+}
+
+void OptionsDialog::addAvailableFonts()
+{
+    QFontDatabase fontDatabase;
+    const QStringList fontFamilies = fontDatabase.families();
+
+    QStringList::const_iterator constIterator;
+    for (constIterator = fontFamilies.constBegin(); constIterator != fontFamilies.constEnd(); constIterator++)
+    {
+        ui->comboBoxFonts->addItem(*constIterator);
+    }
 }
