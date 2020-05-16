@@ -19,11 +19,13 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     optionsdialog.cpp \
+    runguard.cpp \
     snippet.cpp
 
 HEADERS += \
     mainwindow.h \
     optionsdialog.h \
+    runguard.h \
     snippet.h
 
 FORMS += \
