@@ -33,7 +33,7 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
     void firstTimeInitializeGUI();
-    void setDefaultEditorFont();
+    void setDefaultEditorConfiguration();
     void enableGUI();
     void disableGUI();
     void adjustGUIForSnippetCreation(QString);

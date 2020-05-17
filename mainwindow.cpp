@@ -40,7 +40,7 @@ void MainWindow::firstTimeInitializeGUI()
     ui->pushButtonRemoveSnippet->setText("Remove Snippet");
     this->setWindowTitle("Yasm v1.2 (Dev) (Debug)");
     // this->setWindowTitle("Yasm v1.2 (Dev) (Release)");
-    this->setDefaultEditorFont();
+    this->setDefaultEditorConfiguration();
 
     ui->pushButtonRemoveCategory->setEnabled(false);
     ui->pushButtonNewSnippet->setEnabled(false);
@@ -53,7 +53,7 @@ void MainWindow::firstTimeInitializeGUI()
     retrieveDataFromDb();
 }
 
-void MainWindow::setDefaultEditorFont()
+void MainWindow::setDefaultEditorConfiguration()
 {
     QFont font;
     font.setFamily("Courier");
@@ -65,6 +65,7 @@ void MainWindow::setDefaultEditorFont()
     const int tabStop = 4;
     QFontMetrics metrics(font);
     ui->textEditSnippetContent->setTabStopWidth(tabStop * metrics.width(' '));
+
     ui->textEditSnippetContent->setWordWrapMode(QTextOption::NoWrap);
 }
 
