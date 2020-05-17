@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+extern const QString defaultTheme = "Light";
 extern const QString defaultFontName = "Consolas";
 extern const int defaultFontSize = 8;
 
@@ -44,6 +45,7 @@ void MainWindow::firstTimeInitializeGUI()
     this->setWindowTitle("Yasm v1.2 (Dev) (Debug)");
     // this->setWindowTitle("Yasm v1.2 (Dev) (Release)");
     this->setDefaultEditorConfiguration();
+    this->applySelectedTheme();
 
     ui->pushButtonRemoveCategory->setEnabled(false);
     ui->pushButtonNewSnippet->setEnabled(false);

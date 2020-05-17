@@ -1,6 +1,7 @@
 #include "optionsdialog.h"
 #include "ui_optionsdialog.h"
 
+extern const QString defaultTheme;
 extern const QString defaultFontName;
 extern const int defaultFontSize;
 
@@ -74,7 +75,7 @@ void OptionsDialog::addAvailableThemes()
     ui->comboBoxThemes->addItem("Dark");
     ui->comboBoxThemes->addItem("Light");
 
-    ui->comboBoxThemes->setCurrentIndex(1);
+    ui->comboBoxThemes->setCurrentText(defaultTheme);
 }
 
 void OptionsDialog::addAvailableFonts()
