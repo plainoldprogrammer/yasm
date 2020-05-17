@@ -140,6 +140,19 @@
     </rect>
    </property>
   </widget>
+  <widget class="QCheckBox" name="checkBoxWordWrap">
+   <property name="geometry">
+    <rect>
+     <x>330</x>
+     <y>170</y>
+     <width>81</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Word Wrap</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections>
