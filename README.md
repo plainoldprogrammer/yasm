@@ -22,6 +22,7 @@
 * Now you can select between the light and dark themes.
 * Fixed a bug that doesn't showed the snippet icon on the newest created.
 * The application version number is showed again on the title bar.
+* The performance has been improved a lot, especially when the data start growing.
 
 **Version 1.1 (Stable)**
 * Better internal memory managemet.
