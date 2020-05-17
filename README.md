@@ -23,6 +23,8 @@
 * Fixed a bug that doesn't showed the snippet icon on the newest created.
 * The application version number is showed again on the title bar.
 * The performance has been improved a lot, especially when the data start growing.
+* Now is possible to change the font family and the font size.
+* Now is possible to enable or diable word wrap.
 
 **Version 1.1 (Stable)**
 * Better internal memory managemet.
