@@ -1,7 +1,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-extern const QString defaultFont = "Consolas";
+extern const QString defaultFontName = "Consolas";
+extern const int defaultFontSize = 8;
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -58,10 +59,10 @@ void MainWindow::firstTimeInitializeGUI()
 void MainWindow::setDefaultEditorConfiguration()
 {
     QFont font;
-    font.setFamily(defaultFont);
+    font.setFamily(defaultFontName);
     font.setStyleHint(QFont::Monospace);
     font.setFixedPitch(true);
-    font.setPointSize(10);
+    font.setPointSize(defaultFontSize);
     ui->textEditSnippetContent->setFont(font);
 
     const int tabStop = 4;

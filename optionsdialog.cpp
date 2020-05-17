@@ -1,7 +1,8 @@
 #include "optionsdialog.h"
 #include "ui_optionsdialog.h"
 
-extern const QString defaultFont;
+extern const QString defaultFontName;
+extern const int defaultFontSize;
 
 OptionsDialog::OptionsDialog(QWidget *parent) :
     QDialog(parent),
@@ -87,7 +88,7 @@ void OptionsDialog::addAvailableFonts()
         ui->comboBoxFonts->addItem(*constIterator);
     }
 
-    ui->comboBoxFonts->setCurrentText(defaultFont);
+    ui->comboBoxFonts->setCurrentText(defaultFontName);
 }
 
 QString OptionsDialog::getSelectedFont()
@@ -103,6 +104,8 @@ void OptionsDialog::addAvailableFontSizes()
     {
         ui->comboBoxFontSizes->addItem(QString::number(fontSizes.at(i)));
     }
+
+    ui->comboBoxFontSizes->setCurrentText(QString::number(defaultFontSize));
 }
 
 QString OptionsDialog::getSelectedFontSize()
