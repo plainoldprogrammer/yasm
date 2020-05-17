@@ -1,6 +1,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+extern const QString defaultFont = "Consolas";
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -56,7 +58,7 @@ void MainWindow::firstTimeInitializeGUI()
 void MainWindow::setDefaultEditorConfiguration()
 {
     QFont font;
-    font.setFamily("Courier");
+    font.setFamily(defaultFont);
     font.setStyleHint(QFont::Monospace);
     font.setFixedPitch(true);
     font.setPointSize(10);

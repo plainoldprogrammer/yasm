@@ -1,6 +1,8 @@
 #include "optionsdialog.h"
 #include "ui_optionsdialog.h"
 
+extern const QString defaultFont;
+
 OptionsDialog::OptionsDialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::OptionsDialog)
@@ -85,7 +87,7 @@ void OptionsDialog::addAvailableFonts()
         ui->comboBoxFonts->addItem(*constIterator);
     }
 
-    ui->comboBoxFonts->setCurrentText("Courier");
+    ui->comboBoxFonts->setCurrentText(defaultFont);
 }
 
 QString OptionsDialog::getSelectedFont()
