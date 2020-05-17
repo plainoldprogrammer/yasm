@@ -84,6 +84,8 @@ void OptionsDialog::addAvailableFonts()
     {
         ui->comboBoxFonts->addItem(*constIterator);
     }
+
+    ui->comboBoxFonts->setCurrentText("Courier");
 }
 
 QString OptionsDialog::getSelectedFont()
