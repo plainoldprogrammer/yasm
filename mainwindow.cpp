@@ -65,6 +65,7 @@ void MainWindow::setDefaultEditorFont()
     const int tabStop = 4;
     QFontMetrics metrics(font);
     ui->textEditSnippetContent->setTabStopWidth(tabStop * metrics.width(' '));
+    ui->textEditSnippetContent->setWordWrapMode(QTextOption::NoWrap);
 }
 
 void MainWindow::enableGUI()
