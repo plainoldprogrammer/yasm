@@ -53,6 +53,7 @@ public:
     void applySelectedTheme();
     void applySelectedFont();
     void applySelectedFontSize();
+    void enableWordWrap(bool);
 
 private:
     Ui::MainWindow *ui;

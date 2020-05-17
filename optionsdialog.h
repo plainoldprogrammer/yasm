@@ -24,6 +24,7 @@ public:
     QString getSelectedTheme();
     QString getSelectedFont();
     QString getSelectedFontSize();
+    bool isWordWrapActivated();
 
 private:
     Ui::OptionsDialog *ui;

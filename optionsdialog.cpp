@@ -105,3 +105,8 @@ QString OptionsDialog::getSelectedFontSize()
 {
     return ui->comboBoxFontSizes->currentText();
 }
+
+bool OptionsDialog::isWordWrapActivated()
+{
+    return ui->checkBoxWordWrap->isChecked();
+}

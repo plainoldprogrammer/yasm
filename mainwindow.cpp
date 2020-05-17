@@ -66,7 +66,7 @@ void MainWindow::setDefaultEditorConfiguration()
     QFontMetrics metrics(font);
     ui->textEditSnippetContent->setTabStopWidth(tabStop * metrics.width(' '));
 
-    ui->textEditSnippetContent->setWordWrapMode(QTextOption::NoWrap);
+    enableWordWrap(false);
 }
 
 void MainWindow::enableGUI()
@@ -601,6 +601,8 @@ void MainWindow::on_actionOptions_triggered()
         applySelectedFont();
 
         applySelectedFontSize();
+
+        enableWordWrap(optionsDialog.isWordWrapActivated());
     }
     else
     {
@@ -779,4 +781,16 @@ void MainWindow::applySelectedFontSize()
     QFont font = ui->textEditSnippetContent->font();
     font.setPointSize(optionsDialog.getSelectedFontSize().toInt());
     ui->textEditSnippetContent->setFont(font);
+}
+
+void MainWindow::enableWordWrap(bool enabled)
+{
+    if (enabled)
+    {
+        ui->textEditSnippetContent->setWordWrapMode(QTextOption::WordWrap);
+    }
+    else
+    {
+        ui->textEditSnippetContent->setWordWrapMode(QTextOption::NoWrap);
+    }
 }
