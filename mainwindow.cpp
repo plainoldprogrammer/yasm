@@ -11,8 +11,8 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    dbFilePath = "C:\\Plainoldprogrammer\\Yasm_development\\db\\snippets.db";
-    // dbFilePath = "C:\\Plainoldprogrammer\\Yasm\\db\\snippets.db";
+    // dbFilePath = "C:\\Plainoldprogrammer\\Yasm_development\\db\\snippets.db";
+    dbFilePath = "C:\\Plainoldprogrammer\\Yasm\\db\\snippets.db";
     checkDefaultDbDirectory();
     snippetId = createDbConnection();
     lastCategoryOnDb = getLastCategoryOnDb();
@@ -42,8 +42,8 @@ void MainWindow::firstTimeInitializeGUI()
     ui->pushButtonRemoveCategory->setText("Remove Category");
     ui->pushButtonNewSnippet->setText("New Snippet");
     ui->pushButtonRemoveSnippet->setText("Remove Snippet");
-    this->setWindowTitle("Yasm v1.2 (Dev) (Debug)");
-    // this->setWindowTitle("Yasm v1.2 (Dev) (Release)");
+    // this->setWindowTitle("Yasm v1.2 (Debug)");
+    this->setWindowTitle("Yasm v1.2");
     this->setDefaultEditorConfiguration();
     this->applySelectedTheme();
 
