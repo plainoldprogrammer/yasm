@@ -17,7 +17,7 @@
 
 ### Version History
 
-**Version 1.2 (Development)**
+**Version 1.2 (Stable)**
 * Now the application is protected to have only a single instance.
 * Now you can select between the light and dark themes.
 * Fixed a bug that doesn't showed the snippet icon on the newest created.
