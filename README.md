@@ -25,6 +25,7 @@
 * The performance has been improved a lot, especially when the data start growing.
 * Now is possible to change the font family and the font size.
 * Now is possible to enable or diable word wrap.
+* All the user options all persistent between sesions.
 
 **Version 1.1 (Stable)**
 * Better internal memory managemet.
