@@ -118,3 +118,30 @@ bool OptionsDialog::isWordWrapActivated()
 {
     return ui->checkBoxWordWrap->isChecked();
 }
+
+void OptionsDialog::setSelectedTheme(QString selectedTheme)
+{
+    ui->comboBoxThemes->setCurrentText(selectedTheme);
+}
+
+void OptionsDialog::setSelectedFont(QString selectedFont)
+{
+    ui->comboBoxFonts->setCurrentText(selectedFont);
+}
+
+void OptionsDialog::setSelectedFontSize(int fontSize)
+{
+    ui->comboBoxFontSizes->setCurrentText(QString::number(fontSize));
+}
+
+void OptionsDialog::wordWrapActivated(bool wordWrap)
+{
+    if (wordWrap == true)
+    {
+        ui->checkBoxWordWrap->setChecked(true);
+    }
+    else
+    {
+        ui->checkBoxWordWrap->setChecked(false);
+    }
+}

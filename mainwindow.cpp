@@ -7,7 +7,7 @@ extern const int defaultFontSize = 8;
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
-    , ui(new Ui::MainWindow)
+    , ui(new Ui::MainWindow), settings("plainoldprogrammer", "yasm")
 {
     ui->setupUi(this);
 
@@ -56,6 +56,26 @@ void MainWindow::firstTimeInitializeGUI()
     ui->textEditSnippetContent->setEnabled(false);
 
     retrieveDataFromDb();
+
+    /*
+     *	Setting the ui based on the stored settings
+     */
+    QString theme = settings.value("theme").toString();
+    optionsDialog.setSelectedTheme(theme);
+    applySelectedTheme();
+
+    QString font = settings.value("font").toString();
+    optionsDialog.setSelectedFont(font);
+    applySelectedFont();
+
+    int fontSize = settings.value("font-size").toInt();
+    optionsDialog.setSelectedFontSize(fontSize);
+    applySelectedFontSize();
+
+    bool wordWrap = settings.value("word-wrap").toBool();;
+    optionsDialog.wordWrapActivated(wordWrap);
+    enableWordWrap(wordWrap);
+
 }
 
 void MainWindow::setDefaultEditorConfiguration()
@@ -608,6 +628,11 @@ void MainWindow::on_actionOptions_triggered()
         applySelectedFontSize();
 
         enableWordWrap(optionsDialog.isWordWrapActivated());
+
+        settings.setValue("theme", optionsDialog.getSelectedTheme());
+        settings.setValue("font", optionsDialog.getSelectedFont());
+        settings.setValue("font-size", optionsDialog.getSelectedFontSize());
+        settings.setValue("word-wrap", optionsDialog.isWordWrapActivated());
     }
     else
     {

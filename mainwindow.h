@@ -17,6 +17,7 @@
 #include <QShortcut>
 #include <QKeySequence>
 #include <QFileInfo>
+#include <QSettings>
 
 #include "snippet.h"
 #include "optionsdialog.h"
@@ -63,6 +64,7 @@ private:
     QString dbFilePath;
     QString lastCategoryOnDb;
     bool isRetrievingDataFromDb;
+    QSettings settings;
 
 private slots:
     void on_pushButtonNewCategory_clicked();

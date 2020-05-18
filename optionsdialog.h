@@ -25,6 +25,10 @@ public:
     QString getSelectedFont();
     QString getSelectedFontSize();
     bool isWordWrapActivated();
+    void setSelectedTheme(QString);
+    void setSelectedFont(QString);
+    void setSelectedFontSize(int);
+    void wordWrapActivated(bool);
 
 private:
     Ui::OptionsDialog *ui;
