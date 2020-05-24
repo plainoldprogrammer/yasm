@@ -72,7 +72,6 @@ void CodeEditor::highlightCurrentLine()
         QColor lineColor;
 
         QString theme = settings.value("theme").toString();
-
         if (QString::compare(theme, "Light") == 0)
         {
             lineColor = QColor(Qt::yellow).lighter(160);

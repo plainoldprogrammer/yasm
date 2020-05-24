@@ -650,7 +650,7 @@ void MainWindow::on_actionOptions_triggered()
 
 void MainWindow::on_actionAbout_Yasm_triggered()
 {
-    QMessageBox::information(this, "About Yasm", "Yasm\nYet Another Snippet Manager\nVersion: 1.2 (Dev)\nRelease Date: 2020 April 6\nDeveloper: PlainOldProgrammer");
+    QMessageBox::information(this, "About Yasm", "Yasm\nYet Another Snippet Manager\nVersion: 1.3 (Dev)\nRelease Date: 2020 May 24\nDeveloper: PlainOldProgrammer");
 }
 
 void MainWindow::on_lineEditSnippetTitle_selectionChanged()
