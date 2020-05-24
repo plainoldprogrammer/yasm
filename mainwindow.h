@@ -21,6 +21,7 @@
 
 #include "snippet.h"
 #include "optionsdialog.h"
+#include "highlighter.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -65,6 +66,7 @@ private:
     QString lastCategoryOnDb;
     bool isRetrievingDataFromDb;
     QSettings settings;
+    Highlighter * highlighter;
 
 private slots:
     void on_pushButtonNewCategory_clicked();

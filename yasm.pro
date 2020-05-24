@@ -17,6 +17,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     codeeditor.cpp \
+    highlighter.cpp \
     main.cpp \
     mainwindow.cpp \
     optionsdialog.cpp \
@@ -25,6 +26,7 @@ SOURCES += \
 
 HEADERS += \
     codeeditor.h \
+    highlighter.h \
     linenumberarea.h \
     mainwindow.h \
     optionsdialog.h \
