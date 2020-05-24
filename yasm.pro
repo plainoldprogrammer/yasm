@@ -16,6 +16,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    codeeditor.cpp \
     main.cpp \
     mainwindow.cpp \
     optionsdialog.cpp \
@@ -23,6 +24,8 @@ SOURCES += \
     snippet.cpp
 
 HEADERS += \
+    codeeditor.h \
+    linenumberarea.h \
     mainwindow.h \
     optionsdialog.h \
     runguard.h \
