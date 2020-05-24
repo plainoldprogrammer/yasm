@@ -17,7 +17,7 @@
 
 ### Version History
 
-**Version 1.3 (Development)**
+**Version 1.3 (Stable)**
 * Now the text area has been replaced by an advanced code editor.
 * The code editor can display the line numbers.
 * The code editor can highlight the current line.
