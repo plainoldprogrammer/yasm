@@ -16,6 +16,7 @@ public:
 
     void lineNumberAreaPaintEvent(QPaintEvent *event);
     int lineNumberAreaWidth();
+    void updateHighlightCurrentLine();
 
 protected:
     void resizeEvent(QResizeEvent *event) override;

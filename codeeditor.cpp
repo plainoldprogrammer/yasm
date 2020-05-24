@@ -117,3 +117,8 @@ void CodeEditor::lineNumberAreaPaintEvent(QPaintEvent *event)
         ++blockNumber;
     }
 }
+
+void CodeEditor::updateHighlightCurrentLine()
+{
+    highlightCurrentLine();
+}

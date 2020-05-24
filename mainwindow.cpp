@@ -640,6 +640,7 @@ void MainWindow::on_actionOptions_triggered()
         settings.setValue("word-wrap", optionsDialog.isWordWrapActivated());
 
         qDebug() << "Highlight appropiate";
+        ui->textEditSnippetContent->updateHighlightCurrentLine();
     }
     else
     {
