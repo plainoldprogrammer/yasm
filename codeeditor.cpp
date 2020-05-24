@@ -1,8 +1,9 @@
 #include "codeeditor.h"
-
 #include "linenumberarea.h"
 
-CodeEditor::CodeEditor(QWidget *parent) : QPlainTextEdit(parent)
+extern const QString defaultTheme;
+
+CodeEditor::CodeEditor(QWidget *parent) : QPlainTextEdit(parent), settings("plainoldprogrammer", "yasm")
 {
     lineNumberArea = new LineNumberArea(this);
 
@@ -68,8 +69,18 @@ void CodeEditor::highlightCurrentLine()
     if (!isReadOnly())
     {
         QTextEdit::ExtraSelection selection;
+        QColor lineColor;
 
-        QColor lineColor = QColor(Qt::yellow).lighter(160);
+        QString theme = settings.value("theme").toString();
+
+        if (QString::compare(theme, "Light") == 0)
+        {
+            lineColor = QColor(Qt::yellow).lighter(160);
+        }
+        else if (QString::compare(theme, "Dark") == 0)
+        {
+            lineColor = QColor(Qt::white).lighter(30);
+        }
 
         selection.format.setBackground(lineColor);
         selection.format.setProperty(QTextFormat::FullWidthSelection, true);

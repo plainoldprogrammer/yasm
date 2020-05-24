@@ -5,6 +5,7 @@
 #include <QPlainTextEdit>
 #include <QPainter>
 #include <QTextBlock>
+#include <QSettings>
 
 class CodeEditor : public QPlainTextEdit
 {
@@ -26,6 +27,7 @@ private slots:
 
 private:
     QWidget *lineNumberArea;
+    QSettings settings;
 };
 
 #endif // CODEEDITOR_H
