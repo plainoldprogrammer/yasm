@@ -2,7 +2,6 @@
 
 Highlighter::Highlighter(QTextDocument * document) : QSyntaxHighlighter(document)
 {
-
 }
 
 void Highlighter::highlightBlock(const QString &text)
