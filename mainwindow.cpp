@@ -372,7 +372,7 @@ void MainWindow::on_textEditSnippetContent_textChanged()
         selectedSnippet->setContent(ui->textEditSnippetContent->toPlainText());
 
         QSqlQuery sqlQuery;
-        sqlQuery.exec("UPDATE 'snippets' SET 'snippet'='" + selectedSnippet->getContent() + "' WHERE id=" + QString::number(selectedSnippet->getId()) + ";");
+        sqlQuery.exec("UPDATE 'snippets' SET 'snippet'='" + selectedSnippet->getContent().replace("'", "''") + "' WHERE id=" + QString::number(selectedSnippet->getId()) + ";");
     }
 }
 
