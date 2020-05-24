@@ -1,10 +1,10 @@
-#include "highlighter.h"
+#include "syntaxhighlighter.h"
 
-Highlighter::Highlighter(QTextDocument * document) : QSyntaxHighlighter(document)
+SyntaxHighlighter::SyntaxHighlighter(QTextDocument * document) : QSyntaxHighlighter(document)
 {
 }
 
-void Highlighter::highlightBlock(const QString &text)
+void SyntaxHighlighter::highlightBlock(const QString &text)
 {
     QTextCharFormat myClassFormat;
     myClassFormat.setFontWeight(QFont::Bold);

@@ -24,7 +24,7 @@ MainWindow::MainWindow(QWidget *parent)
 
 MainWindow::~MainWindow()
 {
-    delete highlighter;
+    delete syntaxHighlighter;
     delete ui;
     db.close();
 }
@@ -57,7 +57,7 @@ void MainWindow::firstTimeInitializeGUI()
     ui->textEditSnippetContent->setEnabled(false);
     retrieveDataFromDb();
 
-    highlighter = new Highlighter(ui->textEditSnippetContent->document());
+    syntaxHighlighter = new SyntaxHighlighter(ui->textEditSnippetContent->document());
 
     /*
      *	Setting the ui based on the stored settings

@@ -17,21 +17,21 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     codeeditor.cpp \
-    highlighter.cpp \
     main.cpp \
     mainwindow.cpp \
     optionsdialog.cpp \
     runguard.cpp \
-    snippet.cpp
+    snippet.cpp \
+    syntaxhighlighter.cpp
 
 HEADERS += \
     codeeditor.h \
-    highlighter.h \
     linenumberarea.h \
     mainwindow.h \
     optionsdialog.h \
     runguard.h \
-    snippet.h
+    snippet.h \
+    syntaxhighlighter.h
 
 FORMS += \
     mainwindow.ui \

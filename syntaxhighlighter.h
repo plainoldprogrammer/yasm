@@ -1,5 +1,5 @@
-#ifndef HIGHLIGHTER_H
-#define HIGHLIGHTER_H
+#ifndef SYNTAXHIGHLIGHTER_H
+#define SYNTAXHIGHLIGHTER_H
 
 #include <QSyntaxHighlighter>
 #include <QPlainTextEdit>
@@ -8,11 +8,11 @@
 #include <QTextCharFormat>
 #include <QRegularExpressionMatchIterator>
 
-class Highlighter : QSyntaxHighlighter
+class SyntaxHighlighter : QSyntaxHighlighter
 {
 public:
-    Highlighter(QTextDocument *);
+    SyntaxHighlighter(QTextDocument *);
     void highlightBlock(const QString &text);
 };
 
-#endif // HIGHLIGHTER_H
+#endif // SYNTAXHIGHLIGHTER_H
