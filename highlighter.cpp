@@ -15,7 +15,7 @@ void Highlighter::highlightBlock(const QString &text)
     QRegularExpressionMatchIterator i = expression.globalMatch(text);
     while (i.hasNext())
     {
-      QRegularExpressionMatch match = i.next();
-      setFormat(match.capturedStart(), match.capturedLength(), myClassFormat);
+        QRegularExpressionMatch match = i.next();
+        setFormat(match.capturedStart(), match.capturedLength(), myClassFormat);
     }
 }
