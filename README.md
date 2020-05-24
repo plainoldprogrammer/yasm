@@ -16,10 +16,12 @@
 ---
 
 ### Version History
+
 **Version 1.3 (Development)**
 * Now the text area has been replaced by an advanced code editor.
 * The code editor can display the line numbers.
 * The code editor can highlight the current line.
+* Fixing a bug in order to store correctly the code that contains single quotes.
 
 **Version 1.2 (Stable)**
 * Now the application is protected to have only a single instance.
