@@ -615,11 +615,16 @@ void MainWindow::on_actionPaste_triggered()
 void MainWindow::on_actionOptions_triggered()
 {
     optionsDialog.setModal(true);
+    QString previousSelectedDbOnDialog = optionsDialog.getSelectedDbFilePath();
 
     if (optionsDialog.exec() == QDialog::Accepted)
     {
         qDebug() << "Read the file: " << optionsDialog.getSelectedDbFilePath();
-        openAnotherDb();
+        QString newSelectedDbOnDialog = optionsDialog.getSelectedDbFilePath();
+        if ( !(previousSelectedDbOnDialog.compare(newSelectedDbOnDialog) == 0) )
+        {
+            openAnotherDb();
+        }
 
         applySelectedTheme();
 
@@ -633,6 +638,8 @@ void MainWindow::on_actionOptions_triggered()
         settings.setValue("font", optionsDialog.getSelectedFont());
         settings.setValue("font-size", optionsDialog.getSelectedFontSize());
         settings.setValue("word-wrap", optionsDialog.isWordWrapActivated());
+
+        qDebug() << "Highlight appropiate";
     }
     else
     {
