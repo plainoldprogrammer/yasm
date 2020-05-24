@@ -11,8 +11,8 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    // dbFilePath = "C:\\Plainoldprogrammer\\Yasm_development\\db\\snippets.db";
-    dbFilePath = "C:\\Plainoldprogrammer\\Yasm\\db\\snippets.db";
+    dbFilePath = "C:\\Plainoldprogrammer\\Yasm_development\\db\\snippets.db";
+    // dbFilePath = "C:\\Plainoldprogrammer\\Yasm\\db\\snippets.db";
     checkDefaultDbDirectory();
     snippetId = createDbConnection();
     lastCategoryOnDb = getLastCategoryOnDb();
@@ -42,8 +42,8 @@ void MainWindow::firstTimeInitializeGUI()
     ui->pushButtonRemoveCategory->setText("Remove Category");
     ui->pushButtonNewSnippet->setText("New Snippet");
     ui->pushButtonRemoveSnippet->setText("Remove Snippet");
-    // this->setWindowTitle("Yasm v1.3 (Debug)");
-    this->setWindowTitle("Yasm v1.3");
+    this->setWindowTitle("Yasm v1.4 (Debug)");
+    // this->setWindowTitle("Yasm v1.4");
     this->setDefaultEditorConfiguration();
     this->applySelectedTheme();
 
@@ -650,7 +650,7 @@ void MainWindow::on_actionOptions_triggered()
 
 void MainWindow::on_actionAbout_Yasm_triggered()
 {
-    QMessageBox::information(this, "About Yasm", "Yasm\nYet Another Snippet Manager\nVersion: 1.3\nRelease Date: 2020 May 24\nDeveloper: PlainOldProgrammer");
+    QMessageBox::information(this, "About Yasm", "Yasm\nYet Another Snippet Manager\nVersion: 1.4 (Debug)\nRelease Date: 2020 May 24\nDeveloper: PlainOldProgrammer");
 }
 
 void MainWindow::on_lineEditSnippetTitle_selectionChanged()
