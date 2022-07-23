@@ -74,7 +74,7 @@ void MainWindow::firstTimeInitializeGUI()
     optionsDialog.setSelectedFontSize(fontSize);
     applySelectedFontSize();
 
-    bool wordWrap = settings.value("word-wrap").toBool();;
+    bool wordWrap = settings.value("word-wrap").toBool();
     optionsDialog.wordWrapActivated(wordWrap);
     enableWordWrap(wordWrap);
 
@@ -91,7 +91,7 @@ void MainWindow::setDefaultEditorConfiguration()
 
     const int tabStop = 4;
     QFontMetrics metrics(font);
-    ui->textEditSnippetContent->setTabStopWidth(tabStop * metrics.width(' '));
+    ui->textEditSnippetContent->setTabStopDistance(tabStop * metrics.maxWidth());
 
     enableWordWrap(false);
 }
@@ -144,7 +144,7 @@ void MainWindow::on_pushButtonNewCategory_clicked()
 
                 ui->listWidgetCategories->insertItem(ui->listWidgetCategories->count(), newCategory);
                 ui->listWidgetCategories->item(ui->listWidgetCategories->count() - 1)->setIcon(QIcon(":/images/icons/folder.png"));
-                ui->listWidgetCategories->setItemSelected(ui->listWidgetCategories->item(ui->listWidgetCategories->count() - 1), true);
+                ui->listWidgetCategories->setCurrentItem(ui->listWidgetCategories->item(ui->listWidgetCategories->count() - 1));
                 ui->listWidgetCategories->setCurrentRow(ui->listWidgetCategories->count() - 1);
 
                 clearUi();
@@ -239,7 +239,7 @@ void MainWindow::on_pushButtonNewSnippet_clicked()
 
     ui->listWidgetSnippets->insertItem(ui->listWidgetSnippets->count(), (QListWidgetItem *) newItem);
     ui->listWidgetSnippets->item(ui->listWidgetSnippets->count() - 1)->setIcon(QIcon(":/images/icons/file.png"));
-    ui->listWidgetSnippets->setItemSelected((QListWidgetItem *) newItem, true);
+    ui->listWidgetSnippets->setCurrentItem((QListWidgetItem *) newItem);
     ui->listWidgetSnippets->setCurrentRow(ui->listWidgetSnippets->count() - 1);
     ui->lineEditSnippetTitle->setText(newItem->getTitle());
     ui->textEditSnippetContent->setPlainText(newItem->getContent());
@@ -289,7 +289,7 @@ void MainWindow::on_pushButtonRemoveSnippet_clicked()
 
 void MainWindow::on_listWidgetCategories_itemSelectionChanged()
 {
-    qDebug() << endl << "onListWidgetCategories_itemSelectionChanged()";
+    qDebug() << Qt::endl << "onListWidgetCategories_itemSelectionChanged()";
     clearUi();
 
     if (ui->listWidgetCategories->selectedItems().size() > 0)
@@ -560,7 +560,7 @@ void MainWindow::displaySnippets()
                 ui->listWidgetSnippets->item(ui->listWidgetSnippets->count() - 1)->setIcon(QIcon(":/images/icons/file.png"));
             }
 
-            ui->listWidgetSnippets->setItemSelected((QListWidgetItem *) snippetRecoveredFromDb, true);
+            ui->listWidgetSnippets->setCurrentItem((QListWidgetItem *) snippetRecoveredFromDb);
         }
     }
 }
@@ -709,7 +709,7 @@ void MainWindow::retrieveDataFromDb()
 
                 ui->listWidgetCategories->insertItem(ui->listWidgetCategories->count(), categoryRecoveredFromDb);
                 ui->listWidgetCategories->item(ui->listWidgetCategories->count() - 1)->setIcon(QIcon(":/images/icons/folder.png"));
-                ui->listWidgetCategories->setItemSelected(ui->listWidgetCategories->item(ui->listWidgetCategories->count() - 1), true);
+                ui->listWidgetCategories->setCurrentItem(ui->listWidgetCategories->item(ui->listWidgetCategories->count() - 1));
                 ui->listWidgetCategories->setCurrentRow(ui->listWidgetCategories->count() - 1);
                 ui->listWidgetCategories->setEnabled(true);
             }
